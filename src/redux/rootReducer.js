@@ -1,5 +1,10 @@
 import { combineReducers } from 'redux';
 
-const rootReducer = combineReducers({});
+// Import Reducers
+import { EmployeeReducer } from '../components/Employee/EmployeeReducer';
+
+const rootReducer = combineReducers({
+  EmployeeReducer,
+});
 
 export default rootReducer;
