@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 
 const Details = () => {
-  const details = useSelector((state) => state.DetailsReducer);
+  const emp = useSelector((state) => state.DetailsReducer);
   const dispatch = useDispatch();
   const classes = Styles();
 
@@ -30,9 +30,9 @@ const Details = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {details.details.map(({ first_name, second_name }, index) => (
+          {emp.details.map(({ id, first_name, second_name }, index) => (
             <TableRow>
-              <TableCell></TableCell>
+              <TableCell>{id}</TableCell>
               <TableCell>{first_name}</TableCell>
               <TableCell>{second_name}</TableCell>
             </TableRow>

@@ -14,7 +14,7 @@ export const DetailsReducer = (state = initalState, action) => {
     case SUCCESS_LOAD_DETAILS:
       return {
         ...state,
-        details: action.payload,
+        details: [action.payload],
         errors: false,
       };
     case FAILURE_LOAD_DETAILS:

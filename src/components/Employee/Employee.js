@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Styles from '../Style/Style';
 // Redux Actions
 import { requestEmployees } from './EmployeeActions';
+import { requestDetails } from '../Details/DetailsActions';
 // React Router Dom
 import { useHistory } from 'react-router-dom';
 // Material-Ui
@@ -17,7 +18,6 @@ import {
   Typography,
   Button,
 } from '@material-ui/core';
-import { requestDetails } from '../Details/DetailsActions';
 
 const Employee = () => {
   const data = useSelector((state) => state.EmployeeReducer);
@@ -34,16 +34,12 @@ const Employee = () => {
     dispatch(requestDetails(e));
     setTimeout(() => {
       history.push('/details');
-    }, 1000);
-  };
-
-  const testRedirect = () => {
-    history.push('/details');
+    }, 500);
   };
 
   return (
-    <div>
-      <Button onClick={testRedirect}>Test</Button>
+    <div className={classes.pageContainer}>
+      <Typography variant="h4">List of Employees</Typography>
       <Table>
         <TableHead>
           <TableRow>
