@@ -14,6 +14,17 @@ const db = require('./src/backend/database/db');
 db.authenticate()
   .then(() => console.log('Database connected...'))
   .catch((err) => console.log(err));
+
+// CORS policy
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT,OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-Request-With, Authorization, Origin, Accept, Content-Type'
+  );
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  next();
+});
 // Use routes
 app.use('/', employees);
 
