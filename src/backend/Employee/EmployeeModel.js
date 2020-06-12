@@ -13,6 +13,33 @@ const Employee = db.define(
     position: {
       type: Sequilize.STRING,
     },
+    work_department: {
+      type: Sequilize.STRING,
+    },
+    employment_date: {
+      type: Sequilize.DATE,
+    },
+    address: {
+      type: Sequilize.STRING,
+    },
+    city: {
+      type: Sequilize.STRING,
+    },
+    state: {
+      type: Sequilize.STRING,
+    },
+    social_number: {
+      type: Sequilize.STRING,
+    },
+    identity_card: {
+      type: Sequilize.STRING,
+    },
+    telephone_number: {
+      type: Sequilize.STRING,
+    },
+    email_address: {
+      type: Sequilize.STRING,
+    },
   },
   {
     timestamps: false,

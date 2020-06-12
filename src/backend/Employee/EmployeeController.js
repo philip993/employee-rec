@@ -18,11 +18,33 @@ exports.getEmployees = (req, res) => {
 
 // Add New Employee
 exports.addEmployee = (req, res) => {
-  let { first_name, second_name, position } = req.body;
+  let {
+    first_name,
+    second_name,
+    position,
+    employment_date,
+    work_department,
+    address,
+    city,
+    state,
+    social_number,
+    identity_card,
+    telephone_number,
+    email_address,
+  } = req.body;
   Employee.create({
     first_name,
     second_name,
     position,
+    employment_date,
+    work_department,
+    address,
+    city,
+    state,
+    social_number,
+    identity_card,
+    telephone_number,
+    email_address,
   })
     .then((employee) => {
       res.status(201).json({
