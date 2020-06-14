@@ -18,12 +18,50 @@ exports.getEmployees = (req, res) => {
 
 // Add New Employee
 exports.addEmployee = (req, res) => {
-  let { first_name, second_name, position } = req.body;
-  Employee.create({
-    first_name,
-    second_name,
+  let {
+    firstName,
+    secondName,
     position,
+    employmentDate,
+    workDepartment,
+    address,
+    city,
+    state,
+    socialNumber,
+    identityCard,
+    telephoneNumber,
+    emailAddress,
+  } = req.body;
+  Employee.create({
+    firstName,
+    secondName,
+    position,
+    employmentDate,
+    workDepartment,
+    address,
+    city,
+    state,
+    socialNumber,
+    identityCard,
+    telephoneNumber,
+    emailAddress,
   })
+    .then((employee) => {
+      res.status(201).json({
+        employee,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'Cannot Add New Employee!',
+      });
+    });
+};
+
+// Get One Employee
+exports.getOneEmployee = (req, res) => {
+  Employee.findOne({ where: { id: req.params.id } })
     .then((employee) => {
       res.status(200).json({
         employee,
@@ -32,7 +70,7 @@ exports.addEmployee = (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500).json({
-        msg: 'Cannot Add New Employee!',
+        msg: 'System Error. Cannot load Employee',
       });
     });
 };
