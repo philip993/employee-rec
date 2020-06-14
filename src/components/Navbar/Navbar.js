@@ -21,6 +21,9 @@ const Navbar = () => {
         <Link to="/employees">Employee List</Link>
       </Button>
       <Button>
+        <Link to="/add">Add Employee</Link>
+      </Button>
+      <Button>
         <Link to="/contact">Contact</Link>
       </Button>
     </div>
