@@ -51,19 +51,21 @@ const Employee = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.employees.map((employee, index) => (
-            <TableRow key={employee.id}>
-              <TableCell>{employee.id}</TableCell>
-              <TableCell>{employee.first_name}</TableCell>
-              <TableCell>{employee.second_name}</TableCell>
-              <TableCell>{employee.position}</TableCell>
-              <TableCell>
-                <Button onClick={handleEmployeeDetails.bind(this, employee.id)}>
-                  Details
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {data.employees.map(
+            ({ id, firstName, secondName, position }, index) => (
+              <TableRow key={id}>
+                <TableCell>{id}</TableCell>
+                <TableCell>{firstName}</TableCell>
+                <TableCell>{secondName}</TableCell>
+                <TableCell>{position}</TableCell>
+                <TableCell>
+                  <Button onClick={handleEmployeeDetails.bind(this, id)}>
+                    Details
+                  </Button>
+                </TableCell>
+              </TableRow>
+            )
+          )}
         </TableBody>
       </Table>
     </div>
