@@ -4,41 +4,53 @@ const db = require('../database/db');
 const Employee = db.define(
   'employee',
   {
-    first_name: {
+    firstName: {
       type: Sequilize.STRING,
+      field: 'first_name',
     },
-    second_name: {
+    secondName: {
       type: Sequilize.STRING,
+      field: 'second_name',
     },
     position: {
       type: Sequilize.STRING,
+      field: 'position',
     },
-    work_department: {
+    workDepartment: {
       type: Sequilize.STRING,
+      field: 'work_department',
     },
-    employment_date: {
+    employmentDate: {
       type: Sequilize.DATE,
+      field: 'employment_date',
     },
     address: {
       type: Sequilize.STRING,
+      field: 'address',
     },
     city: {
       type: Sequilize.STRING,
+      field: 'city',
     },
     state: {
       type: Sequilize.STRING,
+      field: 'state',
     },
-    social_number: {
+    socialNumber: {
       type: Sequilize.STRING,
+      field: 'social_number',
     },
-    identity_card: {
+    identityCard: {
       type: Sequilize.STRING,
+      field: 'identity_card',
     },
-    telephone_number: {
+    telephoneNumber: {
       type: Sequilize.STRING,
+      field: 'telephone_number',
     },
-    email_address: {
+    emailAddress: {
       type: Sequilize.STRING,
+      field: 'email_address',
     },
   },
   {
