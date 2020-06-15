@@ -11,6 +11,8 @@ import {
   INPUT_STATE,
   INPUT_TELEPHONE_NUMBER,
   INPUT_EMAIL_ADDRESS,
+  STEP_INCREMENT,
+  STEP_DECREMENT,
 } from './AddEmployeeActionTypes';
 import axios from 'axios';
 
@@ -87,7 +89,7 @@ export const inputPosition = (e) => {
 export const inputEmploymentDate = (e) => {
   return {
     type: INPUT_EMPLOYMENT_DATE,
-    payload: e,
+    payload: new Date(),
   };
 };
 
@@ -130,5 +132,18 @@ export const inputEmailAddress = (e) => {
   return {
     type: INPUT_EMAIL_ADDRESS,
     payload: e,
+  };
+};
+
+// Step
+export const stepIncrement = () => {
+  return {
+    type: STEP_INCREMENT,
+  };
+};
+
+export const stepDecrement = () => {
+  return {
+    type: STEP_DECREMENT,
   };
 };

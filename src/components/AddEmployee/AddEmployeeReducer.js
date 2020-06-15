@@ -13,6 +13,8 @@ import {
   INPUT_IDENTITY_CARD,
   INPUT_TELEPHONE_NUMBER,
   INPUT_EMAIL_ADDRESS,
+  STEP_INCREMENT,
+  STEP_DECREMENT,
 } from './AddEmployeeActionTypes';
 
 const initialState = {
@@ -30,6 +32,7 @@ const initialState = {
   identityCard: '',
   telephoneNumber: '',
   emailAddress: '',
+  step: 1,
 };
 
 export const AddEmployeeReducer = (state = initialState, action) => {
@@ -107,6 +110,17 @@ export const AddEmployeeReducer = (state = initialState, action) => {
       return {
         ...state,
         emailAddress: action.payload,
+      };
+    // step
+    case STEP_INCREMENT:
+      return {
+        ...state,
+        step: state.step + 1,
+      };
+    case STEP_DECREMENT:
+      return {
+        ...state,
+        step: state.step - 1,
       };
     default:
       return state;
