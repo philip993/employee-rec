@@ -3,13 +3,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+// React Component
+import EmploymentInfo from './EmploymentInfo';
 // Redux Actions
 import {} from './AddEmployeeActions';
 // Material-Ui
 import { Typography, FormGroup, InputBase } from '@material-ui/core';
+import PersonalInfo from './PersonalInfo';
 
 const AddEmployee = () => {
-  const addEmp = useSelector((state) => state.AddEmployeeReducer);
+  const { step } = useSelector((state) => state.AddEmployeeReducer);
   const dispatch = useDispatch();
   const classes = Styles();
 
@@ -21,16 +24,7 @@ const AddEmployee = () => {
   return (
     <div className={classes.pageContainer}>
       <Typography variant="h4">Add New Employee</Typography>
-      <form>
-        <FormGroup>
-          <InputBase
-            type="text"
-            value={'val'}
-            onChange={'func'}
-            placeholder="First Name here.."
-          />
-        </FormGroup>
-      </form>
+      {step === 1 ? <PersonalInfo /> : step === 2 ? <EmploymentInfo /> : 'xxx'}
     </div>
   );
 };
