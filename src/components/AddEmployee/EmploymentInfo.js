@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+// Date
+import 'date-fns';
 // Redux Actions
 import {
   stepIncrement,
@@ -15,16 +17,11 @@ import {
   Typography,
   Button,
   FormGroup,
-  InputBase,
   InputLabel,
   Select,
   MenuItem,
 } from '@material-ui/core';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns';
+import { KeyboardDatePicker } from '@material-ui/pickers';
 
 const EmploymentInfo = () => {
   const { step, position, workDepartment, employmentDate } = useSelector(
@@ -42,12 +39,14 @@ const EmploymentInfo = () => {
   };
 
   const handleEmploymentDate = (e) => {
-    dispatch(inputEmploymentDate());
+    dispatch(inputEmploymentDate(e));
   };
 
   const handleWorkDepartment = (e) => {
     dispatch(inputWorkDepartment(e.target.value));
   };
+
+  console.log(employmentDate);
 
   return (
     <div>
@@ -65,17 +64,27 @@ const EmploymentInfo = () => {
       </FormGroup>
       <FormGroup>
         <InputLabel>Employment Date</InputLabel>
-        <MuiPickersUtilsProvider utils={DateFnsUtils}>
-          <KeyboardDatePicker
-            value={employmentDate}
-            onChange={handleEmploymentDate}
-            disableToolbar
-            format="mm/dd/yyyy"
-            variant="inline"
-          />
-        </MuiPickersUtilsProvider>
+        <KeyboardDatePicker
+          margin="normal"
+          label="Date picker"
+          defaultValue="--/--/----"
+          format="MM/dd/yyyy"
+          value={employmentDate}
+          onChange={handleEmploymentDate}
+          KeyboardButtonProps={{
+            'aria-label': 'change date',
+          }}
+        ></KeyboardDatePicker>
       </FormGroup>
-      <FormGroup></FormGroup>
+      <FormGroup>
+        <InputLabel>Work Department</InputLabel>
+        <Select value={workDepartment} onChange={handleWorkDepartment}>
+          <MenuItem value="administration">Administration</MenuItem>
+          <MenuItem value="it">IT</MenuItem>
+          <MenuItem value="department1">Department One</MenuItem>
+          <MenuItem value="department2">Department Two</MenuItem>
+        </Select>
+      </FormGroup>
     </div>
   );
 };
