@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
@@ -46,8 +46,6 @@ const EmploymentInfo = () => {
     dispatch(inputWorkDepartment(e.target.value));
   };
 
-  console.log(employmentDate);
-
   return (
     <div>
       <Typography variant="h4">Personal Information</Typography>
@@ -58,6 +56,10 @@ const EmploymentInfo = () => {
         <Select value={position} onChange={handlePosition}>
           <MenuItem>Choose position</MenuItem>
           <MenuItem value="worker">Worker</MenuItem>
+          <MenuItem value="support">IT Support</MenuItem>
+          <MenuItem value="accountant">Accountant</MenuItem>
+          <MenuItem value="seller">Seller</MenuItem>
+          <MenuItem value="hrspecialist"></MenuItem>
           <MenuItem value="supervisor">Supervisor</MenuItem>
           <MenuItem value="manager">Manager</MenuItem>
         </Select>
@@ -67,22 +69,23 @@ const EmploymentInfo = () => {
         <KeyboardDatePicker
           margin="normal"
           label="Date picker"
-          defaultValue="--/--/----"
-          format="MM/dd/yyyy"
+          format="dd/MM/yyyy"
           value={employmentDate}
           onChange={handleEmploymentDate}
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
-        ></KeyboardDatePicker>
+        />
       </FormGroup>
       <FormGroup>
         <InputLabel>Work Department</InputLabel>
         <Select value={workDepartment} onChange={handleWorkDepartment}>
-          <MenuItem value="administration">Administration</MenuItem>
-          <MenuItem value="it">IT</MenuItem>
-          <MenuItem value="department1">Department One</MenuItem>
-          <MenuItem value="department2">Department Two</MenuItem>
+          <MenuItem>Choose Department</MenuItem>
+          <MenuItem value="production">Production</MenuItem>
+          <MenuItem value="accounting">Accounting and Finance</MenuItem>
+          <MenuItem value="hr">Human Resources</MenuItem>
+          <MenuItem value="sales">Sales</MenuItem>
+          <MenuItem value="it">IT Department</MenuItem>
         </Select>
       </FormGroup>
     </div>
