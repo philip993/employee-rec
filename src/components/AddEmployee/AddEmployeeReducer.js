@@ -23,7 +23,7 @@ const initialState = {
   firstName: '',
   secondName: '',
   position: '',
-  employementDate: '',
+  employementDate: null,
   workDepartment: '',
   address: '',
   city: '',

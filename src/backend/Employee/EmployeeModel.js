@@ -21,7 +21,7 @@ const Employee = db.define(
       field: 'work_department',
     },
     employmentDate: {
-      type: Sequilize.DATE,
+      type: Sequilize.DATEONLY,
       field: 'employment_date',
     },
     address: {

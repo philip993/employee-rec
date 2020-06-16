@@ -87,9 +87,11 @@ export const inputPosition = (e) => {
 };
 
 export const inputEmploymentDate = (e) => {
-  return {
-    type: INPUT_EMPLOYMENT_DATE,
-    payload: new Date(),
+  return (dispatch) => {
+    dispatch({
+      type: INPUT_EMPLOYMENT_DATE,
+      payload: new Date(e).toLocaleDateString(),
+    });
   };
 };
 
