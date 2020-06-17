@@ -13,6 +13,8 @@ import {
   INPUT_EMAIL_ADDRESS,
   STEP_INCREMENT,
   STEP_DECREMENT,
+  INPUT_IDENTITY_CARD,
+  INPUT_SOCIAL_NUMBER,
 } from './AddEmployeeActionTypes';
 import axios from 'axios';
 
@@ -119,6 +121,20 @@ export const inputCity = (e) => {
 export const inputState = (e) => {
   return {
     type: INPUT_STATE,
+    payload: e,
+  };
+};
+
+export const inputIdentityCard = (e) => {
+  return {
+    type: INPUT_IDENTITY_CARD,
+    payload: e,
+  };
+};
+
+export const inputSocialNumber = (e) => {
+  return {
+    type: INPUT_SOCIAL_NUMBER,
     payload: e,
   };
 };
