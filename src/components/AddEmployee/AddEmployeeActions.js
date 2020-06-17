@@ -17,6 +17,7 @@ import {
   INPUT_SOCIAL_NUMBER,
   INPUT_GENDER,
   INPUT_AGE,
+  CHANGE_ERROR_STATUS,
 } from './AddEmployeeActionTypes';
 import axios from 'axios';
 
@@ -38,9 +39,9 @@ export const requestAddEmployee = (e) => {
       socialNumber,
       telephoneNumber,
       emailAddress,
-    } = getState().addEmployeeReducer;
+    } = getState().AddEmployeeReducer;
     return axios
-      .post(`http://localhost:4000/employee/add`, {
+      .post(`http://localhost:4000/employees/add`, {
         firstName,
         secondName,
         gender,
@@ -183,5 +184,12 @@ export const stepIncrement = () => {
 export const stepDecrement = () => {
   return {
     type: STEP_DECREMENT,
+  };
+};
+
+// errors
+export const changeErrorsStatus = () => {
+  return {
+    type: CHANGE_ERROR_STATUS,
   };
 };

@@ -17,6 +17,7 @@ import {
   STEP_DECREMENT,
   INPUT_GENDER,
   INPUT_AGE,
+  CHANGE_ERROR_STATUS,
 } from './AddEmployeeActionTypes';
 
 const initialState = {
@@ -37,6 +38,7 @@ const initialState = {
   telephoneNumber: '',
   emailAddress: '',
   step: 1,
+  activeStep: 0,
 };
 
 export const AddEmployeeReducer = (state = initialState, action) => {
@@ -45,14 +47,44 @@ export const AddEmployeeReducer = (state = initialState, action) => {
     case ADD_EMPLOYEE_SUCCESS:
       return {
         ...state,
-        employee: action.payload,
         errors: false,
+        firstName: '',
+        secondName: '',
+        gender: '',
+        age: 0,
+        position: '',
+        employementDate: null,
+        workDepartment: '',
+        address: '',
+        city: '',
+        state: '',
+        socialNumber: '',
+        identityCard: '',
+        telephoneNumber: '',
+        emailAddress: '',
+        activeStep: 0,
+        step: 1,
       };
     case ADD_EMPLOYEE_FAILURE:
       return {
         ...state,
-        employee: null,
         errors: true,
+        firstName: '',
+        secondName: '',
+        gender: '',
+        age: 0,
+        position: '',
+        employementDate: null,
+        workDepartment: '',
+        address: '',
+        city: '',
+        state: '',
+        socialNumber: '',
+        identityCard: '',
+        telephoneNumber: '',
+        emailAddress: '',
+        activeStep: 0,
+        step: 1,
       };
     // inputs
     case INPUT_FIRST_NAME:
@@ -130,11 +162,18 @@ export const AddEmployeeReducer = (state = initialState, action) => {
       return {
         ...state,
         step: state.step + 1,
+        activeStep: state.activeStep + 1,
       };
     case STEP_DECREMENT:
       return {
         ...state,
         step: state.step - 1,
+      };
+    // Errors
+    case CHANGE_ERROR_STATUS:
+      return {
+        ...state,
+        errors: null,
       };
     default:
       return state;

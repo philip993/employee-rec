@@ -19,3 +19,5 @@ export const INPUT_EMAIL_ADDRESS = 'INPUT_EMAIL_ADDRESS';
 // step
 export const STEP_INCREMENT = 'STEP_INCREMENT';
 export const STEP_DECREMENT = 'STEP_DECREMENT';
+// errors
+export const CHANGE_ERROR_STATUS = 'CHANGE_ERROR_STATUS';
