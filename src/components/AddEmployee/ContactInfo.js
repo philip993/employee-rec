@@ -17,6 +17,7 @@ import {
   InputBase,
   Button,
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const ContactInfo = () => {
   const { telephoneNumber, emailAddress, step } = useSelector(
@@ -40,8 +41,6 @@ const ContactInfo = () => {
   return (
     <div>
       <Typography variant="h4">Contact Info</Typography>
-      <Button onClick={handleStepIncrement}>Next</Button>
-      <Button>{step}</Button>
       <FormGroup>
         <InputLabel>Telephone Number</InputLabel>
         <InputBase
@@ -59,6 +58,11 @@ const ContactInfo = () => {
           onChange={handleEmailAddress}
           placeholder="Email..."
         />
+      </FormGroup>
+      <FormGroup>
+        <Button onClick={handleStepIncrement}>
+          Next <NavigateNextIcon />
+        </Button>
       </FormGroup>
     </div>
   );

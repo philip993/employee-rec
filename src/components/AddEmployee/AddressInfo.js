@@ -18,6 +18,7 @@ import {
   InputLabel,
   Button,
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const AddressInfo = () => {
   const { address, city, state, step } = useSelector(
@@ -45,8 +46,6 @@ const AddressInfo = () => {
   return (
     <div>
       <Typography variant="h4">Address Information</Typography>
-      <Button onClick={handleStepIncrement}>Next</Button>
-      <Button>{step}</Button>
       <FormGroup>
         <InputLabel>Address</InputLabel>
         <InputBase
@@ -73,6 +72,11 @@ const AddressInfo = () => {
           onChange={handleState}
           placeholder="State..."
         />
+      </FormGroup>
+      <FormGroup>
+        <Button onClick={handleStepIncrement}>
+          Next <NavigateNextIcon />
+        </Button>
       </FormGroup>
     </div>
   );

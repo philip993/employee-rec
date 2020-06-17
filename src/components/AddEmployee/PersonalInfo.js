@@ -9,6 +9,7 @@ import {
   inputFirstName,
   inputSecondName,
   inputAge,
+  inputGender,
 } from './AddEmployeeActions';
 // Material Ui
 import {
@@ -20,6 +21,7 @@ import {
   Select,
   MenuItem,
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const PersonalInfo = () => {
   const { step, firstName, secondName, gender, age } = useSelector(
@@ -41,7 +43,7 @@ const PersonalInfo = () => {
   };
 
   const handleGender = (e) => {
-    dispatch(inputAge(e.target.value));
+    dispatch(inputGender(e.target.value));
   };
 
   const handleAge = (e) => {
@@ -51,8 +53,7 @@ const PersonalInfo = () => {
   return (
     <div>
       <Typography variant="h4">Personal Information</Typography>
-      <Button onClick={handleStepIncrement}>Next</Button>
-      {step}
+
       <FormGroup>
         <InputLabel>Name</InputLabel>
         <InputBase
@@ -87,6 +88,11 @@ const PersonalInfo = () => {
           onChange={handleAge}
           placeholder="Age.."
         />
+      </FormGroup>
+      <FormGroup>
+        <Button onClick={handleStepIncrement}>
+          Next <NavigateNextIcon />
+        </Button>
       </FormGroup>
     </div>
   );

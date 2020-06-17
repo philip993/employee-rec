@@ -17,6 +17,7 @@ import {
   InputBase,
   Button,
 } from '@material-ui/core';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const IdentityInfo = () => {
   const { socialNumber, identityCard, step } = useSelector(
@@ -40,8 +41,6 @@ const IdentityInfo = () => {
   return (
     <div>
       <Typography variant="h4">Identity Info</Typography>
-      <Button onClick={handleStepIncrement}>Next</Button>
-      <Button>{step}</Button>
       <FormGroup>
         <InputLabel>Identity Card</InputLabel>
         <InputBase
@@ -59,6 +58,11 @@ const IdentityInfo = () => {
           onChange={handleSocialNumber}
           placeholder="Social Security Number..."
         />
+      </FormGroup>
+      <FormGroup>
+        <Button onClick={handleStepIncrement}>
+          Next <NavigateNextIcon />
+        </Button>
       </FormGroup>
     </div>
   );

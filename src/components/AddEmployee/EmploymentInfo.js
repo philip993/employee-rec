@@ -22,6 +22,7 @@ import {
   MenuItem,
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const EmploymentInfo = () => {
   const { step, position, workDepartment, employmentDate } = useSelector(
@@ -49,8 +50,6 @@ const EmploymentInfo = () => {
   return (
     <div>
       <Typography variant="h4">Personal Information</Typography>
-      <Button onClick={handleStepIncrement}>Next</Button>
-      {step}
       <FormGroup>
         <InputLabel>Position</InputLabel>
         <Select value={position} onChange={handlePosition}>
@@ -87,6 +86,11 @@ const EmploymentInfo = () => {
           <MenuItem value="sales">Sales</MenuItem>
           <MenuItem value="it">IT Department</MenuItem>
         </Select>
+      </FormGroup>
+      <FormGroup>
+        <Button onClick={handleStepIncrement}>
+          Next <NavigateNextIcon />
+        </Button>
       </FormGroup>
     </div>
   );
