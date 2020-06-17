@@ -11,6 +11,7 @@ import AddressInfo from './AddressInfo';
 import {} from './AddEmployeeActions';
 // Material-Ui
 import { Typography } from '@material-ui/core';
+import ContactInfo from './ContactInfo';
 
 const AddEmployee = () => {
   const { step } = useSelector((state) => state.AddEmployeeReducer);
@@ -26,6 +27,8 @@ const AddEmployee = () => {
         <EmploymentInfo />
       ) : step === 3 ? (
         <AddressInfo />
+      ) : step === 4 ? (
+        <ContactInfo />
       ) : (
         'xxx'
       )}
