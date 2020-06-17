@@ -15,6 +15,8 @@ import {
   STEP_DECREMENT,
   INPUT_IDENTITY_CARD,
   INPUT_SOCIAL_NUMBER,
+  INPUT_GENDER,
+  INPUT_AGE,
 } from './AddEmployeeActionTypes';
 import axios from 'axios';
 
@@ -77,6 +79,20 @@ export const inputFirstName = (e) => {
 export const inputSecondName = (e) => {
   return {
     type: INPUT_SECOND_NAME,
+    payload: e,
+  };
+};
+
+export const inputGender = (e) => {
+  return {
+    type: INPUT_GENDER,
+    payload: e,
+  };
+};
+
+export const inputAge = (e) => {
+  return {
+    type: INPUT_AGE,
     payload: e,
   };
 };

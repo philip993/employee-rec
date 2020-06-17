@@ -15,6 +15,8 @@ import {
   INPUT_EMAIL_ADDRESS,
   STEP_INCREMENT,
   STEP_DECREMENT,
+  INPUT_GENDER,
+  INPUT_AGE,
 } from './AddEmployeeActionTypes';
 
 const initialState = {
@@ -22,6 +24,8 @@ const initialState = {
   errors: null,
   firstName: '',
   secondName: '',
+  gender: '',
+  age: 0,
   position: '',
   employementDate: null,
   workDepartment: '',
@@ -60,6 +64,16 @@ export const AddEmployeeReducer = (state = initialState, action) => {
       return {
         ...state,
         secondName: action.payload,
+      };
+    case INPUT_GENDER:
+      return {
+        ...state,
+        gender: action.payload,
+      };
+    case INPUT_AGE:
+      return {
+        ...state,
+        age: action.payload,
       };
     case INPUT_POSITION:
       return {
