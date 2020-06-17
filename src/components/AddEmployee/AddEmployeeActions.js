@@ -26,6 +26,8 @@ export const requestAddEmployee = (e) => {
     let {
       firstName,
       secondName,
+      gender,
+      age,
       position,
       employmentDate,
       workDepartment,
@@ -41,6 +43,8 @@ export const requestAddEmployee = (e) => {
       .post(`http://localhost:4000/employee/add`, {
         firstName,
         secondName,
+        gender,
+        age,
         position,
         employmentDate,
         workDepartment,
