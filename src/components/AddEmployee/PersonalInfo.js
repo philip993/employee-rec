@@ -8,6 +8,7 @@ import {
   stepIncrement,
   inputFirstName,
   inputSecondName,
+  inputAge,
 } from './AddEmployeeActions';
 // Material Ui
 import {
@@ -16,10 +17,12 @@ import {
   FormGroup,
   InputBase,
   InputLabel,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
 
 const PersonalInfo = () => {
-  const { step, firstName, secondName } = useSelector(
+  const { step, firstName, secondName, gender, age } = useSelector(
     (state) => state.AddEmployeeReducer
   );
   const dispatch = useDispatch();
@@ -35,6 +38,14 @@ const PersonalInfo = () => {
 
   const handleSecondName = (e) => {
     dispatch(inputSecondName(e.target.value));
+  };
+
+  const handleGender = (e) => {
+    dispatch(inputAge(e.target.value));
+  };
+
+  const handleAge = (e) => {
+    dispatch(inputAge(e.target.value));
   };
 
   return (
@@ -58,6 +69,23 @@ const PersonalInfo = () => {
           value={secondName}
           onChange={handleSecondName}
           placeholder="Enter surname..."
+        />
+      </FormGroup>
+      <FormGroup>
+        <InputLabel>Gender</InputLabel>
+        <Select value={gender} onChange={handleGender}>
+          <MenuItem>Choose Gender</MenuItem>
+          <MenuItem value="male">Male</MenuItem>
+          <MenuItem value="female">Female</MenuItem>
+        </Select>
+      </FormGroup>
+      <FormGroup>
+        <InputLabel>Age</InputLabel>
+        <InputBase
+          type="number"
+          value={age}
+          onChange={handleAge}
+          placeholder="Age.."
         />
       </FormGroup>
     </div>
