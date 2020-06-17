@@ -12,6 +12,14 @@ const Employee = db.define(
       type: Sequilize.STRING,
       field: 'second_name',
     },
+    gender: {
+      type: Sequilize.STRING,
+      field: 'gender',
+    },
+    age: {
+      type: Sequilize.NUMBER,
+      field: 'age',
+    },
     position: {
       type: Sequilize.STRING,
       field: 'position',
