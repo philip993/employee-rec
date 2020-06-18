@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './AddEmployee.scss';
 // Redux Actions
 import {
   inputAddress,
@@ -44,37 +45,42 @@ const AddressInfo = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Address Information</Typography>
-      <FormGroup>
-        <InputLabel>Address</InputLabel>
+    <div className={classes.addForm}>
+      <Typography variant="h6" className={classes.formTitle}>
+        Address Information
+      </Typography>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Address</InputLabel>
         <InputBase
+          id="address"
           type="text"
           value={address}
           onChange={handleAddress}
           placeholder="Address..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>City</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>City</InputLabel>
         <InputBase
+          id="city"
           type="text"
           value={city}
           onChange={handleCity}
           placeholder="City..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>State</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>State</InputLabel>
         <InputBase
+          id="state"
           type="text"
           value={state}
           onChange={handleState}
           placeholder="State..."
         />
       </FormGroup>
-      <FormGroup>
-        <Button onClick={handleStepIncrement}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button onClick={handleStepIncrement} className={classes.formButton}>
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

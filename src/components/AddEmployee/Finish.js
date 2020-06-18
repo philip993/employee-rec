@@ -19,14 +19,19 @@ const Finish = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Complete Request</Typography>
-      <Typography variant="p">
+    <div className={classes.addForm}>
+      <Typography variant="h4" className={classes.formTitle}>
+        Complete Request
+      </Typography>
+      <Typography variant="h6" className={classes.formFinishSub}>
         Click on the button bellow to complete the request of adding new
         employee to Database.
       </Typography>
-      <FormGroup>
-        <Button onClick={handleCompleteForm}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button
+          onClick={handleCompleteForm}
+          className={classes.formFinshButton}
+        >
           Save <CheckCircleOutlineIcon />
         </Button>
       </FormGroup>

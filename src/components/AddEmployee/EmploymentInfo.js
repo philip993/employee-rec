@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './AddEmployee.scss';
 // Date
 import 'date-fns';
 // Redux Actions
@@ -48,11 +49,13 @@ const EmploymentInfo = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Personal Information</Typography>
-      <FormGroup>
-        <InputLabel>Position</InputLabel>
-        <Select value={position} onChange={handlePosition}>
+    <div className={classes.addForm}>
+      <Typography variant="h6" className={classes.formTitle}>
+        Personal Information
+      </Typography>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Position</InputLabel>
+        <Select value={position} onChange={handlePosition} id="position">
           <MenuItem>Choose position</MenuItem>
           <MenuItem value="worker">Worker</MenuItem>
           <MenuItem value="support">IT Support</MenuItem>
@@ -63,9 +66,10 @@ const EmploymentInfo = () => {
           <MenuItem value="manager">Manager</MenuItem>
         </Select>
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Employment Date</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Employment Date</InputLabel>
         <KeyboardDatePicker
+          id="employmentDate"
           margin="normal"
           label="Date picker"
           format="dd/MM/yyyy"
@@ -76,9 +80,13 @@ const EmploymentInfo = () => {
           }}
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Work Department</InputLabel>
-        <Select value={workDepartment} onChange={handleWorkDepartment}>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Work Department</InputLabel>
+        <Select
+          value={workDepartment}
+          onChange={handleWorkDepartment}
+          id="workDepartment"
+        >
           <MenuItem>Choose Department</MenuItem>
           <MenuItem value="production">Production</MenuItem>
           <MenuItem value="accounting">Accounting and Finance</MenuItem>
@@ -87,8 +95,8 @@ const EmploymentInfo = () => {
           <MenuItem value="it">IT Department</MenuItem>
         </Select>
       </FormGroup>
-      <FormGroup>
-        <Button onClick={handleStepIncrement}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button onClick={handleStepIncrement} className={classes.formButton}>
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './AddEmployee.scss';
 // Redux Actions
 import {
   stepIncrement,
@@ -39,28 +40,34 @@ const IdentityInfo = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Identity Info</Typography>
-      <FormGroup>
-        <InputLabel>Identity Card</InputLabel>
+    <div className={classes.addForm}>
+      <Typography variant="h6" className={classes.formTitle}>
+        Identity Info
+      </Typography>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Identity Card</InputLabel>
         <InputBase
+          id="identityCard"
           type="text"
           value={identityCard}
           onChange={handleIdentityCard}
-          placheholder="Identity Card..."
+          placeholder="Identity Card..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Social Security Number</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>
+          Social Security Number
+        </InputLabel>
         <InputBase
+          id="socialNumber"
           type="text"
           value={socialNumber}
           onChange={handleSocialNumber}
           placeholder="Social Security Number..."
         />
       </FormGroup>
-      <FormGroup>
-        <Button onClick={handleStepIncrement}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button onClick={handleStepIncrement} className={classes.formButton}>
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

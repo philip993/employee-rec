@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './AddEmployee.scss';
 // Redux Actions
 import {
   inputTelephoneNumber,
@@ -39,28 +40,32 @@ const ContactInfo = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Contact Info</Typography>
-      <FormGroup>
-        <InputLabel>Telephone Number</InputLabel>
+    <div className={classes.addForm}>
+      <Typography variant="h6" className={classes.formTitle}>
+        Contact Info
+      </Typography>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Telephone Number</InputLabel>
         <InputBase
+          id="telephoneNumber"
           type="text"
           value={telephoneNumber}
           onChange={handleTelephoneNumber}
-          placheholder="Number..."
+          placeholder="Number..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Email Address</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Email Address</InputLabel>
         <InputBase
+          id="emailAddress"
           type="text"
           value={emailAddress}
           onChange={handleEmailAddress}
           placeholder="Email..."
         />
       </FormGroup>
-      <FormGroup>
-        <Button onClick={handleStepIncrement}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button onClick={handleStepIncrement} className={classes.formButton}>
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

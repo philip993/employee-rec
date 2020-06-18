@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './AddEmployee.scss';
 // Redux Actions
 import {
   stepIncrement,
@@ -51,46 +52,51 @@ const PersonalInfo = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Personal Information</Typography>
+    <div className={classes.addForm}>
+      <Typography variant="h6" className={classes.formTitle}>
+        Personal Information
+      </Typography>
 
-      <FormGroup>
-        <InputLabel>Name</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Name</InputLabel>
         <InputBase
+          id="firstName"
           type="text"
           value={firstName}
           onChange={handleFirstName}
           placeholder="Enter name here..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Surname</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Surname</InputLabel>
         <InputBase
+          id="secondName"
           type="text"
           value={secondName}
           onChange={handleSecondName}
           placeholder="Enter surname..."
         />
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Gender</InputLabel>
-        <Select value={gender} onChange={handleGender}>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Gender</InputLabel>
+        <Select value={gender} onChange={handleGender} id="gender">
           <MenuItem>Choose Gender</MenuItem>
           <MenuItem value="male">Male</MenuItem>
           <MenuItem value="female">Female</MenuItem>
         </Select>
       </FormGroup>
-      <FormGroup>
-        <InputLabel>Age</InputLabel>
+      <FormGroup className={classes.addFormGroup}>
+        <InputLabel className={classes.formLabel}>Age</InputLabel>
         <InputBase
+          id="age"
           type="number"
           value={age}
           onChange={handleAge}
           placeholder="Age.."
         />
       </FormGroup>
-      <FormGroup>
-        <Button onClick={handleStepIncrement}>
+      <FormGroup className={classes.addFormGroup}>
+        <Button onClick={handleStepIncrement} className={classes.formButton}>
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>
