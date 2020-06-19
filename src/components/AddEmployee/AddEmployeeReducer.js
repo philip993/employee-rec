@@ -28,7 +28,7 @@ const initialState = {
   gender: '',
   age: '',
   position: '',
-  employementDate: null,
+  employmentDate: null,
   workDepartment: '',
   address: '',
   city: '',
@@ -53,7 +53,7 @@ export const AddEmployeeReducer = (state = initialState, action) => {
         gender: '',
         age: '',
         position: '',
-        employementDate: null,
+        employmentDate: null,
         workDepartment: '',
         address: '',
         city: '',
@@ -74,7 +74,7 @@ export const AddEmployeeReducer = (state = initialState, action) => {
         gender: '',
         age: '',
         position: '',
-        employementDate: null,
+        employmentDate: null,
         workDepartment: '',
         address: '',
         city: '',
@@ -115,7 +115,7 @@ export const AddEmployeeReducer = (state = initialState, action) => {
     case INPUT_EMPLOYMENT_DATE:
       return {
         ...state,
-        employementDate: action.payload,
+        employmentDate: action.payload,
       };
     case INPUT_WORK_DEPARMENT:
       return {
