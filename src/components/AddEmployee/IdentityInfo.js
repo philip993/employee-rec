@@ -63,7 +63,11 @@ const IdentityInfo = () => {
           onBlur={validator.current.showMessageFor('identity card')}
         />
         <FormHelperText className={classes.formHelperText}>
-          {validator.current.message('identity card', identityCard, 'required')}
+          {validator.current.message(
+            'identity card',
+            identityCard,
+            'required|regex:^[A][0-9]{7}$'
+          )}
         </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
@@ -79,7 +83,11 @@ const IdentityInfo = () => {
           onBlur={validator.current.showMessageFor('social number')}
         />
         <FormHelperText className={classes.formHelperText}>
-          {validator.current.message('social number', socialNumber, 'required')}
+          {validator.current.message(
+            'social number',
+            socialNumber,
+            'required|regex:/([SSN])(?=.*[0-9]){14}/'
+          )}
         </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
