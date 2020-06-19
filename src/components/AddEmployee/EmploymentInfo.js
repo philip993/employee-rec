@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './AddEmployee.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Date
 import 'date-fns';
 // Redux Actions
@@ -21,6 +23,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  FormHelperText,
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
@@ -31,6 +34,11 @@ const EmploymentInfo = () => {
   );
   const dispatch = useDispatch();
   const classes = Styles();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   const handleStepIncrement = () => {
     dispatch(stepIncrement());
@@ -55,7 +63,12 @@ const EmploymentInfo = () => {
       </Typography>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Position</InputLabel>
-        <Select value={position} onChange={handlePosition} id="position">
+        <Select
+          value={position}
+          onChange={handlePosition}
+          id="position"
+          onBlur={validator.current.showMessageFor('position')}
+        >
           <MenuItem>Choose position</MenuItem>
           <MenuItem value="worker">Worker</MenuItem>
           <MenuItem value="support">IT Support</MenuItem>
@@ -65,6 +78,9 @@ const EmploymentInfo = () => {
           <MenuItem value="supervisor">Supervisor</MenuItem>
           <MenuItem value="manager">Manager</MenuItem>
         </Select>
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('position', position, 'required')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Employment Date</InputLabel>
@@ -78,7 +94,15 @@ const EmploymentInfo = () => {
           KeyboardButtonProps={{
             'aria-label': 'change date',
           }}
+          onBlur={validator.current.showMessageFor('employment date')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'employment date',
+            employmentDate,
+            'required'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Work Department</InputLabel>
@@ -86,6 +110,7 @@ const EmploymentInfo = () => {
           value={workDepartment}
           onChange={handleWorkDepartment}
           id="workDepartment"
+          onBlur={validator.current.showMessageFor('work department')}
         >
           <MenuItem>Choose Department</MenuItem>
           <MenuItem value="production">Production</MenuItem>
@@ -94,9 +119,20 @@ const EmploymentInfo = () => {
           <MenuItem value="sales">Sales</MenuItem>
           <MenuItem value="it">IT Department</MenuItem>
         </Select>
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'work department',
+            workDepartment,
+            'required'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
-        <Button onClick={handleStepIncrement} className={classes.formButton}>
+        <Button
+          onClick={handleStepIncrement}
+          className={classes.formButton}
+          disabled={!validator.current.allValid()}
+        >
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

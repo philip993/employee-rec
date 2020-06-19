@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './AddEmployee.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
 import {
   stepIncrement,
@@ -21,6 +23,7 @@ import {
   InputLabel,
   Select,
   MenuItem,
+  FormHelperText,
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
@@ -30,6 +33,11 @@ const PersonalInfo = () => {
   );
   const dispatch = useDispatch();
   const classes = Styles();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   const handleStepIncrement = () => {
     dispatch(stepIncrement());
@@ -56,7 +64,7 @@ const PersonalInfo = () => {
       <Typography variant="h6" className={classes.formTitle}>
         Personal Information
       </Typography>
-
+      {validator.current.hideMessages()}
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Name</InputLabel>
         <InputBase
@@ -65,8 +73,17 @@ const PersonalInfo = () => {
           value={firstName}
           onChange={handleFirstName}
           placeholder="Enter name here..."
+          onBlur={validator.current.showMessageFor('firstName')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'firstName',
+            firstName,
+            'required|alpha_space'
+          )}
+        </FormHelperText>
       </FormGroup>
+
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Surname</InputLabel>
         <InputBase
@@ -75,15 +92,31 @@ const PersonalInfo = () => {
           value={secondName}
           onChange={handleSecondName}
           placeholder="Enter surname..."
+          onBlur={validator.current.showMessageFor('secondName')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'secondName',
+            secondName,
+            'required|alpha_space'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Gender</InputLabel>
-        <Select value={gender} onChange={handleGender} id="gender">
+        <Select
+          value={gender}
+          onChange={handleGender}
+          id="gender"
+          onBlur={validator.current.showMessageFor('gender')}
+        >
           <MenuItem>Choose Gender</MenuItem>
           <MenuItem value="male">Male</MenuItem>
           <MenuItem value="female">Female</MenuItem>
         </Select>
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('gender', gender, 'required')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Age</InputLabel>
@@ -93,10 +126,22 @@ const PersonalInfo = () => {
           value={age}
           onChange={handleAge}
           placeholder="Age.."
+          onBlur={validator.current.showMessageFor('age')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'age',
+            age,
+            'required|integer|min:18,num|max:67,num'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
-        <Button onClick={handleStepIncrement} className={classes.formButton}>
+        <Button
+          onClick={handleStepIncrement}
+          className={classes.formButton}
+          disabled={!validator.current.allValid()}
+        >
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './AddEmployee.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
 import {
   inputAddress,
@@ -18,6 +20,7 @@ import {
   InputBase,
   InputLabel,
   Button,
+  FormHelperText,
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
@@ -27,6 +30,11 @@ const AddressInfo = () => {
   );
   const dispatch = useDispatch();
   const classes = Styles();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   const handleStepIncrement = () => {
     dispatch(stepIncrement());
@@ -57,7 +65,15 @@ const AddressInfo = () => {
           value={address}
           onChange={handleAddress}
           placeholder="Address..."
+          onBlur={validator.current.showMessageFor('address')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'address',
+            address,
+            'required|alpha_num_dash_space'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>City</InputLabel>
@@ -67,7 +83,11 @@ const AddressInfo = () => {
           value={city}
           onChange={handleCity}
           placeholder="City..."
+          onBlur={validator.current.showMessageFor('city')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('city', city, 'required|alpha_space')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>State</InputLabel>
@@ -77,10 +97,18 @@ const AddressInfo = () => {
           value={state}
           onChange={handleState}
           placeholder="State..."
+          onBlur={validator.current.showMessageFor('state')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('state', state, 'required|alpha_space')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
-        <Button onClick={handleStepIncrement} className={classes.formButton}>
+        <Button
+          onClick={handleStepIncrement}
+          className={classes.formButton}
+          disabled={!validator.current.allValid()}
+        >
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

@@ -81,6 +81,10 @@ const Styles = makeStyles((theme) => ({
       boxShadow: '0 0 10px #66bb6a',
     },
   },
+  formHelperText: {
+    zIndex: 1,
+    color: 'red',
+  },
 }));
 
 export default Styles;

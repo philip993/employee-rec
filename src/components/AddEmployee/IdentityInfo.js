@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './AddEmployee.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
 import {
   stepIncrement,
@@ -17,6 +19,7 @@ import {
   InputLabel,
   InputBase,
   Button,
+  FormHelperText,
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
@@ -26,6 +29,11 @@ const IdentityInfo = () => {
   );
   const dispatch = useDispatch();
   const classes = Styles();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   const handleStepIncrement = () => {
     dispatch(stepIncrement());
@@ -52,7 +60,11 @@ const IdentityInfo = () => {
           value={identityCard}
           onChange={handleIdentityCard}
           placeholder="Identity Card..."
+          onBlur={validator.current.showMessageFor('identity card')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('identity card', identityCard, 'required')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>
@@ -64,10 +76,18 @@ const IdentityInfo = () => {
           value={socialNumber}
           onChange={handleSocialNumber}
           placeholder="Social Security Number..."
+          onBlur={validator.current.showMessageFor('social number')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message('social number', socialNumber, 'required')}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
-        <Button onClick={handleStepIncrement} className={classes.formButton}>
+        <Button
+          onClick={handleStepIncrement}
+          className={classes.formButton}
+          disabled={!validator.current.allValid()}
+        >
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>

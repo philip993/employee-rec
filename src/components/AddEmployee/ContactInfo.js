@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './AddEmployee.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
 import {
   inputTelephoneNumber,
@@ -17,15 +19,21 @@ import {
   InputLabel,
   InputBase,
   Button,
+  FormHelperText,
 } from '@material-ui/core';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 const ContactInfo = () => {
-  const { telephoneNumber, emailAddress, step } = useSelector(
+  const { telephoneNumber, emailAddress } = useSelector(
     (state) => state.AddEmployeeReducer
   );
   const dispatch = useDispatch();
   const classes = Styles();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   const handleStepIncrement = () => {
     dispatch(stepIncrement());
@@ -52,7 +60,15 @@ const ContactInfo = () => {
           value={telephoneNumber}
           onChange={handleTelephoneNumber}
           placeholder="Number..."
+          onBlur={validator.current.showMessageFor('telephone number')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'telephone number',
+            telephoneNumber,
+            'required|phone'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
         <InputLabel className={classes.formLabel}>Email Address</InputLabel>
@@ -62,10 +78,22 @@ const ContactInfo = () => {
           value={emailAddress}
           onChange={handleEmailAddress}
           placeholder="Email..."
+          onBlur={validator.current.showMessageFor('email address')}
         />
+        <FormHelperText className={classes.formHelperText}>
+          {validator.current.message(
+            'email address',
+            emailAddress,
+            'required|email'
+          )}
+        </FormHelperText>
       </FormGroup>
       <FormGroup className={classes.addFormGroup}>
-        <Button onClick={handleStepIncrement} className={classes.formButton}>
+        <Button
+          onClick={handleStepIncrement}
+          className={classes.formButton}
+          disabled={!validator.current.allValid()}
+        >
           Next <NavigateNextIcon />
         </Button>
       </FormGroup>
