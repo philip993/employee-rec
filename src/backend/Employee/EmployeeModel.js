@@ -1,63 +1,93 @@
-const Sequilize = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const db = require('../database/db');
 
 const Employee = db.define(
   'employee',
   {
     firstName: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { msg: 'firstName is required..' },
+      },
       field: 'first_name',
     },
     secondName: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'second_name',
     },
     gender: {
-      type: Sequilize.STRING,
+      type: Sequelize.ENUM('male', 'female'),
+      allowNull: false,
       field: 'gender',
     },
     age: {
-      type: Sequilize.NUMBER,
+      type: Sequelize.NUMBER,
+      allowNull: false,
       field: 'age',
     },
     position: {
-      type: Sequilize.STRING,
+      type: Sequelize.ENUM({
+        values: [
+          'worker',
+          'support',
+          'accountant',
+          'seller',
+          'hrspecialist',
+          'supervisor',
+          'manager',
+        ],
+      }),
+      allowNull: false,
+
       field: 'position',
     },
     workDepartment: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'work_department',
     },
     employmentDate: {
-      type: Sequilize.DATEONLY,
+      type: Sequelize.DATEONLY,
       field: 'employment_date',
     },
     address: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'address',
     },
     city: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'city',
     },
     state: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'state',
     },
     socialNumber: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
       field: 'social_number',
     },
     identityCard: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
       field: 'identity_card',
     },
     telephoneNumber: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
       field: 'telephone_number',
     },
     emailAddress: {
-      type: Sequilize.STRING,
+      type: Sequelize.STRING,
+      allowNull: false,
+      unique: true,
       field: 'email_address',
     },
   },
