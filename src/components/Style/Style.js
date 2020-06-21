@@ -82,8 +82,9 @@ const Styles = makeStyles((theme) => ({
     },
   },
   formHelperText: {
-    zIndex: 1,
+    zIndex: '1',
     color: 'red',
+    paddingLeft: '10px',
   },
 }));
 

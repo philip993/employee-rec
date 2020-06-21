@@ -87,7 +87,6 @@ const EmploymentInfo = () => {
         <KeyboardDatePicker
           id="employmentDate"
           margin="normal"
-          label="Date picker"
           format="dd/MM/yyyy"
           value={employmentDate}
           onChange={handleEmploymentDate}
