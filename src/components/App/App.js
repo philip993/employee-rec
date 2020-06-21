@@ -11,6 +11,9 @@ import Homepage from '../Homepage/Homepage';
 import Navbar from '../Navbar/Navbar';
 import Contact from '../Contact/Contact';
 import Details from '../Details/Details';
+import AddEmployee from '../AddEmployee/AddEmployee';
+import AddEmployeeSuccess from '../AddEmployee/AddEmployeeSuccess';
+import AddEmployeeError from '../AddEmployee/AddEmployeeError';
 
 const App = () => {
   const classes = Styles();
@@ -22,6 +25,9 @@ const App = () => {
         <Route path="/employees" exact component={Employee} />
         <Route path="/contact" exact component={Contact} />
         <Route path="/details" exact component={Details} />
+        <Route path="/add" exact component={AddEmployee} />
+        <Route path="/addsuccess" exact component={AddEmployeeSuccess} />
+        <Route path="/addfail" exact component={AddEmployeeError} />
       </Switch>
     </div>
   );

@@ -21,6 +21,8 @@ exports.addEmployee = (req, res) => {
   let {
     firstName,
     secondName,
+    gender,
+    age,
     position,
     employmentDate,
     workDepartment,
@@ -35,6 +37,8 @@ exports.addEmployee = (req, res) => {
   Employee.create({
     firstName,
     secondName,
+    gender,
+    age,
     position,
     employmentDate,
     workDepartment,
