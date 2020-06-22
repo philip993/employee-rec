@@ -1,0 +1,3 @@
+// request
+export const SUCCESS_LOAD_SHIFTS = 'SUCCESS_LOAD_SHIFTS';
+export const FAILURE_LOAD_SHIFTS = 'FAILURE_LOAD_SHIFTS';
