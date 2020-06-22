@@ -27,7 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 // Use routes
-app.use('/', employees);
+app.use('/employees', employees);
 app.use('/shifts', shifts);
 
 const port = process.env.PORT || 4000;
