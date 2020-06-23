@@ -1,5 +1,6 @@
 const Shift = require('./ShiftModel');
 const db = require('../database/db');
+const Employee = require('../Employee/EmployeeModel');
 
 exports.createShift = (req, res) => {
   let { employeeId, shiftCode, startDate, endDate } = req.body;
@@ -24,7 +25,14 @@ exports.createShift = (req, res) => {
 };
 
 exports.getShifts = (req, res) => {
-  Shift.findAll()
+  Shift.findAll({
+    include: [
+      {
+        model: Employee,
+        as: 'employees',
+      },
+    ],
+  })
     .then((shifts) => {
       res.status(200).json({
         shifts,
