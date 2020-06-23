@@ -86,6 +86,35 @@ const Styles = makeStyles((theme) => ({
     color: 'red',
     paddingLeft: '10px',
   },
+  // Pdf Download
+  downloadBtn: {
+    border: 'solid 1px #007fff',
+    background: '#fff',
+    color: '#007fff',
+    fontWeight: 'bold',
+    width: '150px',
+    margin: 'auto',
+    marginTop: '25px',
+    float: 'right',
+
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#007fff',
+      color: '#fff',
+      width: '150px',
+      margin: 'auto',
+      marginTop: '25px',
+      float: 'right',
+    },
+  },
+  // Table
+  shiftRow: {
+    border: 'solid 1px #BEBEBE',
+  },
+  tableHeader: {
+    backgroundColor: '#4682b4',
+    border: 'solid 1px #0E4D92',
+  },
 }));
 
 export default Styles;

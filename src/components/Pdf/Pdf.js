@@ -5,6 +5,8 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 // html2canvas
 import html2canvas from 'html2canvas';
+// Style
+import Styles from '../Style/Style';
 // Material Ui
 import { Button } from '@material-ui/core';
 import GetAppIcon from '@material-ui/icons/GetApp';
@@ -16,12 +18,12 @@ const Pdf = () => {
     doc.autoTable({ html: '#table' });
     doc.save('shift-schedule.pdf');
   };
+  const classes = Styles();
+
   return (
-    <div>
-      <Button onClick={savePDF}>
-        Download <GetAppIcon />
-      </Button>
-    </div>
+    <Button onClick={savePDF} className={classes.downloadBtn}>
+      Download <GetAppIcon />
+    </Button>
   );
 };
 
