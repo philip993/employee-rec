@@ -14,6 +14,7 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
+import Pdf from '../Pdf/Pdf';
 
 const Shift = () => {
   const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
@@ -27,7 +28,7 @@ const Shift = () => {
   return (
     <div>
       <Typography variant="h4">Shift Schedule</Typography>
-      <Table>
+      <Table id="table">
         <TableHead>
           <TableRow>
             <TableCell>EMPLOYEE ID</TableCell>
@@ -64,6 +65,7 @@ const Shift = () => {
             )}
         </TableBody>
       </Table>
+      <Pdf />
     </div>
   );
 };
