@@ -31,6 +31,8 @@ const Shift = () => {
         <TableHead>
           <TableRow>
             <TableCell>EMPLOYEE ID</TableCell>
+            <TableCell>FIRST NAME</TableCell>
+            <TableCell>LAST NAME</TableCell>
             <TableCell>START DATE</TableCell>
             <TableCell>END DATE</TableCell>
             <TableCell>SHIFT</TableCell>
@@ -41,14 +43,25 @@ const Shift = () => {
             .sort((a, b) =>
               a.shiftCode > b.shiftCode ? 1 : b.shiftCode > a.shiftCode ? -1 : 0
             )
-            .map(({ id, employeeId, shiftCode, startDate, endDate }) => (
-              <TableRow key={id}>
-                <TableCell>{employeeId}</TableCell>
-                <TableCell>{startDate}</TableCell>
-                <TableCell>{endDate}</TableCell>
-                <TableCell>{shiftCode}</TableCell>
-              </TableRow>
-            ))}
+            .map(
+              ({
+                id,
+                employeeId,
+                shiftCode,
+                startDate,
+                endDate,
+                employees,
+              }) => (
+                <TableRow key={id}>
+                  <TableCell>{employeeId}</TableCell>
+                  <TableCell>{employees[0].firstName}</TableCell>
+                  <TableCell>{employees[0].secondName}</TableCell>
+                  <TableCell>{startDate}</TableCell>
+                  <TableCell>{endDate}</TableCell>
+                  <TableCell>{shiftCode}</TableCell>
+                </TableRow>
+              )
+            )}
         </TableBody>
       </Table>
     </div>
