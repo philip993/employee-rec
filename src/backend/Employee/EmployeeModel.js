@@ -1,4 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize } = require('sequelize');
+const Shift = require('../Shift/ShiftModel');
 const db = require('../database/db');
 
 const Employee = db.define(
@@ -95,5 +96,8 @@ const Employee = db.define(
     timestamps: false,
   }
 );
+
+Employee.hasOne(Shift, { foreignKey: 'id' });
+Shift.hasMany(Employee, { as: 'employees', foreignKey: 'id' });
 
 module.exports = Employee;
