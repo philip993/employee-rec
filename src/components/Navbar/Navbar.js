@@ -29,6 +29,9 @@ const Navbar = () => {
       <Button>
         <Link to="/shifts">Shifts</Link>
       </Button>
+      <Button>
+        <Link to="/updateshift">Update Shift</Link>
+      </Button>
     </div>
   );
 };
