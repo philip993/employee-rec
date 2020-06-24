@@ -15,6 +15,7 @@ import AddEmployee from '../AddEmployee/AddEmployee';
 import AddEmployeeSuccess from '../AddEmployee/AddEmployeeSuccess';
 import AddEmployeeError from '../AddEmployee/AddEmployeeError';
 import Shift from '../Shift/Shift';
+import UpdateShift from '../UpdateShift/UpdateShift';
 
 const App = () => {
   const classes = Styles();
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/addsuccess" exact component={AddEmployeeSuccess} />
         <Route path="/addfail" exact component={AddEmployeeError} />
         <Route path="/shifts" exact component={Shift} />
+        <Route path="/updateshift" exact component={UpdateShift} />
       </Switch>
     </div>
   );
