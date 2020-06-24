@@ -69,7 +69,7 @@ const UpdateShift = () => {
         </FormGroup>
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>Shift Code</InputLabel>
-          <Select value={shiftCode} onChange={handleShiftCode}>
+          <Select id="shiftCode" value={shiftCode} onChange={handleShiftCode}>
             <MenuItem>Choose Shift Code</MenuItem>
             <MenuItem value="first">FIRST</MenuItem>
             <MenuItem value="second">SECOND</MenuItem>
@@ -79,6 +79,7 @@ const UpdateShift = () => {
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>Start Date</InputLabel>
           <KeyboardDatePicker
+            id="startDate"
             value={startDate}
             margin="normal"
             format="dd/MM/yyyy"
@@ -91,6 +92,7 @@ const UpdateShift = () => {
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>End Date</InputLabel>
           <KeyboardDatePicker
+            id="endDate"
             value={endDate}
             margin="normal"
             format="dd/MM/yyyy"
