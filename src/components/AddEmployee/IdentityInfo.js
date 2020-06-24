@@ -86,7 +86,7 @@ const IdentityInfo = () => {
           {validator.current.message(
             'social number',
             socialNumber,
-            'required|regex:/([SSN])(?=.*[0-9]){14}/'
+            'required|regex:^[SSN][0-9]{11}$'
           )}
         </FormHelperText>
       </FormGroup>
