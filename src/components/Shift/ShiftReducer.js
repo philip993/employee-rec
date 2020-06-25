@@ -1,4 +1,9 @@
-import { SUCCESS_LOAD_SHIFTS, FAILURE_LOAD_SHIFTS } from './ShiftActionTypes';
+import {
+  SUCCESS_LOAD_SHIFTS,
+  FAILURE_LOAD_SHIFTS,
+  SUCCESS_SWITCH_SHIFTS,
+  FAILURE_SWITCH_SHIFTS,
+} from './ShiftActionTypes';
 
 const initalState = {
   shiftSchedule: [],
@@ -18,6 +23,14 @@ export const ShiftReducer = (state = initalState, action) => {
         ...state,
         shiftSchedule: null,
         errors: true,
+      };
+    case SUCCESS_SWITCH_SHIFTS:
+      return {
+        ...state,
+      };
+    case FAILURE_SWITCH_SHIFTS:
+      return {
+        ...state,
       };
     default:
       return state;

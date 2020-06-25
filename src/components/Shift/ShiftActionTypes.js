@@ -1,3 +1,6 @@
 // request
 export const SUCCESS_LOAD_SHIFTS = 'SUCCESS_LOAD_SHIFTS';
 export const FAILURE_LOAD_SHIFTS = 'FAILURE_LOAD_SHIFTS';
+// switch shift-schedule
+export const SUCCESS_SWITCH_SHIFTS = 'SUCCESS_SWITCH_SHIFTS';
+export const FAILURE_SWITCH_SHIFTS = 'FAILURE_SWTICH_SHIFTS';

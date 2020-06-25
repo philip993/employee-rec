@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import Styles from '../Style/Style';
 import './ShiftStyles.scss';
 // Redux Actions
-import { requestGetShifts } from './ShiftActions';
+import { requestGetShifts, requestSwitchShiftSchedule } from './ShiftActions';
+// React Components
+import Pdf from '../Pdf/Pdf';
 // Material Ui
 import {
   Typography,
@@ -14,13 +16,19 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Button,
 } from '@material-ui/core';
-import Pdf from '../Pdf/Pdf';
+import AutorenewIcon from '@material-ui/icons/Autorenew';
 
 const Shift = () => {
   const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
   const dispatch = useDispatch();
   const classes = Styles();
+
+  const handleSwitchShiftSchedule = () => {
+    dispatch(requestSwitchShiftSchedule());
+    window.location.reload();
+  };
 
   useEffect(() => {
     dispatch(requestGetShifts());
@@ -77,6 +85,12 @@ const Shift = () => {
         </TableBody>
       </Table>
       <Pdf />
+      <Button
+        onClick={handleSwitchShiftSchedule}
+        className={classes.switchScheduleBtn}
+      >
+        New Schedule <AutorenewIcon />
+      </Button>
     </div>
   );
 };
