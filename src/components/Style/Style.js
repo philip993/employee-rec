@@ -107,6 +107,27 @@ const Styles = makeStyles((theme) => ({
       float: 'right',
     },
   },
+  // New schedule
+  switchScheduleBtn: {
+    border: 'solid 1px #007fff',
+    background: '#fff',
+    color: '#007fff',
+    fontWeight: 'bold',
+    width: '150px',
+    margin: 'auto',
+    marginTop: '25px',
+    float: 'left',
+
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#007fff',
+      color: '#fff',
+      width: '150px',
+      margin: 'auto',
+      marginTop: '25px',
+      float: 'left',
+    },
+  },
   // Table
   shiftRow: {
     border: 'solid 1px #BEBEBE',
