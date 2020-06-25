@@ -43,6 +43,7 @@ const Shift = () => {
             <TableCell id="id">EMPLOYEE ID</TableCell>
             <TableCell id="fname">FIRST NAME</TableCell>
             <TableCell id="lname">LAST NAME</TableCell>
+            <TableCell id="department">DEPARTMENT</TableCell>
             <TableCell id="sdate">START DATE</TableCell>
             <TableCell id="edate">END DATE</TableCell>
             <TableCell id="shift">SHIFT</TableCell>
@@ -71,6 +72,9 @@ const Shift = () => {
                   </TableCell>
                   <TableCell className={classes.shiftRow}>
                     {employees[0].secondName}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {employees[0].workDepartment}
                   </TableCell>
                   <TableCell className={classes.shiftRow}>
                     {startDate}
