@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -14,10 +14,10 @@ import {
   inputStartDate,
   inputEndDate,
 } from './UpdateShiftActions';
+import { requestEmployees } from '../Employee/EmployeeActions';
 // Material Ui
 import {
   FormGroup,
-  InputBase,
   InputLabel,
   Select,
   MenuItem,
@@ -29,8 +29,11 @@ import { KeyboardDatePicker } from '@material-ui/pickers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const UpdateShift = () => {
-  const { employeeId, shiftCode, startDate, endDate } = useSelector(
-    (state) => state.UpdateShiftReducer
+  const { employeeId, shiftCode, startDate, endDate, employees } = useSelector(
+    (state) => ({
+      ...state.UpdateShiftReducer,
+      ...state.EmployeeReducer,
+    })
   );
   const dispatch = useDispatch();
   const classes = Styles();
@@ -39,6 +42,10 @@ const UpdateShift = () => {
       autoForceUpdate: this,
     })
   );
+
+  useEffect(() => {
+    dispatch(requestEmployees());
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,9 +62,6 @@ const UpdateShift = () => {
 
   const handleStartDate = (e) => {
     dispatch(inputStartDate(e));
-  };
-
-  const handleEndDate = (e) => {
     dispatch(inputEndDate(e));
   };
 
@@ -66,21 +70,19 @@ const UpdateShift = () => {
       <Typography variant="h4">Add Employee to Shift Schedule</Typography>
       <form onSubmit={handleSubmit} className={classes.addForm}>
         <FormGroup className={classes.addFormGroup}>
-          <InputLabel className={classes.formLabel}>Employee ID</InputLabel>
-          <InputBase
-            id="employeeId"
-            type="number"
+          <InputLabel className={classes.formLabel}>ID</InputLabel>
+          <Select
             value={employeeId}
             onChange={handleEmployeeId}
-            placeholder="Employee ID..."
+            id="employeeId"
             onBlur={validator.current.showMessageFor('employee id')}
-          />
+          >
+            {employees.map((el) => (
+              <MenuItem value={el.id}>{el.id}</MenuItem>
+            ))}
+          </Select>
           <FormHelperText className={classes.formHelperText}>
-            {validator.current.message(
-              'employee id',
-              employeeId,
-              'required|numeric|min:0,num'
-            )}
+            {validator.current.message('employee id', employeeId, 'required')}
           </FormHelperText>
         </FormGroup>
         <FormGroup className={classes.addFormGroup}>
@@ -120,11 +122,11 @@ const UpdateShift = () => {
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>End Date</InputLabel>
           <KeyboardDatePicker
+            disabled
             id="endDate"
             value={endDate}
             margin="normal"
             format="dd/MM/yyyy"
-            onChange={handleEndDate}
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}
@@ -138,7 +140,7 @@ const UpdateShift = () => {
           <Button
             type={'submit'}
             className={classes.formButton}
-            disabled={validator.current.allValid()}
+            disabled={!validator.current.allValid()}
           >
             ADD <AddCircleOutlineIcon />
           </Button>
