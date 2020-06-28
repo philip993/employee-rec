@@ -60,13 +60,13 @@ export const inputShiftCode = (e) => {
 export const inputStartDate = (e) => {
   return {
     type: INPUT_START_DATE,
-    payload: e,
+    payload: e.setDate(e.getDate()),
   };
 };
 
 export const inputEndDate = (e) => {
   return {
     type: INPUT_END_DATE,
-    payload: e,
+    payload: e.setDate(e.getDate() + 6),
   };
 };
