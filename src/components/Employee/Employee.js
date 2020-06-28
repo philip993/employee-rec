@@ -18,6 +18,7 @@ import {
   Typography,
   Button,
 } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Employee = () => {
   const data = useSelector((state) => state.EmployeeReducer);
@@ -60,7 +61,7 @@ const Employee = () => {
                 <TableCell>{position}</TableCell>
                 <TableCell>
                   <Button onClick={handleEmployeeDetails.bind(this, id)}>
-                    Details
+                    Show <ExpandMoreIcon />
                   </Button>
                 </TableCell>
               </TableRow>

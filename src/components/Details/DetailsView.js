@@ -19,6 +19,8 @@ const DetailsView = ({
   id,
   firstName,
   secondName,
+  age,
+  gender,
   position,
   workDepartment,
   employmentDate,
@@ -43,6 +45,8 @@ const DetailsView = ({
           <Typography variant="h5">
             {firstName} {secondName}
           </Typography>
+          <Typography variant="h6">{age} years</Typography>
+          <Typography variant="p">{gender}</Typography>
         </CardContent>
         <CardContent>
           <Table>
