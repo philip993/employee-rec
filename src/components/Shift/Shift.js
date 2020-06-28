@@ -19,6 +19,7 @@ import {
   Button,
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
+import Search from '../Search/Search';
 
 const Shift = () => {
   const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
@@ -37,6 +38,7 @@ const Shift = () => {
   return (
     <div>
       <Typography variant="h4">Shift Schedule</Typography>
+      <Search />
       <Table id="table">
         <TableHead>
           <TableRow className={classes.tableHeader}>
