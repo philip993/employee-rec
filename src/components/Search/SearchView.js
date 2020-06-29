@@ -5,17 +5,11 @@ import Style from '../Style/Style';
 // Material Ui
 import { Typography } from '@material-ui/core';
 
-const SearchView = ({
-  employeeId,
-  employees,
-  shiftCode,
-  startDate,
-  endDate,
-}) => {
+const SearchView = ({ firstName, secondName }) => {
   return (
     <div>
       <Typography variant="h6">Search Output</Typography>
-      {employees[0].firstName}
+      {firstName} {secondName}
     </div>
   );
 };

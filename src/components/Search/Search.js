@@ -5,15 +5,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import Styles from '../Style/Style';
 // Redux Actions
 import {} from './SearchActionTypes';
-// Material Ui
-import { Typography, InputBase, Button } from '@material-ui/core';
-import { inputSearchEmployee, requestSearchEmployee } from './SearchActions';
+// React Component
 import SearchView from './SearchView';
+// Material Ui
+import { Typography, InputBase, Button, InputLabel } from '@material-ui/core';
+import { inputSearchEmployee, requestSearchEmployee } from './SearchActions';
 
 const Search = () => {
-  const { searchVal, searchQuery, shiftSchedule } = useSelector((state) => ({
+  const { searchVal } = useSelector((state) => ({
     ...state.SearchReducer,
-    ...state.ShiftReducer,
   }));
   const dispatch = useDispatch();
   const classes = Styles();
@@ -31,6 +31,7 @@ const Search = () => {
     <div>
       <Typography variant="h6">SEARCH</Typography>
       <form onSubmit={handleSubmit}>
+        <InputLabel>By ID</InputLabel>
         <InputBase
           value={searchVal}
           onChange={handleSearchEmployee}

@@ -20,9 +20,13 @@ import {
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import Search from '../Search/Search';
+import SearchView from '../Search/SearchView';
 
 const Shift = () => {
-  const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
+  const { shiftSchedule, searchQuery } = useSelector((state) => ({
+    ...state.ShiftReducer,
+    ...state.SearchReducer,
+  }));
   const dispatch = useDispatch();
   const classes = Styles();
 
@@ -39,6 +43,11 @@ const Shift = () => {
     <div>
       <Typography variant="h4">Shift Schedule</Typography>
       <Search />
+      {!searchQuery
+        ? 'Employee is not in the list...'
+        : searchQuery.map((empl, index) => (
+            <SearchView {...empl.employees[index]} />
+          ))}
       <Table id="table">
         <TableHead>
           <TableRow className={classes.tableHeader}>

@@ -14,7 +14,7 @@ export const SearchReducer = (state = initalState, action) => {
     case SEARCH_EMPLOYEE_SUCCESS:
       return {
         ...state,
-        searchQuery: action.payload,
+        searchQuery: [action.payload],
       };
     case SEARCH_EMPLOYEE_FAILURE:
       return {
