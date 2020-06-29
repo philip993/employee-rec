@@ -8,9 +8,13 @@ import {} from './SearchActionTypes';
 // Material Ui
 import { Typography, InputBase, Button } from '@material-ui/core';
 import { inputSearchEmployee, requestSearchEmployee } from './SearchActions';
+import SearchView from './SearchView';
 
 const Search = () => {
-  const { searchVal } = useSelector((state) => state.SearchReducer);
+  const { searchVal, searchQuery, shiftSchedule } = useSelector((state) => ({
+    ...state.SearchReducer,
+    ...state.ShiftReducer,
+  }));
   const dispatch = useDispatch();
   const classes = Styles();
 

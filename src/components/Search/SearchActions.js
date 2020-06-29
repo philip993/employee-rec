@@ -13,12 +13,12 @@ export const requestSearchEmployee = (e) => {
     let { searchVal } = getState().SearchReducer;
     let id = searchVal;
     return axios
-      .get(`http://localhost:4000/employees/${id}`)
+      .get(`http://localhost:4000/shifts/${id}`)
       .then((response) => {
         console.log(response);
         dispatch({
           type: SEARCH_EMPLOYEE_SUCCESS,
-          payload: response.data.employee,
+          payload: response.data.oneEmp,
         });
       })
       .catch((err) => {
