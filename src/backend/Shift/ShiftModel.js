@@ -4,6 +4,11 @@ const db = require('../database/db');
 const Shift = db.define(
   'shift',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+    },
     employeeId: {
       type: Sequelize.INTEGER,
       references: 'employees',
