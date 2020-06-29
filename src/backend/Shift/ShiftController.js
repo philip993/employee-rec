@@ -46,6 +46,24 @@ exports.getShifts = (req, res) => {
     });
 };
 
+exports.getOneEmployeeShift = (req, res) => {
+  Shift.findOne({
+    where: { employeeId: req.params.id },
+    include: [{ model: Employee, as: 'employees' }],
+  })
+    .then((oneEmp) => {
+      res.status(200).json({
+        oneEmp,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'System Error.',
+      });
+    });
+};
+
 exports.changeShifts = (req, res) => {
   res.send(
     db.query(
