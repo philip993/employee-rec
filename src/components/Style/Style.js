@@ -95,6 +95,7 @@ const Styles = makeStyles((theme) => ({
     width: '150px',
     margin: 'auto',
     marginTop: '25px',
+    marginBottom: '25px',
     float: 'right',
 
     '&:hover': {
@@ -104,6 +105,7 @@ const Styles = makeStyles((theme) => ({
       width: '150px',
       margin: 'auto',
       marginTop: '25px',
+      marginBottom: '25px',
       float: 'right',
     },
   },
@@ -116,6 +118,7 @@ const Styles = makeStyles((theme) => ({
     width: '150px',
     margin: 'auto',
     marginTop: '25px',
+    marginBottom: '25px',
     float: 'left',
 
     '&:hover': {
@@ -125,6 +128,7 @@ const Styles = makeStyles((theme) => ({
       width: '150px',
       margin: 'auto',
       marginTop: '25px',
+      marginBottom: '25px',
       float: 'left',
     },
   },
@@ -135,6 +139,37 @@ const Styles = makeStyles((theme) => ({
   tableHeader: {
     backgroundColor: '#4682b4',
     border: 'solid 1px #0E4D92',
+  },
+  // Search
+  searchOutput: {
+    float: 'right',
+    margin: 'auto',
+    width: '50%',
+    backgroundColor: '#F5F5F5',
+    border: 'solid 1px #B9BBB6',
+    marginBottom: '20px',
+    paddingLeft: '10px',
+  },
+  searchBar: {
+    float: 'left',
+    margin: 'auto',
+    width: '40%',
+    backgroundColor: '#F5F5F5',
+    border: 'solid 1px #B9BBB6',
+    marginBottom: '20px',
+    paddingLeft: '10px',
+  },
+  searchDiv: {
+    margin: 'auto',
+    padding: '10px',
+  },
+  searchLabel: {
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    backgroundColor: '#B9BBB6',
+    width: '50%',
+    paddingBottom: '5px',
+    color: '#fff',
   },
 }));
 

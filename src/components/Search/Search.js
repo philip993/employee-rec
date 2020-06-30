@@ -3,12 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Styles from '../Style/Style';
+import './SearchStyle.scss';
 // Redux Actions
 import {} from './SearchActionTypes';
-// React Component
-import SearchView from './SearchView';
 // Material Ui
-import { Typography, InputBase, Button, InputLabel } from '@material-ui/core';
+import { Typography, InputBase, InputLabel } from '@material-ui/core';
 import { inputSearchEmployee, requestSearchEmployee } from './SearchActions';
 
 const Search = () => {
@@ -28,11 +27,12 @@ const Search = () => {
   };
 
   return (
-    <div>
+    <div className={classes.searchBar}>
       <Typography variant="h6">SEARCH</Typography>
       <form onSubmit={handleSubmit}>
-        <InputLabel>By ID</InputLabel>
+        <InputLabel className={classes.searchLabel}>By ID</InputLabel>
         <InputBase
+          id="searchBar"
           value={searchVal}
           onChange={handleSearchEmployee}
           placeholder="search by id"

@@ -121,12 +121,14 @@ const Shift = () => {
         </Table>
       </div>
       <Typography variant="h4">Shift Schedule</Typography>
-      <Search />
-      {!searchQuery
-        ? 'Employee is not in the list...'
-        : searchQuery.map((empl, index) => (
-            <SearchView key={empl.id} {...empl.employees[index]} />
-          ))}
+      <div className={classes.searchDiv}>
+        <Search />
+        {!searchQuery
+          ? 'Employee is not in the list...'
+          : searchQuery.map((empl, index) => (
+              <SearchView key={empl.id} {...empl.employees[index]} />
+            ))}
+      </div>
       <Table id="table">
         <TableHead>
           <TableRow className={classes.tableHeader}>
