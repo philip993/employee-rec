@@ -38,7 +38,7 @@ const Shift = () => {
   const classes = Styles();
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(30);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
   const [toggle, setToggle] = useState(null);
 
   const handleChangePage = (event, newPage) => {
@@ -71,6 +71,55 @@ const Shift = () => {
 
   return (
     <div>
+      <div hidden disabled>
+        <Table id="pdf-table">
+          <TableHead>
+            <TableRow className={classes.tableHeader}>
+              <TableCell id="id">EMPLOYEE ID</TableCell>
+              <TableCell id="fname">FIRST NAME</TableCell>
+              <TableCell id="lname">LAST NAME</TableCell>
+              <TableCell id="department">DEPARTMENT</TableCell>
+              <TableCell id="sdate">START DATE</TableCell>
+              <TableCell id="edate">END DATE</TableCell>
+              <TableCell id="shift">SHIFT</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {shiftSchedule.map(
+              ({
+                id,
+                employeeId,
+                shiftCode,
+                startDate,
+                endDate,
+                employees,
+              }) => (
+                <TableRow key={id} className={classes.shiftRow}>
+                  <TableCell className={classes.shiftRow}>
+                    {employeeId}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {employees[0].firstName}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {employees[0].secondName}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {employees[0].workDepartment}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {startDate}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>{endDate}</TableCell>
+                  <TableCell className={classes.shiftRow}>
+                    {shiftCode}
+                  </TableCell>
+                </TableRow>
+              )
+            )}
+          </TableBody>
+        </Table>
+      </div>
       <Typography variant="h4">Shift Schedule</Typography>
       <Search />
       {!searchQuery
@@ -133,7 +182,7 @@ const Shift = () => {
         </TableBody>
       </Table>
       <TablePagination
-        rowsPerPageOptions={[1, 2, 3]}
+        rowsPerPageOptions={[10, 25, 50]}
         component="div"
         count={shiftSchedule.length}
         page={page}

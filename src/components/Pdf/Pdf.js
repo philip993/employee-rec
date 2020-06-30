@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 // jsPDF
 import jsPDF from 'jspdf';
@@ -19,7 +20,7 @@ const Pdf = () => {
   const savePDF = () => {
     window.html2canvas = html2canvas;
     var doc = new jsPDF();
-    doc.autoTable({ html: '#table' });
+    doc.autoTable({ html: '#pdf-table' });
     doc.save(`shift-schedule ${date}.pdf`);
   };
   const classes = Styles();
