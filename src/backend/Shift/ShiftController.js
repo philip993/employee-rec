@@ -52,6 +52,13 @@ exports.getOneEmployeeShift = (req, res) => {
     include: [{ model: Employee, as: 'employees' }],
   })
     .then((oneEmp) => {
+      if (oneEmp === null) {
+        console.log('no employee');
+        res.status(404).json({
+          msg: 'Invalid Employee ID',
+        });
+        return;
+      }
       res.status(200).json({
         oneEmp,
       });

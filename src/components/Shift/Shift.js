@@ -46,7 +46,7 @@ const Shift = () => {
       {!searchQuery
         ? 'Employee is not in the list...'
         : searchQuery.map((empl, index) => (
-            <SearchView {...empl.employees[index]} />
+            <SearchView key={empl.id} {...empl.employees[index]} />
           ))}
       <Table id="table">
         <TableHead>
