@@ -1,13 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 import './ShiftStyles.scss';
 // Redux Actions
-import { requestGetShifts, requestSwitchShiftSchedule } from './ShiftActions';
+import {
+  requestGetShifts,
+  requestSwitchShiftSchedule,
+  sortShiftAcc,
+  sortShiftDec,
+} from './ShiftActions';
 // React Components
 import Pdf from '../Pdf/Pdf';
+import Search from '../Search/Search';
+import SearchView from '../Search/SearchView';
 // Material Ui
 import {
   Typography,
@@ -17,10 +24,10 @@ import {
   TableCell,
   TableBody,
   Button,
+  TablePagination,
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
-import Search from '../Search/Search';
-import SearchView from '../Search/SearchView';
+import SwapVertIcon from '@material-ui/icons/SwapVert';
 
 const Shift = () => {
   const { shiftSchedule, searchQuery } = useSelector((state) => ({
@@ -30,9 +37,32 @@ const Shift = () => {
   const dispatch = useDispatch();
   const classes = Styles();
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(30);
+  const [toggle, setToggle] = useState(null);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   const handleSwitchShiftSchedule = () => {
     dispatch(requestSwitchShiftSchedule());
     window.location.reload();
+  };
+
+  const handleSort = () => {
+    dispatch(sortShiftAcc());
+    setToggle(false);
+  };
+
+  const handleSortDec = () => {
+    dispatch(sortShiftDec());
+    setToggle(true);
   };
 
   useEffect(() => {
@@ -57,14 +87,17 @@ const Shift = () => {
             <TableCell id="department">DEPARTMENT</TableCell>
             <TableCell id="sdate">START DATE</TableCell>
             <TableCell id="edate">END DATE</TableCell>
-            <TableCell id="shift">SHIFT</TableCell>
+            <TableCell id="shift">
+              SHIFT
+              <Button onClick={toggle === true ? handleSort : handleSortDec}>
+                <SwapVertIcon />
+              </Button>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {shiftSchedule
-            .sort((a, b) =>
-              a.shiftCode > b.shiftCode ? 1 : b.shiftCode > a.shiftCode ? -1 : 0
-            )
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map(
               ({
                 id,
@@ -99,6 +132,15 @@ const Shift = () => {
             )}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[1, 2, 3]}
+        component="div"
+        count={shiftSchedule.length}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
       <Pdf />
       <Button
         onClick={handleSwitchShiftSchedule}

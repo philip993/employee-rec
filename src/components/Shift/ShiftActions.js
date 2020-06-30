@@ -2,6 +2,8 @@ import {
   SUCCESS_LOAD_SHIFTS,
   FAILURE_LOAD_SHIFTS,
   SUCCESS_SWITCH_SHIFTS,
+  SORT_SHIFT_ACC,
+  SORT_SHIFT_DEC,
 } from './ShiftActionTypes';
 // Axios
 import axios from 'axios';
@@ -44,5 +46,30 @@ export const requestSwitchShiftSchedule = () => {
           type: FAILURE_LOAD_SHIFTS,
         });
       });
+  };
+};
+
+// sort
+export const sortShiftAcc = () => {
+  return (dispatch, getState) => {
+    let { shiftSchedule } = getState().ShiftReducer;
+    dispatch({
+      type: SORT_SHIFT_ACC,
+      payload: shiftSchedule.sort((a, b) =>
+        b.shiftCode < a.shiftCode ? 1 : b.shiftCode > a.shiftCode ? -1 : 0
+      ),
+    });
+  };
+};
+
+export const sortShiftDec = () => {
+  return (dispatch, getState) => {
+    let { shiftSchedule } = getState().ShiftReducer;
+    dispatch({
+      type: SORT_SHIFT_DEC,
+      payload: shiftSchedule.sort((a, b) =>
+        b.shiftCode < a.shiftCode ? -1 : b.shiftCode > a.shiftCode ? 1 : 0
+      ),
+    });
   };
 };
