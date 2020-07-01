@@ -74,14 +74,17 @@ const UpdateShift = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Add Employee to Shift Schedule</Typography>
+    <div className={classes.pageContainer}>
+      <Typography variant="h4">Update Shift Schedule</Typography>
       {errorsShift === null
         ? ''
         : errorsShift === false
         ? history.push('/updatesuccess')
         : history.push('/updatefail')}
-      <form onSubmit={handleSubmit} className={classes.addForm}>
+      <form onSubmit={handleSubmit} className={classes.updateForm}>
+        <Typography variant="h6" className={classes.updateSub}>
+          Update Shift
+        </Typography>
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>ID</InputLabel>
           <Select
@@ -94,7 +97,7 @@ const UpdateShift = () => {
               <MenuItem value={el.id}>{el.id}</MenuItem>
             ))}
           </Select>
-          <FormHelperText className={classes.formHelperText}>
+          <FormHelperText className={classes.updateHelperText}>
             {validator.current.message('employee id', employeeId, 'required')}
           </FormHelperText>
         </FormGroup>
@@ -111,7 +114,7 @@ const UpdateShift = () => {
             <MenuItem value="second">SECOND</MenuItem>
             <MenuItem value="third">THIRD</MenuItem>
           </Select>
-          <FormHelperText className={classes.formHelperText}>
+          <FormHelperText className={classes.updateHelperText}>
             {validator.current.message('shift code', shiftCode, 'required')}
           </FormHelperText>
         </FormGroup>
@@ -128,7 +131,7 @@ const UpdateShift = () => {
             }}
             onBlur={validator.current.showMessageFor('start date')}
           />
-          <FormHelperText className={classes.formHelperText}>
+          <FormHelperText className={classes.updateHelperText}>
             {validator.current.message('start date', startDate, 'required')}
           </FormHelperText>
         </FormGroup>
@@ -145,11 +148,11 @@ const UpdateShift = () => {
             }}
             onBlur={validator.current.showMessageFor('end date')}
           />
-          <FormHelperText className={classes.formHelperText}>
+          <FormHelperText className={classes.updateHelperText}>
             {validator.current.message('end date', endDate, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.updateBtnGroup}>
           <Button
             type={'submit'}
             className={classes.formButton}

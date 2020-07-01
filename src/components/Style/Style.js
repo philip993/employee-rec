@@ -17,9 +17,9 @@ const Styles = makeStyles((theme) => ({
   // ADD FORM
   addForm: {
     width: '540px',
-    height: '540px',
+    height: '600px',
     margin: 'auto',
-    border: 'solid 1px #E9EBEE',
+    border: 'solid 1px #4682b4',
   },
   addFormGroup: {
     width: '80%',
@@ -48,6 +48,7 @@ const Styles = makeStyles((theme) => ({
     width: '50%',
     margin: 'auto',
     marginTop: '25px',
+    marginBottom: '25px',
 
     '&:hover': {
       border: 'solid 1px #fff',
@@ -64,6 +65,10 @@ const Styles = makeStyles((theme) => ({
   },
   formTitle: {
     textAlign: 'center',
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    color: '#fff',
   },
   formFinishSub: {
     textAlign: 'center',
@@ -85,6 +90,19 @@ const Styles = makeStyles((theme) => ({
     zIndex: '1',
     color: 'red',
     paddingLeft: '10px',
+  },
+  formSub: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  formBtnGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
   },
   // Pdf Download
   downloadBtn: {
@@ -140,6 +158,9 @@ const Styles = makeStyles((theme) => ({
     backgroundColor: '#4682b4',
     border: 'solid 1px #0E4D92',
   },
+  tableLayout: {
+    border: 'solid 1px #4682b4',
+  },
   // Search
   searchOutput: {
     float: 'right',
@@ -190,6 +211,43 @@ const Styles = makeStyles((theme) => ({
     paddingLeft: '10px',
     marginBottom: '20px',
     height: '90px',
+  },
+  // Update Shift
+  updateForm: {
+    width: '540px',
+    height: '620px',
+    margin: 'auto',
+    border: 'solid 1px #4682b4',
+    backgroundColor: '#F5F5F5',
+    marginTop: '50px',
+  },
+  updateHelperText: {
+    background: '#F5F5F5',
+    zIndex: '1',
+    color: 'red',
+    paddingLeft: '10px',
+  },
+  updateSub: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  updateBtnGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+    backgroundColor: '#F5F5F5',
+  },
+  // List
+  listSub: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
   },
 }));
 
