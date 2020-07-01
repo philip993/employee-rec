@@ -28,6 +28,7 @@ import {
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
+import SearchError from '../Search/SearchError';
 
 const Shift = () => {
   const { shiftSchedule, searchQuery } = useSelector((state) => ({
@@ -123,11 +124,13 @@ const Shift = () => {
       <Typography variant="h4">Shift Schedule</Typography>
       <div className={classes.searchDiv}>
         <Search />
-        {!searchQuery
-          ? 'Employee is not in the list...'
-          : searchQuery.map((empl, index) => (
-              <SearchView key={empl.id} {...empl.employees[index]} />
-            ))}
+        {!searchQuery ? (
+          <SearchError />
+        ) : (
+          searchQuery.map((empl, index) => (
+            <SearchView key={empl.id} {...empl.employees[index]} />
+          ))
+        )}
       </div>
       <Table id="table">
         <TableHead>

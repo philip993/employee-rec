@@ -1,5 +1,15 @@
-#searchBar,
-#searchText {
-  width: 100%;
+#searchBar {
+  width: 200px;
   padding-right: 10px;
+  border: solid 1px #4682b4;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+#searchText {
+  width: 265px;
+  padding-right: 10px;
+  border: solid 1px #4682b4;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
