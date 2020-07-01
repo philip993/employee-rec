@@ -5,7 +5,7 @@ import Style from '../Style/Style';
 // Material Ui
 import { Typography, InputLabel, InputBase } from '@material-ui/core';
 
-const SearchView = ({ firstName, secondName }) => {
+const SearchView = ({ employees, shiftCode, employeeId }) => {
   const classes = Style();
 
   return (
@@ -13,7 +13,10 @@ const SearchView = ({ firstName, secondName }) => {
       <Typography variant="h6">RESULT</Typography>
       <InputLabel className={classes.searchOutputLabel}>Employee</InputLabel>
       <Typography variant="h6" id="searchText">
-        {firstName} {secondName}
+        ID: {employeeId}. {employees[0].firstName} {employees[0].secondName}
+      </Typography>
+      <Typography variant="h6" id="searchShift">
+        {shiftCode} shift
       </Typography>
     </div>
   );

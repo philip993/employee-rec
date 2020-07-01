@@ -128,7 +128,7 @@ const Shift = () => {
           <SearchError />
         ) : (
           searchQuery.map((empl, index) => (
-            <SearchView key={empl.id} {...empl.employees[index]} />
+            <SearchView key={empl.id} {...empl} />
           ))
         )}
       </div>
