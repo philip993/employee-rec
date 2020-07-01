@@ -26,6 +26,12 @@ const Navbar = () => {
       <Button>
         <Link to="/contact">Contact</Link>
       </Button>
+      <Button>
+        <Link to="/shifts">Shifts</Link>
+      </Button>
+      <Button>
+        <Link to="/updateshift">Update Shift</Link>
+      </Button>
     </div>
   );
 };

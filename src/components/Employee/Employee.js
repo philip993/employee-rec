@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 // Styles
@@ -17,13 +17,18 @@ import {
   TableCell,
   Typography,
   Button,
+  TablePagination,
 } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 const Employee = () => {
-  const data = useSelector((state) => state.EmployeeReducer);
+  const { employees } = useSelector((state) => state.EmployeeReducer);
   const dispatch = useDispatch();
   const classes = Styles();
   const history = useHistory();
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(25);
 
   useEffect(() => {
     dispatch(requestEmployees());
@@ -37,12 +42,21 @@ const Employee = () => {
     }, 500);
   };
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+
   return (
     <div className={classes.pageContainer}>
       <Typography variant="h4">List of Employees</Typography>
-      <Table>
+      <Table className={classes.tableLayout}>
         <TableHead>
-          <TableRow>
+          <TableRow className={classes.listSub}>
             <TableCell>No.</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Surname</TableCell>
@@ -51,23 +65,32 @@ const Employee = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.employees.map(
-            ({ id, firstName, secondName, position }, index) => (
+          {employees
+            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .map(({ id, firstName, secondName, position }, index) => (
               <TableRow key={id}>
-                <TableCell>{id}</TableCell>
-                <TableCell>{firstName}</TableCell>
-                <TableCell>{secondName}</TableCell>
-                <TableCell>{position}</TableCell>
-                <TableCell>
+                <TableCell className={classes.shiftRow}>{id}</TableCell>
+                <TableCell className={classes.shiftRow}>{firstName}</TableCell>
+                <TableCell className={classes.shiftRow}>{secondName}</TableCell>
+                <TableCell className={classes.shiftRow}>{position}</TableCell>
+                <TableCell className={classes.shiftRow}>
                   <Button onClick={handleEmployeeDetails.bind(this, id)}>
-                    Details
+                    Show <ExpandMoreIcon />
                   </Button>
                 </TableCell>
               </TableRow>
-            )
-          )}
+            ))}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[2, 25, 50]}
+        component="div"
+        count={employees.length}
+        page={page}
+        rowsPerPage={rowsPerPage}
+        onChangePage={handleChangePage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+      />
     </div>
   );
 };

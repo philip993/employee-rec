@@ -103,7 +103,7 @@ const AddressInfo = () => {
           {validator.current.message('state', state, 'required|alpha_space')}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formBtnGroup}>
         <Button
           onClick={handleStepIncrement}
           className={classes.formButton}

@@ -136,7 +136,7 @@ const PersonalInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formBtnGroup}>
         <Button
           onClick={handleStepIncrement}
           className={classes.formButton}

@@ -1,0 +1,9 @@
+// request
+export const SUCCESS_LOAD_SHIFTS = 'SUCCESS_LOAD_SHIFTS';
+export const FAILURE_LOAD_SHIFTS = 'FAILURE_LOAD_SHIFTS';
+// switch shift-schedule
+export const SUCCESS_SWITCH_SHIFTS = 'SUCCESS_SWITCH_SHIFTS';
+export const FAILURE_SWITCH_SHIFTS = 'FAILURE_SWTICH_SHIFTS';
+// sort
+export const SORT_SHIFT_ACC = 'SORT_SHIFT_ACC';
+export const SORT_SHIFT_DEC = 'SORT_SHIFT_DEC';

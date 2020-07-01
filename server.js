@@ -5,6 +5,7 @@ const app = express();
 
 // Routes
 const employees = require('./src/backend/Employee/EmployeeRoute');
+const shifts = require('./src/backend/Shift/ShiftRoute');
 // Body-parser setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,7 +27,8 @@ app.use((req, res, next) => {
   next();
 });
 // Use routes
-app.use('/', employees);
+app.use('/employees', employees);
+app.use('/shifts', shifts);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => `Listening on port ${port}`);
