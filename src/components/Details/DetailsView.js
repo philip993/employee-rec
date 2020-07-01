@@ -36,9 +36,9 @@ const DetailsView = ({
 
   return (
     <div>
-      <Card>
-        <CardContent>
-          <Avatar>
+      <Card className={classes.cardDetails}>
+        <CardContent className={classes.cardPersonal}>
+          <Avatar className={classes.avatar}>
             {firstName.charAt(0)}
             {secondName.charAt(0)}
           </Avatar>
@@ -51,7 +51,9 @@ const DetailsView = ({
         <CardContent>
           <Table>
             <TableHead>
-              <Typography variant="h6">Employment Information</Typography>
+              <Typography variant="h6" className={classes.cardSub}>
+                Employment Information
+              </Typography>
             </TableHead>
             <TableRow>
               <TableCell>position</TableCell>
@@ -66,7 +68,9 @@ const DetailsView = ({
               <TableCell>{employmentDate}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6">Address Information</Typography>
+              <Typography variant="h6" className={classes.cardSub}>
+                Address Information
+              </Typography>
             </TableHead>
             <TableRow>
               <TableCell>Address</TableCell>
@@ -79,7 +83,9 @@ const DetailsView = ({
               <TableCell>{state}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6">Identity Information</Typography>
+              <Typography variant="h6" className={classes.cardSub}>
+                Identity Information
+              </Typography>
             </TableHead>
             <TableRow>
               <TableCell>Identity Card No.</TableCell>
@@ -90,7 +96,9 @@ const DetailsView = ({
               <TableCell>{socialNumber}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6">Contact Information</Typography>
+              <Typography variant="h6" className={classes.cardSub}>
+                Contact Information
+              </Typography>
             </TableHead>
             <TableRow>
               <TableCell>Telephone Number</TableCell>

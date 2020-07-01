@@ -160,6 +160,7 @@ const Styles = makeStyles((theme) => ({
   },
   tableLayout: {
     border: 'solid 1px #4682b4',
+    marginTop: '50px',
   },
   // Search
   searchOutput: {
@@ -248,6 +249,26 @@ const Styles = makeStyles((theme) => ({
     margin: 'auto',
     textAlign: 'center',
     color: '#fff',
+  },
+  // Details
+  cardDetails: {
+    width: '70%',
+    margin: 'auto',
+    marginTop: '50px',
+    marginBotto: '25px',
+    border: 'solid 1px #BEBEBE',
+  },
+  cardPersonal: {
+    textAlign: 'center',
+    backgroundColor: '#F5F5F5',
+  },
+  cardSub: {
+    width: '100%',
+    color: '#fff',
+    backgroundColor: '#4682b4',
+  },
+  avatar: {
+    margin: 'auto',
   },
 }));
 
