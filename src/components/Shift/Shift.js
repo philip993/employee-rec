@@ -15,6 +15,7 @@ import {
 import Pdf from '../Pdf/Pdf';
 import Search from '../Search/Search';
 import SearchView from '../Search/SearchView';
+import SearchError from '../Search/SearchError';
 // Material Ui
 import {
   Typography,
@@ -28,7 +29,6 @@ import {
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
-import SearchError from '../Search/SearchError';
 
 const Shift = () => {
   const { shiftSchedule, searchQuery } = useSelector((state) => ({

@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 // Style
 import Styles from '../Style/Style';
 import './UpdateShiftStyle.scss';
+// React Router Dom
+import { useHistory } from 'react-router-dom';
 // Simple React Validator
 import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
@@ -29,14 +31,20 @@ import { KeyboardDatePicker } from '@material-ui/pickers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 const UpdateShift = () => {
-  const { employeeId, shiftCode, startDate, endDate, employees } = useSelector(
-    (state) => ({
-      ...state.UpdateShiftReducer,
-      ...state.EmployeeReducer,
-    })
-  );
+  const {
+    employeeId,
+    shiftCode,
+    startDate,
+    endDate,
+    employees,
+    errorsShift,
+  } = useSelector((state) => ({
+    ...state.UpdateShiftReducer,
+    ...state.EmployeeReducer,
+  }));
   const dispatch = useDispatch();
   const classes = Styles();
+  const history = useHistory();
   const validator = useRef(
     new SimpleReactValidator({
       autoForceUpdate: this,
@@ -68,6 +76,11 @@ const UpdateShift = () => {
   return (
     <div>
       <Typography variant="h4">Add Employee to Shift Schedule</Typography>
+      {errorsShift === null
+        ? ''
+        : errorsShift === false
+        ? history.push('/updatesuccess')
+        : history.push('/updatefail')}
       <form onSubmit={handleSubmit} className={classes.addForm}>
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>ID</InputLabel>

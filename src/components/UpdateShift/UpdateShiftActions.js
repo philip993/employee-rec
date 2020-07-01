@@ -5,6 +5,7 @@ import {
   INPUT_SHIFT_CODE,
   INPUT_START_DATE,
   INPUT_END_DATE,
+  CHANGE_ERROR_STATUS,
 } from './UpdateShiftActionTypes';
 // axios
 import axios from 'axios';
@@ -68,5 +69,12 @@ export const inputEndDate = (e) => {
   return {
     type: INPUT_END_DATE,
     payload: e.setDate(e.getDate() + 6),
+  };
+};
+
+// errors
+export const changeErrorsStatus = () => {
+  return {
+    type: CHANGE_ERROR_STATUS,
   };
 };

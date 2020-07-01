@@ -5,6 +5,7 @@ import {
   INPUT_SHIFT_CODE,
   INPUT_START_DATE,
   INPUT_END_DATE,
+  CHANGE_ERROR_STATUS,
 } from './UpdateShiftActionTypes';
 
 const initalState = {
@@ -12,7 +13,7 @@ const initalState = {
   shiftCode: '',
   startDate: null,
   endDate: null,
-  errors: null,
+  errorsShift: null,
 };
 
 export const UpdateShiftReducer = (state = initalState, action) => {
@@ -24,7 +25,7 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         shiftCode: '',
         startDate: '',
         endDate: '',
-        errors: false,
+        errorsShift: false,
       };
     case UPDATE_SHIFT_FAILURE:
       return {
@@ -33,7 +34,7 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         shiftCode: '',
         startDate: '',
         endDate: '',
-        errors: true,
+        errorsShift: true,
       };
     case INPUT_EMPLOYEE_ID:
       return {
@@ -54,6 +55,11 @@ export const UpdateShiftReducer = (state = initalState, action) => {
       return {
         ...state,
         endDate: action.payload,
+      };
+    case CHANGE_ERROR_STATUS:
+      return {
+        ...state,
+        errorsShift: null,
       };
     default:
       return state;
