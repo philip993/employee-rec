@@ -2,6 +2,7 @@ import {
   SEARCH_EMPLOYEE_FAILURE,
   SEARCH_EMPLOYEE_SUCCESS,
   INPUT_SEARCH_EMPLOYEE,
+  CLEAR_INPUT_SEARCH_EMPLOYEE,
 } from './SearchActionTypes';
 
 const initalState = {
@@ -25,6 +26,11 @@ export const SearchReducer = (state = initalState, action) => {
       return {
         ...state,
         searchVal: action.payload,
+      };
+    case CLEAR_INPUT_SEARCH_EMPLOYEE:
+      return {
+        ...state,
+        searchVal: '',
       };
     default:
       return state;

@@ -5,10 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import Styles from '../Style/Style';
 import './SearchStyle.scss';
 // Redux Actions
-import {} from './SearchActionTypes';
+import {
+  inputSearchEmployee,
+  requestSearchEmployee,
+  clearInputSearchEmployee,
+} from './SearchActions';
 // Material Ui
 import { Typography, InputBase, InputLabel } from '@material-ui/core';
-import { inputSearchEmployee, requestSearchEmployee } from './SearchActions';
 
 const Search = () => {
   const { searchVal } = useSelector((state) => ({
@@ -24,6 +27,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestSearchEmployee());
+    dispatch(clearInputSearchEmployee());
   };
 
   return (
