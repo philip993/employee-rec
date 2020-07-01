@@ -263,7 +263,7 @@ const Styles = makeStyles((theme) => ({
     backgroundColor: '#F5F5F5',
   },
   cardSub: {
-    width: '100%',
+    width: '80%',
     color: '#fff',
     backgroundColor: '#4682b4',
   },
