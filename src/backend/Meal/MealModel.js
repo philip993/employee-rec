@@ -12,7 +12,7 @@ const Meals = db.define(
     shiftId: {
       type: Sequelize.INTEGER,
       references: 'shifts',
-      referencesKey: 'employeeId',
+      referencesKey: 'id',
       field: 'shift_id',
     },
   },

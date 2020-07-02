@@ -3,7 +3,7 @@ const Shift = require('../Shift/ShiftModel');
 const Employee = require('../Employee/EmployeeModel');
 
 exports.getMeals = (req, res) => {
-  Meals.findAll({
+  Meals.findAndCountAll({
     include: [
       {
         model: Shift,
@@ -17,7 +17,8 @@ exports.getMeals = (req, res) => {
   })
     .then((meals) => {
       res.status(200).json({
-        meals,
+        meals: meals.rows,
+        number: meals.count,
       });
     })
     .catch((err) => {
@@ -29,7 +30,7 @@ exports.getMeals = (req, res) => {
 };
 
 exports.createMeals = (req, res) => {
-  let { shiftId } = req.body;
+  let { shiftArr, shiftId } = req.body;
   Meals.create({
     shiftId,
   })

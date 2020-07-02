@@ -40,7 +40,7 @@ const Shift = db.define(
   }
 );
 
-Shift.hasOne(Meals, { foreignKey: 'shift_id' });
+Shift.hasOne(Meals, { foreignKey: 'shiftId' });
 Meals.hasMany(Shift, { as: 'shifts', foreignKey: 'id' });
 
 module.exports = Shift;
