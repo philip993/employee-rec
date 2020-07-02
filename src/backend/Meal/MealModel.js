@@ -15,6 +15,11 @@ const Meals = db.define(
       referencesKey: 'id',
       field: 'shift_id',
     },
+    mealCount: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      field: 'meal_count',
+    },
   },
   {
     timestamps: false,
