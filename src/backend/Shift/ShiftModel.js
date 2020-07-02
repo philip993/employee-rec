@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize');
 const db = require('../database/db');
+const Meals = require('../Meal/MealModel');
+const Employee = require('../Employee/EmployeeModel');
 
 const Shift = db.define(
   'shift',
@@ -12,7 +14,7 @@ const Shift = db.define(
     employeeId: {
       type: Sequelize.INTEGER,
       references: 'employees',
-      refencesKey: 'id',
+      referencesKey: 'id',
       field: 'employee_id',
     },
     shiftCode: {
@@ -37,5 +39,8 @@ const Shift = db.define(
     timestamps: false,
   }
 );
+
+Shift.hasOne(Meals, { foreignKey: 'shift_id' });
+Meals.hasMany(Shift, { as: 'shifts', foreignKey: 'id' });
 
 module.exports = Shift;
