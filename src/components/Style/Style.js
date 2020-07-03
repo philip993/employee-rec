@@ -270,6 +270,35 @@ const Styles = makeStyles((theme) => ({
   avatar: {
     margin: 'auto',
   },
+  // Meals
+  mealTable: {
+    width: '540px',
+    margin: 'auto',
+    marginTop: '50px',
+    marginBottom: '50px',
+  },
+  mealSub: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  mealCell: {
+    textAlign: 'center',
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
+  },
+  mealCellTwo: {
+    textAlign: 'center',
+    border: 'solid 1px #BEBEBE',
+  },
+  mealCellFooter: {
+    textAlign: 'center',
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
+    fontSize: '1rem',
+  },
 }));
 
 export default Styles;
