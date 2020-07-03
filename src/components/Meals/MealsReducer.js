@@ -1,6 +1,9 @@
 import {
   MEAL_SCHEDULE_SUCCESS,
   MEAL_SCEDULE_FAILURE,
+  UPDATE_MEAL_SUCCESS,
+  UPDATE_MEAL_FAILURE,
+  ADD_MEAL_COUNT,
 } from './MealsActionTypes';
 
 const initalState = {
@@ -21,6 +24,21 @@ export const MealsReducer = (state = initalState, action) => {
         ...state,
         mealsSchedule: null,
         mealsError: true,
+      };
+    case UPDATE_MEAL_SUCCESS:
+      return {
+        ...state,
+        shiftId: '',
+      };
+    case UPDATE_MEAL_FAILURE:
+      return {
+        ...state,
+        shiftId: '',
+      };
+    case ADD_MEAL_COUNT:
+      return {
+        ...state,
+        mealCount: action.payload,
       };
     default:
       return state;

@@ -17,6 +17,7 @@ import {
   inputEndDate,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
+import { addMealCount, requestUpdateMeals } from '../Meals/MealActions';
 // Material Ui
 import {
   FormGroup,
@@ -57,7 +58,9 @@ const UpdateShift = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(addMealCount());
     dispatch(requestUpdateShift());
+    dispatch(requestUpdateMeals());
   };
 
   const handleEmployeeId = (e) => {

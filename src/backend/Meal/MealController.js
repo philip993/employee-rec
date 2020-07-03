@@ -30,9 +30,10 @@ exports.getMeals = (req, res) => {
 };
 
 exports.createMeals = (req, res) => {
-  let { shiftArr, shiftId } = req.body;
+  let { shiftArr, shiftId, mealCount } = req.body;
   Meals.create({
     shiftId,
+    mealCount,
   })
     .then((meal) => {
       res.status(201).json({
