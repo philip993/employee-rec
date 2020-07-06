@@ -58,12 +58,15 @@ const UpdateShift = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addMealCount());
+
     dispatch(requestUpdateShift());
-    dispatch(requestUpdateMeals());
+    setTimeout(() => {
+      dispatch(requestUpdateMeals());
+    }, 500);
   };
 
   const handleEmployeeId = (e) => {
+    dispatch(addMealCount());
     dispatch(inputEmployeeId(e.target.value));
   };
 

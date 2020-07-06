@@ -6,6 +6,13 @@ const db = require('../database/db');
 const Employee = db.define(
   'employee',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+      field: 'id',
+    },
     firstName: {
       type: Sequelize.STRING,
       allowNull: false,

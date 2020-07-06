@@ -32,7 +32,7 @@ export const requestMealSchedule = () => {
 export const requestUpdateMeals = () => {
   return (dispatch, getState) => {
     let { employeeId } = getState().UpdateShiftReducer;
-    let { mealCount } = getState().MealReducer;
+    let { mealCount } = getState().MealsReducer;
     return axios
       .post(`http://localhost:4000/meals/add`, {
         shiftId: employeeId,
