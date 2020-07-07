@@ -6,5 +6,7 @@ export const INPUT_EMPLOYEE_ID = 'INPUT_EMPLOYEE_ID';
 export const INPUT_SHIFT_CODE = 'INPUT_SHIFT_CODE';
 export const INPUT_START_DATE = 'INPUT_START_DATE';
 export const INPUT_END_DATE = 'INPUT_END_DATE';
+// count
+export const ADD_MEAL_COUNT = 'ADD_MEAL_COUNT';
 // errors
 export const CHANGE_ERROR_STATUS = 'CHANGE_ERROR_STATUS';

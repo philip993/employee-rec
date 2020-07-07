@@ -6,6 +6,7 @@ import {
   INPUT_START_DATE,
   INPUT_END_DATE,
   CHANGE_ERROR_STATUS,
+  ADD_MEAL_COUNT,
 } from './UpdateShiftActionTypes';
 // axios
 import axios from 'axios';
@@ -18,14 +19,19 @@ export const requestUpdateShift = () => {
       shiftCode,
       startDate,
       endDate,
+      mealCount,
     } = getState().UpdateShiftReducer;
+
+    let emplArr = getState().EmployeeReducer.employees;
+    let test = emplArr.find(({ id }) => id === employeeId);
 
     return axios
       .post(`http://localhost:4000/shifts/add`, {
-        employeeId,
+        employeeId: test.id,
         shiftCode,
         startDate,
         endDate,
+        mealCount,
       })
       .then((response) => {
         console.log(response);
@@ -69,6 +75,14 @@ export const inputEndDate = (e) => {
   return {
     type: INPUT_END_DATE,
     payload: e.setDate(e.getDate() + 6),
+  };
+};
+
+// count
+export const addMealCount = () => {
+  return {
+    type: ADD_MEAL_COUNT,
+    payload: 1,
   };
 };
 

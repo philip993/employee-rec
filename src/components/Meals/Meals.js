@@ -4,11 +4,10 @@ import { useSelector, useDispatch } from 'react-redux';
 // Style
 import Style from '../Style/Style';
 // Redux Actions
-import { requestMealSchedule } from './MealActions';
+import { requestGetShifts } from '../Shift/ShiftActions';
 // Material Ui
 import {
   Typography,
-  Button,
   Table,
   TableHead,
   TableRow,
@@ -18,12 +17,12 @@ import {
 } from '@material-ui/core';
 
 const Meals = () => {
-  const { mealsSchedule } = useSelector((state) => state.MealsReducer);
+  const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
   const dispatch = useDispatch();
   const classes = Style();
 
   useEffect(() => {
-    dispatch(requestMealSchedule());
+    dispatch(requestGetShifts());
   }, []);
 
   return (
@@ -40,8 +39,8 @@ const Meals = () => {
           <TableRow>
             <TableCell className={classes.mealCellTwo}>FIRST</TableCell>
             <TableCell className={classes.mealCell}>
-              {mealsSchedule
-                .filter((s) => s.shifts[0].shiftCode === 'first')
+              {shiftSchedule
+                .filter((s) => s.shiftCode === 'first')
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -49,8 +48,8 @@ const Meals = () => {
           <TableRow>
             <TableCell className={classes.mealCellTwo}>SECOND</TableCell>
             <TableCell className={classes.mealCell}>
-              {mealsSchedule
-                .filter((s) => s.shifts[0].shiftCode === 'second')
+              {shiftSchedule
+                .filter((s) => s.shiftCode === 'second')
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -58,8 +57,8 @@ const Meals = () => {
           <TableRow>
             <TableCell className={classes.mealCellTwo}>THIRD</TableCell>
             <TableCell className={classes.mealCell}>
-              {mealsSchedule
-                .filter((s) => s.shifts[0].shiftCode === 'third')
+              {shiftSchedule
+                .filter((s) => s.shiftCode === 'third')
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -69,7 +68,7 @@ const Meals = () => {
           <TableRow>
             <TableCell className={classes.mealCellFooter}>TOTAL</TableCell>
             <TableCell className={classes.mealCellFooter}>
-              {mealsSchedule
+              {shiftSchedule
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>

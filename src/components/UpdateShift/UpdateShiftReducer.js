@@ -6,14 +6,16 @@ import {
   INPUT_START_DATE,
   INPUT_END_DATE,
   CHANGE_ERROR_STATUS,
+  ADD_MEAL_COUNT,
 } from './UpdateShiftActionTypes';
 
 const initalState = {
-  employeeId: '',
+  employeeid: '',
   shiftCode: '',
   startDate: null,
   endDate: null,
   errorsShift: null,
+  mealCount: '',
 };
 
 export const UpdateShiftReducer = (state = initalState, action) => {
@@ -25,6 +27,7 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         shiftCode: '',
         startDate: '',
         endDate: '',
+        mealCount: '',
         errorsShift: false,
       };
     case UPDATE_SHIFT_FAILURE:
@@ -34,6 +37,7 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         shiftCode: '',
         startDate: '',
         endDate: '',
+        mealCount: '',
         errorsShift: true,
       };
     case INPUT_EMPLOYEE_ID:
@@ -55,6 +59,11 @@ export const UpdateShiftReducer = (state = initalState, action) => {
       return {
         ...state,
         endDate: action.payload,
+      };
+    case ADD_MEAL_COUNT:
+      return {
+        ...state,
+        mealCount: action.payload,
       };
     case CHANGE_ERROR_STATUS:
       return {
