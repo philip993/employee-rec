@@ -3,13 +3,14 @@ const db = require('../database/db');
 const Employee = require('../Employee/EmployeeModel');
 
 exports.createShift = (req, res) => {
-  let { employeeId, shiftCode, startDate, endDate } = req.body;
+  let { employeeId, shiftCode, startDate, endDate, mealCount } = req.body;
 
   Shift.create({
     employeeId,
     shiftCode,
     startDate,
     endDate,
+    mealCount,
   })
     .then((shift) => {
       res.status(201).json({
