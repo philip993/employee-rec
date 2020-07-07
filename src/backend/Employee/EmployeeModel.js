@@ -5,6 +5,13 @@ const db = require('../database/db');
 const Employee = db.define(
   'employee',
   {
+    id: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+      field: 'id',
+    },
     firstName: {
       type: Sequelize.STRING,
       allowNull: false,
@@ -97,7 +104,11 @@ const Employee = db.define(
   }
 );
 
-Employee.hasOne(Shift, { foreignKey: 'id' });
-Shift.hasMany(Employee, { as: 'employees', foreignKey: 'id' });
+Employee.hasOne(Shift, { foreignKey: 'employeeId' });
+Shift.hasMany(Employee, {
+  as: 'employees',
+  foreignKey: 'id',
+  sourceKey: 'employeeId',
+});
 
 module.exports = Employee;

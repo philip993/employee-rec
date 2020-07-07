@@ -12,7 +12,7 @@ const Shift = db.define(
     employeeId: {
       type: Sequelize.INTEGER,
       references: 'employees',
-      refencesKey: 'id',
+      referencesKey: 'id',
       field: 'employee_id',
     },
     shiftCode: {
@@ -31,6 +31,11 @@ const Shift = db.define(
       type: Sequelize.DATEONLY,
       allowNull: false,
       field: 'end_date',
+    },
+    mealCount: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      field: 'meal_count',
     },
   },
   {

@@ -15,6 +15,7 @@ import {
   inputShiftCode,
   inputStartDate,
   inputEndDate,
+  addMealCount,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
 // Material Ui
@@ -29,6 +30,7 @@ import {
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { requestGetShifts } from '../Shift/ShiftActions';
 
 const UpdateShift = () => {
   const {
@@ -55,12 +57,17 @@ const UpdateShift = () => {
     dispatch(requestEmployees());
   }, []);
 
+  useEffect(() => {
+    dispatch(requestGetShifts());
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestUpdateShift());
   };
 
   const handleEmployeeId = (e) => {
+    dispatch(addMealCount());
     dispatch(inputEmployeeId(e.target.value));
   };
 
