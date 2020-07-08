@@ -1,0 +1,8 @@
+// request
+export const SUCCESS_ADD_CONTRACT = 'SUCCESS_ADD_CONTRACT';
+export const FAILURE_ADD_CONTRACT = 'FAILURE_ADD_CONTRACT';
+// input
+export const INPUT_CONTRACT_ID = 'INPUT_CONTRACT_ID';
+export const INPUT_CONTRACT_START = 'INPUT_CONTRACT_START';
+// contract length
+export const CONTRACT_90_DAYS = 'CONTRACT_90_DAYS';
