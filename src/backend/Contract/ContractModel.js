@@ -26,6 +26,12 @@ const Contract = db.define(
       allowNull: false,
       field: 'contract_end',
     },
+    activeContract: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: 1,
+      field: 'active_contract',
+    },
   },
   {
     timestamps: false,
