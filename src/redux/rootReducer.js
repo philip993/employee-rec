@@ -8,6 +8,7 @@ import { ShiftReducer } from '../components/Shift/ShiftReducer';
 import { UpdateShiftReducer } from '../components/UpdateShift/UpdateShiftReducer';
 import { SearchReducer } from '../components/Search/SearchReducer';
 import { ContractReducer } from '../components/Contract/ContractReducer';
+import { AddContractReducer } from '../components/AddContract/AddContractReducer';
 
 const rootReducer = combineReducers({
   EmployeeReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   UpdateShiftReducer,
   SearchReducer,
   ContractReducer,
+  AddContractReducer,
 });
 
 export default rootReducer;
