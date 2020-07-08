@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+import './AddContractStyle.scss';
+// Simple React Validator
+import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
 import {
   requestAddContract,
@@ -33,6 +36,11 @@ const AddContract = () => {
   );
   const dispatch = useDispatch();
   const classes = Style();
+  const validator = useRef(
+    new SimpleReactValidator({
+      autoForceUpdate: this,
+    })
+  );
 
   useEffect(() => {
     dispatch(requestEmployees());
@@ -55,22 +63,34 @@ const AddContract = () => {
   return (
     <div>
       <Typography variant="h4">Add Contract</Typography>
-      <form>
-        <FormGroup>
-          <InputLabel>Contract ID</InputLabel>
-          <Select value={contractId} onChange={handleContractId}>
+      <form className={classes.updateForm}>
+        <Typography variant="h6" className={classes.updateSub}>
+          ADD CONTRACT
+        </Typography>
+        <FormGroup className={classes.addFormGroup}>
+          <InputLabel className={classes.formLabel}>Contract ID</InputLabel>
+          <Select
+            id="contractId"
+            value={contractId}
+            onChange={handleContractId}
+            onBlur={validator.current.showMessageFor('contract id')}
+          >
             {employees.map((empl) => (
               <MenuItem value={empl.id}>
                 {empl.id}. {empl.firstName} {empl.secondName}
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText></FormHelperText>
+          <FormHelperText className={classes.updateHelperText}>
+            {validator.current.message('contract id', contractId, 'required')}
+          </FormHelperText>
         </FormGroup>
-        <FormGroup>
-          <InputLabel>Contract Start Date</InputLabel>
+        <FormGroup className={classes.addFormGroup}>
+          <InputLabel className={classes.formLabel}>
+            Contract Start Date
+          </InputLabel>
           <KeyboardDatePicker
-            id="startDate"
+            id="contractStart"
             value={contractStart}
             margin="normal"
             format="dd/MM/yyyy"
@@ -78,15 +98,24 @@ const AddContract = () => {
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}
-            // onBlur={validator.current.showMessageFor('start date')}
+            onBlur={validator.current.showMessageFor('contract start')}
           />
-          <FormHelperText></FormHelperText>
+          <FormHelperText className={classes.formHelperText}>
+            {' '}
+            {validator.current.message(
+              'contract start',
+              contractStart,
+              'required'
+            )}
+          </FormHelperText>
         </FormGroup>
-        <FormGroup>
-          <InputLabel>Contract End Date</InputLabel>
+        <FormGroup className={classes.addFormGroup}>
+          <InputLabel className={classes.formLabel}>
+            Contract End Date
+          </InputLabel>
           <KeyboardDatePicker
             disabled
-            id="startDate"
+            id="contractEnd"
             value={contractEnd}
             margin="normal"
             format="dd/MM/yyyy"
@@ -94,11 +123,22 @@ const AddContract = () => {
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}
-            // onBlur={validator.current.showMessageFor('start date')}
+            onBlur={validator.current.showMessageFor('contract end')}
           />
-          <FormHelperText></FormHelperText>
+          <FormHelperText className={classes.formHelperText}>
+            {' '}
+            {validator.current.message('contract end', contractEnd, 'required')}
+          </FormHelperText>
         </FormGroup>
-        <Button onClick={handleSubmit}>Add</Button>
+        <FormGroup className={classes.updateBtnGroup}>
+          <Button
+            onClick={handleSubmit}
+            disabled={!validator.current.allValid()}
+            className={classes.formButton}
+          >
+            Add
+          </Button>
+        </FormGroup>
       </form>
     </div>
   );
