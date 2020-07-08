@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -10,6 +10,7 @@ import {
   inputContractStart,
   contract90days,
 } from './AddContractActions';
+import { requestEmployees } from '../Employee/EmployeeActions';
 // Material Ui
 import {
   Typography,
@@ -18,15 +19,24 @@ import {
   InputLabel,
   FormHelperText,
   Button,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 
 const AddContract = () => {
-  const { contractId, contractStart, contractEnd } = useSelector(
-    (state) => state.AddContractReducer
+  const { contractId, contractStart, contractEnd, employees } = useSelector(
+    (state) => ({
+      ...state.AddContractReducer,
+      ...state.EmployeeReducer,
+    })
   );
   const dispatch = useDispatch();
   const classes = Style();
+
+  useEffect(() => {
+    dispatch(requestEmployees());
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -48,12 +58,13 @@ const AddContract = () => {
       <form>
         <FormGroup>
           <InputLabel>Contract ID</InputLabel>
-          <InputBase
-            type="number"
-            value={contractId}
-            onChange={handleContractId}
-            placeholder="Contract - Employee ID"
-          />
+          <Select value={contractId} onChange={handleContractId}>
+            {employees.map((empl) => (
+              <MenuItem value={empl.id}>
+                {empl.id}. {empl.firstName} {empl.secondName}
+              </MenuItem>
+            ))}
+          </Select>
           <FormHelperText></FormHelperText>
         </FormGroup>
         <FormGroup>
