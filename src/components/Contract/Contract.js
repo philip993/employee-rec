@@ -9,7 +9,7 @@ import { requestGetContracts } from './ContractActions';
 import { Typography } from '@material-ui/core';
 
 const Contract = () => {
-  const { contractList } = useSelector((state) => ({
+  const { contractList, currentDate } = useSelector((state) => ({
     ...state.ContractReducer,
   }));
   const dispatch = useDispatch();
@@ -30,6 +30,29 @@ const Contract = () => {
           </h5>
           <h5>{contract.contractStart}</h5>
           <h5>{contract.contractEnd}</h5>
+          <h5 hidden disabled>
+            {
+              (contract.daysLeft = Math.floor(
+                Math.ceil(
+                  (new Date(contract.contractEnd) - currentDate) /
+                    (1000 * 60 * 60 * 24)
+                )
+              ))
+            }
+          </h5>
+          <h5>
+            {contract.daysLeft < 0 ? (
+              <div style={{ color: 'red' }}>
+                <p>{contract.daysLeft}</p>
+                <p>EXPIRED</p>
+              </div>
+            ) : (
+              <div style={{ color: 'green' }}>
+                <p>{contract.daysLeft}</p>
+                <p>VALID</p>
+              </div>
+            )}
+          </h5>
         </div>
       ))}
     </div>

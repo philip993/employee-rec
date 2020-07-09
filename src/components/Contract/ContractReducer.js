@@ -6,6 +6,7 @@ import {
 const initialState = {
   contractList: [],
   contractError: null,
+  currentDate: null,
 };
 
 export const ContractReducer = (state = initialState, action) => {
@@ -13,8 +14,9 @@ export const ContractReducer = (state = initialState, action) => {
     case SUCCESS_LOAD_CONTRACTS:
       return {
         ...state,
-        contractList: action.payload,
+        contractList: action.payload.contracts,
         contractError: false,
+        currentDate: action.payload.currentDate,
       };
     case FAILURE_LOAD_CONTRACTS:
       return {

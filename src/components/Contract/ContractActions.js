@@ -14,7 +14,7 @@ export const requestGetContracts = () => {
         console.log(response);
         dispatch({
           type: SUCCESS_LOAD_CONTRACTS,
-          payload: response.data.contracts,
+          payload: response.data,
         });
       })
       .catch((err) => {

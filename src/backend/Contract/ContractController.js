@@ -2,6 +2,8 @@ const Contract = require('./ContractModel');
 const Employee = require('../Employee/EmployeeModel');
 
 exports.getAllContract = (req, res) => {
+  let date = Date.now();
+  console.log(date);
   Contract.findAll({
     include: [
       {
@@ -13,6 +15,7 @@ exports.getAllContract = (req, res) => {
     .then((contracts) => {
       res.status(200).json({
         contracts,
+        currentDate: date,
       });
     })
     .catch((err) => {
@@ -49,11 +52,19 @@ exports.getOneContract = (req, res) => {
 };
 
 exports.addContract = (req, res) => {
-  let { contractId, contractStart, contractEnd } = req.body;
+  let {
+    contractId,
+    contractStart,
+    contractEnd,
+    activeContract,
+    daysLeft,
+  } = req.body;
   Contract.create({
     contractId,
     contractStart,
     contractEnd,
+    activeContract,
+    daysLeft,
   })
     .then((contract) => {
       res.status(201).json({
@@ -64,6 +75,34 @@ exports.addContract = (req, res) => {
       console.log(err);
       res.status(500).json({
         msg: 'System Error. Cannot add new Contract.',
+      });
+    });
+};
+
+exports.updateContract = (req, res) => {
+  let { contractId, contractStart, contractEnd, activeContract } = req.body;
+
+  Contract.update(
+    {
+      contractStart,
+      contractEnd,
+      activeContract,
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedContract) => {
+      res.status(201).json({
+        updatedContract,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'System Error. Cannot Update Contract.',
       });
     });
 };

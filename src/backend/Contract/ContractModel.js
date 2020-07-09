@@ -32,6 +32,11 @@ const Contract = db.define(
       defaultValue: 1,
       field: 'active_contract',
     },
+    daysLeft: {
+      type: Sequelize.INTEGER,
+      defaultValue: 0,
+      field: 'days_left',
+    },
   },
   {
     timestamps: false,
