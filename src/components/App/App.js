@@ -21,6 +21,7 @@ import UpdateShiftError from '../UpdateShift/UpdateShiftError';
 import Meals from '../Meals/Meals';
 import Contract from '../Contract/Contract';
 import AddContract from '../AddContract/AddContract';
+import UpdateContract from '../UpdateContract/UpdateContract';
 
 const App = () => {
   const classes = Styles();
@@ -42,6 +43,7 @@ const App = () => {
         <Route path="/meals" exact component={Meals} />
         <Route path="/contracts" exact component={Contract} />
         <Route path="/addcontract" exact component={AddContract} />
+        <Route path="/updatecontract" exact component={UpdateContract} />
       </Switch>
     </div>
   );
