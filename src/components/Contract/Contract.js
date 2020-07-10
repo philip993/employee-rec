@@ -3,10 +3,13 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+// React Router Dom
+import { useHistory } from 'react-router-dom';
 // Redux Actions
 import { requestGetContracts } from './ContractActions';
 // Material Ui
-import { Typography } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
+import { selectContract } from '../UpdateContract/UpdateContractActions';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -14,6 +17,7 @@ const Contract = () => {
   }));
   const dispatch = useDispatch();
   const classes = Style();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(requestGetContracts());
@@ -21,6 +25,8 @@ const Contract = () => {
 
   const handleUpdateContract = (e) => {
     console.log(e);
+    dispatch(selectContract(e));
+    history.push('/updatecontract');
   };
 
   return (
@@ -58,6 +64,9 @@ const Contract = () => {
                 </div>
               )}
             </h5>
+            <Button onClick={handleUpdateContract.bind(this, contract)}>
+              Update
+            </Button>
           </div>
         ) : (
           <div key={contract.id}>
