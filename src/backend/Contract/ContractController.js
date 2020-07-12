@@ -80,17 +80,18 @@ exports.addContract = (req, res) => {
 };
 
 exports.updateContract = (req, res) => {
-  let { contractId, contractStart, contractEnd, activeContract } = req.body;
+  let { id, contractId, contractStart, contractEnd, activeContract } = req.body;
 
   Contract.update(
     {
+      id,
       contractStart,
       contractEnd,
       activeContract,
     },
     {
       where: {
-        id: req.params.id,
+        id: req.body.id,
       },
     }
   )

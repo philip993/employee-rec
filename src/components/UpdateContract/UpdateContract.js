@@ -4,15 +4,18 @@ import { useSelector, useDispatch } from 'react-redux';
 // Style
 import Style from '../Style/Style';
 // Redux actions
-import {} from './UpdateContractActionTypes';
+import {
+  requestUpdateContract,
+  updateContractStart,
+  updateActiveContract,
+  updateContractEnd,
+  selectContract,
+} from './UpdateContractActions';
 // Material Ui
 import {
   Typography,
   FormGroup,
   InputLabel,
-  Select,
-  MenuItem,
-  FormHelperText,
   Button,
   InputBase,
   FormControlLabel,
@@ -21,14 +24,6 @@ import {
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import { requestGetContracts } from '../Contract/ContractActions';
-import {
-  requestUpdateContract,
-  updateContractStart,
-  updateActiveContract,
-  updateContractEnd,
-  selectContract,
-} from './UpdateContractActions';
-import { inputContractStart } from '../AddContract/AddContractActions';
 
 const UpdateContract = () => {
   const {
@@ -48,8 +43,8 @@ const UpdateContract = () => {
     dispatch(requestGetContracts());
   }, []);
 
-  const handleSubmit = (contract) => {
-    console.log(contract);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     dispatch(requestUpdateContract());
   };
 

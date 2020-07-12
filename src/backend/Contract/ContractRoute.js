@@ -5,6 +5,6 @@ const contractCtrl = require('./ContractController');
 router.post('/add', contractCtrl.addContract);
 router.get('/', contractCtrl.getAllContract);
 router.get('/:id', contractCtrl.getOneContract);
-router.put('/update/:id', contractCtrl.updateContract);
+router.put('/update', contractCtrl.updateContract);
 
 module.exports = router;

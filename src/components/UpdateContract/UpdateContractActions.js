@@ -13,19 +13,20 @@ import axios from 'axios';
 export const requestUpdateContract = () => {
   return (dispatch, getState) => {
     let {
-      updateContractStart,
-      updateContractEnd,
-      updateActiveContract,
+      updatedContractStart,
+      updatedContractEnd,
+      updatedActiveContract,
     } = getState().UpdateContractReducer;
     let tt = getState().UpdateContractReducer.selectedContract;
     let id = tt.id;
     console.log(tt);
     console.log(tt.id);
     return axios
-      .put(`http://localhost:4000/contracts/update/${id}`, {
-        contractStart: updateContractStart,
-        contractEnd: updateContractEnd,
-        activeContract: updateActiveContract,
+      .put(`http://localhost:4000/contracts/update`, {
+        id,
+        contractStart: updatedContractStart,
+        contractEnd: updatedContractEnd,
+        activeContract: updatedActiveContract,
       })
       .then((response) => {
         console.log(response);
