@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -39,6 +39,8 @@ const UpdateContract = () => {
   const dispatch = useDispatch();
   const classes = Style();
 
+  const [clicked, setClicked] = useState(false);
+
   useEffect(() => {
     dispatch(requestGetContracts());
   }, []);
@@ -49,6 +51,7 @@ const UpdateContract = () => {
   };
 
   const handleUpdateContractStart = (e) => {
+    setClicked(true);
     dispatch(updateContractStart(e));
     dispatch(updateContractEnd(e));
   };
@@ -74,8 +77,9 @@ const UpdateContract = () => {
           </InputLabel>
           <KeyboardDatePicker
             id="contractStart"
-            defaultValue={selectContract.contractStart}
-            value={updatedContractStart}
+            value={
+              !clicked ? selectedContract.contractStart : updatedContractStart
+            }
             margin="normal"
             format="dd/MM/yyyy"
             onChange={handleUpdateContractStart}
