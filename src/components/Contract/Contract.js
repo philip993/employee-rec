@@ -8,7 +8,15 @@ import { useHistory } from 'react-router-dom';
 // Redux Actions
 import { requestGetContracts } from './ContractActions';
 // Material Ui
-import { Typography, Button } from '@material-ui/core';
+import {
+  Typography,
+  Button,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+} from '@material-ui/core';
 import {
   selectContract,
   requestEndContract,
@@ -41,55 +49,77 @@ const Contract = () => {
   return (
     <div>
       <Typography variant="h4">Contract</Typography>
-      {contractList.map((contract, index) =>
-        contract.activeContract === true ? (
-          <div key={contract.id}>
-            <h5>
-              {contract.contractId}. {contract.employees[0].firstName}{' '}
-              {contract.employees[0].secondName}
-            </h5>
-            <h5>{contract.contractStart}</h5>
-            <h5>{contract.contractEnd}</h5>
-            <h5 hidden disabled>
-              {
-                (contract.daysLeft = Math.floor(
-                  Math.ceil(
-                    (new Date(contract.contractEnd) - currentDate) /
-                      (1000 * 60 * 60 * 24)
-                  )
-                ))
-              }
-            </h5>
-            <h5>
-              {contract.daysLeft < 0 ? (
-                <div style={{ color: 'red' }}>
-                  <p>{contract.daysLeft}</p>
-                  <p>EXPIRED</p>
-                </div>
-              ) : (
-                <div style={{ color: 'green' }}>
-                  <p>{contract.daysLeft}</p>
-                  <p>VALID</p>
-                </div>
-              )}
-            </h5>
-            <Button onClick={handleUpdateContract.bind(this, contract)}>
-              Update
-            </Button>
-            <Button onClick={handleTerminateContract.bind(this, contract)}>
-              Terminate
-            </Button>
-          </div>
-        ) : (
-          <div key={contract.id}>
-            <p>
-              {contract.id}. {contract.employees[0].firstName}{' '}
-              {contract.employees[0].secondName}
-            </p>
-            <p>FIRED</p>
-          </div>
-        )
-      )}
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>ID</TableCell>
+            <TableCell>FULL NAME</TableCell>
+            <TableCell>START</TableCell>
+            <TableCell>END</TableCell>
+            <TableCell>DAYS</TableCell>
+            <TableCell>STATUS</TableCell>
+            <TableCell>Options</TableCell>
+            <TableCell>Options</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {contractList.map((contract) =>
+            contract.activeContract === true ? (
+              <TableRow key={contract.id}>
+                <TableCell>{contract.contractId}</TableCell>
+                <TableCell>
+                  {contract.employees[0].firstName}{' '}
+                  {contract.employees[0].secondName}
+                </TableCell>
+                <TableCell>{contract.contractStart}</TableCell>
+                <TableCell>{contract.contractEnd}</TableCell>
+                <TableCell hidden disabled>
+                  {
+                    (contract.daysLeft = Math.floor(
+                      Math.ceil(
+                        (new Date(contract.contractEnd) - currentDate) /
+                          (1000 * 60 * 60 * 24)
+                      )
+                    ))
+                  }
+                </TableCell>
+
+                {contract.daysLeft < 0 ? (
+                  <TableCell>EXPIRED</TableCell>
+                ) : (
+                  <TableCell>VALID</TableCell>
+                )}
+                <TableCell>
+                  <Button onClick={handleUpdateContract.bind(this, contract)}>
+                    Update
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  <Button
+                    onClick={handleTerminateContract.bind(this, contract)}
+                  >
+                    Terminate
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ) : (
+              <TableRow>
+                <TableCell>{contract.contractId}</TableCell>
+                <TableCell>
+                  {contract.employees[0].firstName}{' '}
+                  {contract.employees[0].secondName}
+                </TableCell>
+                <TableCell>{contract.contractStart}</TableCell>
+                <TableCell>{contract.contractEnd}</TableCell>
+                <TableCell>/</TableCell>
+                <TableCell>FIRED</TableCell>
+                <TableCell>/</TableCell>
+                <TableCell>/</TableCell>
+              </TableRow>
+            )
+          )}
+        </TableBody>
+      </Table>
     </div>
   );
 };
