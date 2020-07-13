@@ -5,6 +5,8 @@ import {
   UPDATE_CONTRACT_START,
   UPDATE_ACTIVE_CONTRACT,
   UPDATE_CONTRACT_END,
+  END_CONTRACT_SUCCESS,
+  END_CONTRACT_FAILURE,
 } from './UpdateContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -73,5 +75,35 @@ export const updateActiveContract = (e) => {
   return {
     type: UPDATE_ACTIVE_CONTRACT,
     payload: e,
+  };
+};
+
+// request end contract
+export const requestEndContract = () => {
+  return (dispatch, getState) => {
+    let { currentDate } = getState().ContractReducer;
+    let currentUser = getState().UpdateContractReducer.selectedContract;
+    console.log(currentUser);
+
+    return axios
+      .put(`http://localhost:4000/contracts/update`, {
+        id: currentUser.id,
+        contractStart: currentUser.contractStart,
+        contractEnd: currentDate,
+        activeContract: false,
+      })
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: END_CONTRACT_SUCCESS,
+          payload: response.data.updatedContract,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: END_CONTRACT_FAILURE,
+        });
+      });
   };
 };

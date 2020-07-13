@@ -9,7 +9,10 @@ import { useHistory } from 'react-router-dom';
 import { requestGetContracts } from './ContractActions';
 // Material Ui
 import { Typography, Button } from '@material-ui/core';
-import { selectContract } from '../UpdateContract/UpdateContractActions';
+import {
+  selectContract,
+  requestEndContract,
+} from '../UpdateContract/UpdateContractActions';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -27,6 +30,12 @@ const Contract = () => {
     console.log(e);
     dispatch(selectContract(e));
     history.push('/updatecontract');
+  };
+
+  const handleTerminateContract = (e) => {
+    console.log(e);
+    dispatch(selectContract(e));
+    dispatch(requestEndContract());
   };
 
   return (
@@ -66,6 +75,9 @@ const Contract = () => {
             </h5>
             <Button onClick={handleUpdateContract.bind(this, contract)}>
               Update
+            </Button>
+            <Button onClick={handleTerminateContract.bind(this, contract)}>
+              Terminate
             </Button>
           </div>
         ) : (
