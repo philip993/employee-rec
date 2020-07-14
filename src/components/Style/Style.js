@@ -299,6 +299,32 @@ const Styles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '1rem',
   },
+  // Contracts
+  contractTable: {
+    margin: 'auto',
+    marginTop: '50px',
+    marginBottom: '50px',
+  },
+  contractHeader: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  contractCell: {
+    height: '25px',
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
+  },
+  contractCellTwo: {
+    textAlign: 'center',
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
+  },
+  contractTerminateBtn: {
+    color: '#D30000',
+  },
 }));
 
 export default Styles;

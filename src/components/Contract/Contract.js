@@ -17,6 +17,7 @@ import {
   TableCell,
   TableBody,
 } from '@material-ui/core';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import {
   selectContract,
   requestEndContract,
@@ -49,9 +50,9 @@ const Contract = () => {
   return (
     <div>
       <Typography variant="h4">Contract</Typography>
-      <Table>
+      <Table className={classes.contractTable}>
         <TableHead>
-          <TableRow>
+          <TableRow className={classes.contractHeader}>
             <TableCell>ID</TableCell>
             <TableCell>FULL NAME</TableCell>
             <TableCell>START</TableCell>
@@ -59,21 +60,27 @@ const Contract = () => {
             <TableCell>DAYS</TableCell>
             <TableCell>STATUS</TableCell>
             <TableCell>Options</TableCell>
-            <TableCell>Options</TableCell>
+            <TableCell>TERMINATE</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {contractList.map((contract) =>
             contract.activeContract === true ? (
               <TableRow key={contract.id}>
-                <TableCell>{contract.contractId}</TableCell>
-                <TableCell>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractId}
+                </TableCell>
+                <TableCell className={classes.contractCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell>{contract.contractStart}</TableCell>
-                <TableCell>{contract.contractEnd}</TableCell>
-                <TableCell hidden disabled>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractStart}
+                </TableCell>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractEnd}
+                </TableCell>
+                <TableCell className={classes.contractCell} hidden disabled>
                   {
                     (contract.daysLeft = Math.floor(
                       Math.ceil(
@@ -85,36 +92,45 @@ const Contract = () => {
                 </TableCell>
 
                 {contract.daysLeft < 0 ? (
-                  <TableCell>EXPIRED</TableCell>
+                  <TableCell className={classes.contractCell}>
+                    EXPIRED
+                  </TableCell>
                 ) : (
-                  <TableCell>VALID</TableCell>
+                  <TableCell className={classes.contractCell}>VALID</TableCell>
                 )}
-                <TableCell>
+                <TableCell className={classes.contractCellTwo}>
                   <Button onClick={handleUpdateContract.bind(this, contract)}>
                     Update
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell className={classes.contractCellTwo}>
                   <Button
+                    className={classes.contractTerminateBtn}
                     onClick={handleTerminateContract.bind(this, contract)}
                   >
-                    Terminate
+                    <HighlightOffIcon />
                   </Button>
                 </TableCell>
               </TableRow>
             ) : (
               <TableRow>
-                <TableCell>{contract.contractId}</TableCell>
-                <TableCell>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractId}
+                </TableCell>
+                <TableCell className={classes.contractCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell>{contract.contractStart}</TableCell>
-                <TableCell>{contract.contractEnd}</TableCell>
-                <TableCell>/</TableCell>
-                <TableCell>FIRED</TableCell>
-                <TableCell>/</TableCell>
-                <TableCell>/</TableCell>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractStart}
+                </TableCell>
+                <TableCell className={classes.contractCell}>
+                  {contract.contractEnd}
+                </TableCell>
+                <TableCell className={classes.contractCell}>/</TableCell>
+                <TableCell className={classes.contractCell}>FIRED</TableCell>
+                <TableCell className={classes.contractCellTwo}>/</TableCell>
+                <TableCell className={classes.contractCellTwo}>/</TableCell>
               </TableRow>
             )
           )}
