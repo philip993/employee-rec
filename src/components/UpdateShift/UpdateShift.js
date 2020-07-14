@@ -18,6 +18,7 @@ import {
   addMealCount,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
+import { requestGetContracts } from '../Contract/ContractActions';
 // Material Ui
 import {
   FormGroup,
@@ -30,7 +31,6 @@ import {
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import { requestGetShifts } from '../Shift/ShiftActions';
 
 const UpdateShift = () => {
   const {
@@ -38,11 +38,12 @@ const UpdateShift = () => {
     shiftCode,
     startDate,
     endDate,
-    employees,
+    contractList,
     errorsShift,
   } = useSelector((state) => ({
     ...state.UpdateShiftReducer,
     ...state.EmployeeReducer,
+    ...state.ContractReducer,
   }));
   const dispatch = useDispatch();
   const classes = Styles();
@@ -58,7 +59,7 @@ const UpdateShift = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(requestGetShifts());
+    dispatch(requestGetContracts());
   }, []);
 
   const handleSubmit = (e) => {
@@ -100,8 +101,11 @@ const UpdateShift = () => {
             id="employeeId"
             onBlur={validator.current.showMessageFor('employee id')}
           >
-            {employees.map((el) => (
-              <MenuItem value={el.id}>{el.id}</MenuItem>
+            {contractList.map((el) => (
+              <MenuItem value={el.contractId}>
+                {el.contractId}. {el.employees[0].firstName}{' '}
+                {el.employees[0].secondName}
+              </MenuItem>
             ))}
           </Select>
           <FormHelperText className={classes.updateHelperText}>

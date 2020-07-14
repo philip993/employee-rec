@@ -18,7 +18,6 @@ import { requestEmployees } from '../Employee/EmployeeActions';
 import {
   Typography,
   FormGroup,
-  InputBase,
   InputLabel,
   FormHelperText,
   Button,
