@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+// React Router Dom
+import { useHistory } from 'react-router-dom';
 // Redux actions
 import {
   requestUpdateContract,
@@ -30,12 +32,14 @@ const UpdateContract = () => {
     selectedContract,
     updatedContractStart,
     updatedContractEnd,
+    updateContractErrors,
   } = useSelector((state) => ({
     ...state.UpdateContractReducer,
     ...state.ContractReducer,
   }));
   const dispatch = useDispatch();
   const classes = Style();
+  const history = useHistory();
 
   const [clicked, setClicked] = useState(false);
 
@@ -57,6 +61,11 @@ const UpdateContract = () => {
   return (
     <div>
       <Typography variant="h4">Update Contract</Typography>
+      {updateContractErrors === null
+        ? ''
+        : updateContractErrors === false
+        ? history.push('/updcontractsuccess')
+        : history.push('/updcontractfail')}
       <form className={classes.updateForm}>
         <Typography variant="h6" className={classes.updateSub}>
           UPDATE CONTRACT

@@ -6,6 +6,7 @@ import {
   UPDATE_CONTRACT_END,
   END_CONTRACT_SUCCESS,
   END_CONTRACT_FAILURE,
+  CHANGE_ERROR_STATUS,
 } from './UpdateContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -96,5 +97,12 @@ export const requestEndContract = () => {
           type: END_CONTRACT_FAILURE,
         });
       });
+  };
+};
+
+// errors
+export const changeErrorsStatus = () => {
+  return {
+    type: CHANGE_ERROR_STATUS,
   };
 };

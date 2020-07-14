@@ -5,6 +5,7 @@ import {
   UPDATE_CONTRACT_START,
   UPDATE_CONTRACT_END,
 } from './UpdateContractActionTypes';
+import { CHANGE_ERROR_STATUS } from '../UpdateShift/UpdateShiftActionTypes';
 
 const initialState = {
   updatedContractStart: null,
@@ -46,6 +47,11 @@ export const UpdateContractReducer = (state = initialState, action) => {
       return {
         ...state,
         updatedContractEnd: action.payload,
+      };
+    case CHANGE_ERROR_STATUS:
+      return {
+        ...state,
+        updateContractErrors: null,
       };
     default:
       return state;

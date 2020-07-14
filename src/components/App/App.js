@@ -22,6 +22,8 @@ import Meals from '../Meals/Meals';
 import Contract from '../Contract/Contract';
 import AddContract from '../AddContract/AddContract';
 import UpdateContract from '../UpdateContract/UpdateContract';
+import UpdateContractSuccess from '../UpdateContract/UpdateContractSuccess';
+import UpdateContractError from '../UpdateContract/UpdateContractError';
 
 const App = () => {
   const classes = Styles();
@@ -44,6 +46,12 @@ const App = () => {
         <Route path="/contracts" exact component={Contract} />
         <Route path="/addcontract" exact component={AddContract} />
         <Route path="/updatecontract" exact component={UpdateContract} />
+        <Route
+          path="/updcontractsuccess"
+          exact
+          component={UpdateContractSuccess}
+        />
+        <Route path="/updcontractfail" exact component={UpdateContractError} />
       </Switch>
     </div>
   );
