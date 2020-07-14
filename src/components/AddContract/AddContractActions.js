@@ -4,6 +4,7 @@ import {
   INPUT_CONTRACT_ID,
   INPUT_CONTRACT_START,
   CONTRACT_90_DAYS,
+  CHANGE_ERROR_STATUS,
 } from './AddContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -57,5 +58,12 @@ export const contract90days = (e) => {
   return {
     type: CONTRACT_90_DAYS,
     payload: e.setDate(e.getDate() + 90),
+  };
+};
+
+// errors
+export const changeErrorsStatus = () => {
+  return {
+    type: CHANGE_ERROR_STATUS,
   };
 };

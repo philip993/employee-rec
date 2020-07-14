@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 // Style
 import Style from '../Style/Style';
 import './AddContractStyle.scss';
+// React Router Dom
+import { useHistory } from 'react-router-dom';
 // Simple React Validator
 import SimpleReactValidator from 'simple-react-validator';
 // Redux Actions
@@ -27,14 +29,19 @@ import {
 import { KeyboardDatePicker } from '@material-ui/pickers';
 
 const AddContract = () => {
-  const { contractId, contractStart, contractEnd, employees } = useSelector(
-    (state) => ({
-      ...state.AddContractReducer,
-      ...state.EmployeeReducer,
-    })
-  );
+  const {
+    contractId,
+    contractStart,
+    contractEnd,
+    employees,
+    addContractErrors,
+  } = useSelector((state) => ({
+    ...state.AddContractReducer,
+    ...state.EmployeeReducer,
+  }));
   const dispatch = useDispatch();
   const classes = Style();
+  const history = useHistory();
   const validator = useRef(
     new SimpleReactValidator({
       autoForceUpdate: this,
@@ -62,6 +69,11 @@ const AddContract = () => {
   return (
     <div>
       <Typography variant="h4">Add Contract</Typography>
+      {addContractErrors === null
+        ? ''
+        : addContractErrors === false
+        ? history.push('/addcontractsuccess')
+        : history.push('/addcontractfail')}
       <form className={classes.updateForm}>
         <Typography variant="h6" className={classes.updateSub}>
           ADD CONTRACT

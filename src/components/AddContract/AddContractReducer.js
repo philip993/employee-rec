@@ -4,6 +4,7 @@ import {
   INPUT_CONTRACT_START,
   INPUT_CONTRACT_ID,
   CONTRACT_90_DAYS,
+  CHANGE_ERROR_STATUS,
 } from './AddContractActionTypes';
 
 const initialState = {
@@ -45,6 +46,11 @@ export const AddContractReducer = (state = initialState, action) => {
       return {
         ...state,
         contractEnd: action.payload,
+      };
+    case CHANGE_ERROR_STATUS:
+      return {
+        ...state,
+        addContractErrors: null,
       };
     default:
       return state;
