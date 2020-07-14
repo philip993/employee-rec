@@ -3,7 +3,6 @@ import {
   FAILURE_UPDATE_CONTRACT,
   SELECT_ONE_CONTRACT,
   UPDATE_CONTRACT_START,
-  UPDATE_ACTIVE_CONTRACT,
   UPDATE_CONTRACT_END,
 } from './UpdateContractActionTypes';
 
@@ -47,11 +46,6 @@ export const UpdateContractReducer = (state = initialState, action) => {
       return {
         ...state,
         updatedContractEnd: action.payload,
-      };
-    case UPDATE_ACTIVE_CONTRACT:
-      return {
-        ...state,
-        updatedActiveContract: action.payload,
       };
     default:
       return state;

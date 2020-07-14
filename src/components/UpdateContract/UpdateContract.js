@@ -7,7 +7,6 @@ import Style from '../Style/Style';
 import {
   requestUpdateContract,
   updateContractStart,
-  updateActiveContract,
   updateContractEnd,
   selectContract,
 } from './UpdateContractActions';
@@ -31,7 +30,6 @@ const UpdateContract = () => {
     selectedContract,
     updatedContractStart,
     updatedContractEnd,
-    updatedActiveContract,
   } = useSelector((state) => ({
     ...state.UpdateContractReducer,
     ...state.ContractReducer,
@@ -54,10 +52,6 @@ const UpdateContract = () => {
     setClicked(true);
     dispatch(updateContractStart(e));
     dispatch(updateContractEnd(e));
-  };
-
-  const handleUpdateActiveContract = (e) => {
-    dispatch(updateActiveContract(e.target.value));
   };
 
   return (
@@ -105,12 +99,8 @@ const UpdateContract = () => {
         </FormGroup>
         <FormGroup className={classes.addFormGroup}>
           <InputLabel className={classes.formLabel}>Active Contract</InputLabel>
-          <RadioGroup
-            value={updatedActiveContract}
-            onChange={handleUpdateActiveContract}
-          >
-            <FormControlLabel value="true" control={<Radio />} label="YES" />
-            <FormControlLabel value="false" control={<Radio />} label="NO" />
+          <RadioGroup>
+            <FormControlLabel defaultChecked control={<Radio />} label="YES" />
           </RadioGroup>
         </FormGroup>
         <FormGroup className={classes.updateBtnGroup}>

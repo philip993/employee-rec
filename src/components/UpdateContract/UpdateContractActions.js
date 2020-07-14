@@ -3,7 +3,6 @@ import {
   FAILURE_UPDATE_CONTRACT,
   SELECT_ONE_CONTRACT,
   UPDATE_CONTRACT_START,
-  UPDATE_ACTIVE_CONTRACT,
   UPDATE_CONTRACT_END,
   END_CONTRACT_SUCCESS,
   END_CONTRACT_FAILURE,
@@ -17,7 +16,6 @@ export const requestUpdateContract = () => {
     let {
       updatedContractStart,
       updatedContractEnd,
-      updatedActiveContract,
     } = getState().UpdateContractReducer;
     let tt = getState().UpdateContractReducer.selectedContract;
     let id = tt.id;
@@ -28,7 +26,7 @@ export const requestUpdateContract = () => {
         id,
         contractStart: updatedContractStart,
         contractEnd: updatedContractEnd,
-        activeContract: updatedActiveContract,
+        activeContract: true,
       })
       .then((response) => {
         console.log(response);
@@ -68,13 +66,6 @@ export const updateContractEnd = (e) => {
   return {
     type: UPDATE_CONTRACT_END,
     payload: e.setDate(e.getDate() + 90),
-  };
-};
-
-export const updateActiveContract = (e) => {
-  return {
-    type: UPDATE_ACTIVE_CONTRACT,
-    payload: e,
   };
 };
 
