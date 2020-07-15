@@ -2,6 +2,8 @@ import {
   SEND_MAIL_SUCCESS,
   SEND_MAIL_FAILURE,
   EMAIL_BODY_INPUT,
+  EMAIL_SUBJECT_INPUT,
+  EMAIL_RECIPIENT_INPUT,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
@@ -9,10 +11,16 @@ import axios from 'axios';
 // request
 export const requesstSendMail = () => {
   return (dispatch, getState) => {
-    let { emailBody } = getState().SendMailReducer;
+    let {
+      emailBody,
+      emailSubject,
+      emailRecipient,
+    } = getState().SendMailReducer;
     return axios
       .post(`http://localhost:4000/mail/sent`, {
         emailBody,
+        emailSubject,
+        emailRecipient,
       })
       .then((response) => {
         console.log(response);
@@ -34,6 +42,20 @@ export const requesstSendMail = () => {
 export const emailBodyInput = (e) => {
   return {
     type: EMAIL_BODY_INPUT,
+    payload: e,
+  };
+};
+
+export const emailSubjectInput = (e) => {
+  return {
+    type: EMAIL_SUBJECT_INPUT,
+    payload: e,
+  };
+};
+
+export const emailRecipentInput = (e) => {
+  return {
+    type: EMAIL_RECIPIENT_INPUT,
     payload: e,
   };
 };
