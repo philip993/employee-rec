@@ -325,6 +325,12 @@ const Styles = makeStyles((theme) => ({
   contractTerminateBtn: {
     color: '#D30000',
   },
+  // success/error msg
+  successContainer: {
+    margin: 'auto',
+    marginTop: '50px',
+    marginBottom: '50px',
+  },
 }));
 
 export default Styles;
