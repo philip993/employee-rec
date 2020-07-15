@@ -2,7 +2,7 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 exports.sendMail = (req, res) => {
-  let { reciepient, sender, emailBody } = req.body;
+  let { emailRecipient, emailBody, emailSubject } = req.body;
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -17,11 +17,9 @@ exports.sendMail = (req, res) => {
 
   let mailOptions = {
     from: process.env.USER_EMAIL,
-    to: process.env.TEST_EMAIL,
-    subject: 'Second Email',
-    text: 'This is first email sent from Server.',
-    message: emailBody,
-    // html: '<b>From APP something </b>',
+    to: emailRecipient,
+    subject: emailSubject,
+    text: emailBody,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
