@@ -41,6 +41,9 @@ const Navbar = () => {
       <Button>
         <Link to="/addcontract">Add Contract</Link>
       </Button>
+      <Button>
+        <Link to="/sendmail">Mail</Link>
+      </Button>
     </div>
   );
 };
