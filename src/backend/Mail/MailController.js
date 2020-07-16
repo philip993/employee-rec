@@ -24,8 +24,15 @@ exports.sendMail = (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      return console.log(error);
+      return res.status(500).json({
+        msgText: 'SYSTEM ERROR. MESSAGE IS NOT SENT!',
+      });
     }
     console.log('Message sent:', info.messageId);
+    res.status(200).json({
+      messageId: info.messageId,
+      msgText: 'MESSAGE SENT',
+    });
   });
+  transporter.sendMail();
 };
