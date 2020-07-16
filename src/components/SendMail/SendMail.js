@@ -3,9 +3,10 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+import './SendMailStyle.scss';
 // React Router Dom
 import { useHistory } from 'react-router-dom';
-// Reduc Actions
+// Redux Actions
 import {
   requesstSendMail,
   emailBodyInput,
@@ -20,6 +21,7 @@ import {
   InputLabel,
   FormGroup,
 } from '@material-ui/core';
+import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
 const SendMail = () => {
   const {
@@ -29,6 +31,7 @@ const SendMail = () => {
     sendMailError,
   } = useSelector((state) => state.SendMailReducer);
   const dispatch = useDispatch();
+  const classes = Style();
   const history = useHistory();
 
   const handleEmailBody = (e) => {
@@ -56,37 +59,46 @@ const SendMail = () => {
         : sendMailError === false
         ? history.push('/mailsuccess')
         : history.push('/mailfail')}
-      <form>
-        <Typography variant="h6">MAIL FORM</Typography>
-        <FormGroup>
-          <InputLabel>RECIPIENT</InputLabel>
+      <form className={classes.mailForm}>
+        <Typography variant="h6" className={classes.mailSub}>
+          SEND MAIL
+        </Typography>
+        <FormGroup className={classes.mailFormGroup}>
+          <InputLabel className={classes.mailLabel}>RECIPIENT</InputLabel>
           <InputBase
+            id="recipient"
+            type="email"
             value={emailRecipient}
             onChange={handleEmailRecipient}
-            placeholder="RECIPIENT"
+            placeholder="example@example.com"
           />
         </FormGroup>
-        <FormGroup>
-          <InputLabel>SUBJECT</InputLabel>
+        <FormGroup className={classes.mailFormGroup}>
+          <InputLabel className={classes.mailLabel}>SUBJECT</InputLabel>
           <InputBase
+            id="subject"
+            type="text"
             value={emailSubject}
             onChange={handleEmailSubject}
-            placeholder="EMAIL SUBJECT"
+            placeholder="subject of email..."
           />
         </FormGroup>
-        <FormGroup>
-          <InputLabel>MESSAGE</InputLabel>
+        <FormGroup className={classes.mailFormGroup}>
+          <InputLabel className={classes.mailLabel}>MESSAGE</InputLabel>
           <InputBase
+            id="message"
             type="text"
             multiline="true"
-            rows="10"
+            rows="12"
             value={emailBody}
-            placeholder="MESSAGE EMAIL"
+            placeholder="Enter message..."
             onChange={handleEmailBody}
           />
         </FormGroup>
-        <FormGroup>
-          <Button onClick={handleSubmit}>Send</Button>
+        <FormGroup className={classes.mailBtnGroup}>
+          <Button onClick={handleSubmit} className={classes.mailButton}>
+            Send <MailOutlineIcon />
+          </Button>
         </FormGroup>
       </form>
     </div>

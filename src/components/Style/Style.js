@@ -331,6 +331,70 @@ const Styles = makeStyles((theme) => ({
     marginTop: '50px',
     marginBottom: '50px',
   },
+  // Update Shift
+  mailForm: {
+    width: '540px',
+    height: '620px',
+    margin: 'auto',
+    border: 'solid 1px #4682b4',
+    backgroundColor: '#F5F5F5',
+    marginTop: '50px',
+  },
+  mailFormGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+    backgroundColor: '#fff',
+    border: 'solid 1px #E9EBEE',
+  },
+  mailSub: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  mailLabel: {
+    margin: 'auto',
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    backgroundColor: '#B9BBB6',
+    width: '100%',
+    paddingBottom: '5px',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  mailBtnGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+    backgroundColor: '#F5F5F5',
+  },
+  mailButton: {
+    border: 'solid 1px #007fff',
+    background: '#fff',
+    color: '#007fff',
+    fontWeight: 'bold',
+    width: '50%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#007fff',
+      color: '#fff',
+      width: '50%',
+      margin: 'auto',
+      marginTop: '25px',
+    },
+
+    '&:active': {
+      boxShadow: '0 0 5px #007fff',
+    },
+  },
 }));
 
 export default Styles;
