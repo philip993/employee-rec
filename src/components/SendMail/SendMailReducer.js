@@ -4,6 +4,7 @@ import {
   EMAIL_BODY_INPUT,
   EMAIL_SUBJECT_INPUT,
   EMAIL_RECIPIENT_INPUT,
+  CHANGE_ERROR_STATUS,
 } from './SendMailActionTypes';
 
 const initalState = {
@@ -48,6 +49,11 @@ export const SendMailReducer = (state = initalState, action) => {
       return {
         ...state,
         emailRecipient: action.payload,
+      };
+    case CHANGE_ERROR_STATUS:
+      return {
+        ...state,
+        sendMailError: null,
       };
     default:
       return state;

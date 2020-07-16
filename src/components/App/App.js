@@ -27,6 +27,8 @@ import UpdateContractError from '../UpdateContract/UpdateContractError';
 import AddContractSuccess from '../AddContract/AddContractSuccess';
 import AddContractError from '../AddContract/AddContractError';
 import SendMail from '../SendMail/SendMail';
+import SendMailSuccess from '../SendMail/SendMailSuccess';
+import SendMailError from '../SendMail/SendMailError';
 
 const App = () => {
   const classes = Styles();
@@ -62,6 +64,8 @@ const App = () => {
         />
         <Route path="/updcontractfail" exact component={UpdateContractError} />
         <Route path="/sendmail" exact component={SendMail} />
+        <Route path="/mailsuccess" exact component={SendMailSuccess} />
+        <Route path="/mailfail" exact component={SendMailError} />
       </Switch>
     </div>
   );

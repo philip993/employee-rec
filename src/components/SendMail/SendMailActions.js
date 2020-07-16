@@ -4,6 +4,7 @@ import {
   EMAIL_BODY_INPUT,
   EMAIL_SUBJECT_INPUT,
   EMAIL_RECIPIENT_INPUT,
+  CHANGE_ERROR_STATUS,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
@@ -57,5 +58,12 @@ export const emailRecipentInput = (e) => {
   return {
     type: EMAIL_RECIPIENT_INPUT,
     payload: e,
+  };
+};
+
+// errors
+export const changeErrorsStatus = () => {
+  return {
+    type: CHANGE_ERROR_STATUS,
   };
 };

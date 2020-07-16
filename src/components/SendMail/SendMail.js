@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+// React Router Dom
+import { useHistory } from 'react-router-dom';
 // Reduc Actions
 import {
   requesstSendMail,
@@ -20,13 +22,16 @@ import {
 } from '@material-ui/core';
 
 const SendMail = () => {
-  const { emailBody, emailSubject, emailRecipient } = useSelector(
-    (state) => state.SendMailReducer
-  );
+  const {
+    emailBody,
+    emailSubject,
+    emailRecipient,
+    sendMailError,
+  } = useSelector((state) => state.SendMailReducer);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleEmailBody = (e) => {
-    console.log(e.target.value);
     dispatch(emailBodyInput(e.target.value));
   };
 
@@ -46,6 +51,11 @@ const SendMail = () => {
   return (
     <div>
       <Typography variant="h4">Mail</Typography>
+      {sendMailError === null
+        ? ''
+        : sendMailError === false
+        ? history.push('/mailsuccess')
+        : history.push('/mailfail')}
       <form>
         <Typography variant="h6">MAIL FORM</Typography>
         <FormGroup>
@@ -68,6 +78,8 @@ const SendMail = () => {
           <InputLabel>MESSAGE</InputLabel>
           <InputBase
             type="text"
+            multiline="true"
+            rows="10"
             value={emailBody}
             placeholder="MESSAGE EMAIL"
             onChange={handleEmailBody}
