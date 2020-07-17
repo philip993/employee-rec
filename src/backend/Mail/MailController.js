@@ -2,7 +2,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 exports.sendMail = (req, res) => {
-  let { emailRecipient, emailBody, emailSubject } = req.body;
+  let { emailRecipient, emailBody, emailSubject, attachFile } = req.body;
+  console.log(attachFile);
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -20,10 +21,18 @@ exports.sendMail = (req, res) => {
     to: emailRecipient,
     subject: emailSubject,
     text: emailBody,
+    attachments: [
+      {
+        filename: attachFile,
+        path: __dirname + '/upload/' + attachFile,
+        contentType: 'application/pdf',
+      },
+    ],
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+      console.log(error);
       return res.status(500).json({
         msgText: 'SYSTEM ERROR. MESSAGE IS NOT SENT!',
       });

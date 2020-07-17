@@ -12,6 +12,7 @@ import {
   emailBodyInput,
   emailSubjectInput,
   emailRecipentInput,
+  emailAttachmentInput,
 } from './SendMailActions';
 // Material Ui
 import {
@@ -29,6 +30,7 @@ const SendMail = () => {
     emailSubject,
     emailRecipient,
     sendMailError,
+    emailAttachment,
   } = useSelector((state) => state.SendMailReducer);
   const dispatch = useDispatch();
   const classes = Style();
@@ -44,6 +46,11 @@ const SendMail = () => {
 
   const handleEmailRecipient = (e) => {
     dispatch(emailRecipentInput(e.target.value));
+  };
+
+  const handleEmailAttachment = (e) => {
+    console.log(e.currentTarget.files[0]);
+    dispatch(emailAttachmentInput(e.target.value));
   };
 
   const handleSubmit = (e) => {
@@ -93,6 +100,14 @@ const SendMail = () => {
             value={emailBody}
             placeholder="Enter message..."
             onChange={handleEmailBody}
+          />
+        </FormGroup>
+        <FormGroup>
+          <InputLabel>Attachment</InputLabel>
+          <InputBase
+            type="file"
+            value={emailAttachment}
+            onChange={handleEmailAttachment}
           />
         </FormGroup>
         <FormGroup className={classes.mailBtnGroup}>

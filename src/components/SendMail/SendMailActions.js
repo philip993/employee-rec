@@ -5,6 +5,7 @@ import {
   EMAIL_SUBJECT_INPUT,
   EMAIL_RECIPIENT_INPUT,
   CHANGE_ERROR_STATUS,
+  EMAIL_ATTACHMENT_INPUT,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
@@ -16,12 +17,14 @@ export const requesstSendMail = () => {
       emailBody,
       emailSubject,
       emailRecipient,
+      emailAttachment,
     } = getState().SendMailReducer;
     return axios
       .post(`http://localhost:4000/mail/sent`, {
         emailBody,
         emailSubject,
         emailRecipient,
+        emailAttachment,
       })
       .then((response) => {
         console.log(response);
@@ -58,6 +61,15 @@ export const emailRecipentInput = (e) => {
   return {
     type: EMAIL_RECIPIENT_INPUT,
     payload: e,
+  };
+};
+
+export const emailAttachmentInput = (e) => {
+  return (dispatch) => {
+    dispatch({
+      type: EMAIL_ATTACHMENT_INPUT,
+      payload: e,
+    });
   };
 };
 
