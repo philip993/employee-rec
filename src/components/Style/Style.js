@@ -395,6 +395,16 @@ const Styles = makeStyles((theme) => ({
       boxShadow: '0 0 5px #007fff',
     },
   },
+  mailProgress: {
+    // margin: '0 auto',
+    right: '50%',
+    left: '50%',
+    // width: '50px',
+    // height: '50px',
+    position: 'absolute',
+    margin: '-50px 0px 0px -50px',
+    marginTop: '20%',
+  },
 }));
 
 export default Styles;

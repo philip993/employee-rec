@@ -6,6 +6,7 @@ import {
   EMAIL_RECIPIENT_INPUT,
   CHANGE_ERROR_STATUS,
   EMAIL_ATTACHMENT_NAME,
+  IS_LOADING_TRUE,
 } from './SendMailActionTypes';
 
 const initalState = {
@@ -15,6 +16,7 @@ const initalState = {
   emailSubject: '',
   emailRecipient: '',
   emailAttachment: '',
+  isLoading: null,
 };
 
 export const SendMailReducer = (state = initalState, action) => {
@@ -27,6 +29,7 @@ export const SendMailReducer = (state = initalState, action) => {
         emailBody: '',
         emailSubject: '',
         emailRecipient: '',
+        isLoading: false,
       };
     case SEND_MAIL_FAILURE:
       return {
@@ -36,6 +39,7 @@ export const SendMailReducer = (state = initalState, action) => {
         emailBody: '',
         emailSubject: '',
         emailRecipient: '',
+        isLoading: false,
       };
     case EMAIL_BODY_INPUT:
       return {
@@ -61,6 +65,11 @@ export const SendMailReducer = (state = initalState, action) => {
       return {
         ...state,
         sendMailError: null,
+      };
+    case IS_LOADING_TRUE:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

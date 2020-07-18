@@ -13,6 +13,7 @@ import {
   emailSubjectInput,
   emailRecipentInput,
   emailAttachmentName,
+  toggleLoaderTrue,
 } from './SendMailActions';
 // Material Ui
 import {
@@ -21,6 +22,7 @@ import {
   Typography,
   InputLabel,
   FormGroup,
+  CircularProgress,
 } from '@material-ui/core';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
@@ -31,6 +33,7 @@ const SendMail = () => {
     emailRecipient,
     sendMailError,
     emailAttachment,
+    isLoading,
   } = useSelector((state) => state.SendMailReducer);
   const dispatch = useDispatch();
   const classes = Style();
@@ -56,6 +59,7 @@ const SendMail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(toggleLoaderTrue());
     dispatch(requesstSendMail());
   };
 
@@ -67,7 +71,15 @@ const SendMail = () => {
         : sendMailError === false
         ? history.push('/mailsuccess')
         : history.push('/mailfail')}
-      <form className={classes.mailForm}>
+
+      {isLoading === null ? (
+        ''
+      ) : isLoading === false ? (
+        ''
+      ) : (
+        <CircularProgress className={classes.mailProgress} />
+      )}
+      <form className={classes.mailForm} disabled={isLoading === true}>
         <Typography variant="h6" className={classes.mailSub}>
           SEND MAIL
         </Typography>
@@ -108,7 +120,11 @@ const SendMail = () => {
           <InputBase type="file" onChange={handleEmailAttachment} />
         </FormGroup>
         <FormGroup className={classes.mailBtnGroup}>
-          <Button onClick={handleSubmit} className={classes.mailButton}>
+          <Button
+            onClick={handleSubmit}
+            disabled={isLoading === true}
+            className={classes.mailButton}
+          >
             Send <MailOutlineIcon />
           </Button>
         </FormGroup>

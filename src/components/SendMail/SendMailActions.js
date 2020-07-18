@@ -6,6 +6,7 @@ import {
   EMAIL_RECIPIENT_INPUT,
   CHANGE_ERROR_STATUS,
   EMAIL_ATTACHMENT_NAME,
+  IS_LOADING_TRUE,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
@@ -75,5 +76,15 @@ export const emailAttachmentName = (e) => {
 export const changeErrorsStatus = () => {
   return {
     type: CHANGE_ERROR_STATUS,
+  };
+};
+
+// loader
+export const toggleLoaderTrue = () => {
+  return (dispatch) => {
+    dispatch({
+      type: IS_LOADING_TRUE,
+      payload: true,
+    });
   };
 };
