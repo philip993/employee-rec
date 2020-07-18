@@ -12,7 +12,7 @@ import {
   emailBodyInput,
   emailSubjectInput,
   emailRecipentInput,
-  emailAttachmentInput,
+  emailAttachmentName,
 } from './SendMailActions';
 // Material Ui
 import {
@@ -49,8 +49,9 @@ const SendMail = () => {
   };
 
   const handleEmailAttachment = (e) => {
-    console.log(e.currentTarget.files[0]);
-    dispatch(emailAttachmentInput(e.target.value));
+    let file = e.target.files[0];
+    console.log(file.name);
+    dispatch(emailAttachmentName(file.name));
   };
 
   const handleSubmit = (e) => {
@@ -96,19 +97,15 @@ const SendMail = () => {
             id="message"
             type="text"
             multiline="true"
-            rows="12"
+            rows="8"
             value={emailBody}
             placeholder="Enter message..."
             onChange={handleEmailBody}
           />
         </FormGroup>
-        <FormGroup>
-          <InputLabel>Attachment</InputLabel>
-          <InputBase
-            type="file"
-            value={emailAttachment}
-            onChange={handleEmailAttachment}
-          />
+        <FormGroup className={classes.mailFormGroup}>
+          <InputLabel className={classes.mailLabel}>Attachment</InputLabel>
+          <InputBase type="file" onChange={handleEmailAttachment} />
         </FormGroup>
         <FormGroup className={classes.mailBtnGroup}>
           <Button onClick={handleSubmit} className={classes.mailButton}>

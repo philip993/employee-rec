@@ -5,7 +5,7 @@ import {
   EMAIL_SUBJECT_INPUT,
   EMAIL_RECIPIENT_INPUT,
   CHANGE_ERROR_STATUS,
-  EMAIL_ATTACHMENT_INPUT,
+  EMAIL_ATTACHMENT_NAME,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
@@ -64,12 +64,10 @@ export const emailRecipentInput = (e) => {
   };
 };
 
-export const emailAttachmentInput = (e) => {
-  return (dispatch) => {
-    dispatch({
-      type: EMAIL_ATTACHMENT_INPUT,
-      payload: e,
-    });
+export const emailAttachmentName = (e) => {
+  return {
+    type: EMAIL_ATTACHMENT_NAME,
+    payload: e,
   };
 };
 

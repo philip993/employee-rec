@@ -5,7 +5,7 @@ import {
   EMAIL_SUBJECT_INPUT,
   EMAIL_RECIPIENT_INPUT,
   CHANGE_ERROR_STATUS,
-  EMAIL_ATTACHMENT_INPUT,
+  EMAIL_ATTACHMENT_NAME,
 } from './SendMailActionTypes';
 
 const initalState = {
@@ -14,7 +14,7 @@ const initalState = {
   emailBody: '',
   emailSubject: '',
   emailRecipient: '',
-  emailAttachment: null,
+  emailAttachment: '',
 };
 
 export const SendMailReducer = (state = initalState, action) => {
@@ -52,7 +52,7 @@ export const SendMailReducer = (state = initalState, action) => {
         ...state,
         emailRecipient: action.payload,
       };
-    case EMAIL_ATTACHMENT_INPUT:
+    case EMAIL_ATTACHMENT_NAME:
       return {
         ...state,
         emailAttachment: action.payload,
