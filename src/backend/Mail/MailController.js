@@ -2,8 +2,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 exports.sendMail = (req, res) => {
-  let { emailRecipient, emailBody, emailSubject, attachFile } = req.body;
-  console.log(attachFile);
+  let { emailRecipient, emailBody, emailSubject, emailAttachment } = req.body;
+  console.log(emailAttachment);
   let transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 587,
@@ -23,8 +23,8 @@ exports.sendMail = (req, res) => {
     text: emailBody,
     attachments: [
       {
-        filename: attachFile,
-        path: __dirname + '/upload/' + attachFile,
+        filename: emailAttachment,
+        path: __dirname + '/upload/' + emailAttachment,
         contentType: 'application/pdf',
       },
     ],
