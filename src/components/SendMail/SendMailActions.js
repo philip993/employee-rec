@@ -7,12 +7,13 @@ import {
   CHANGE_ERROR_STATUS,
   EMAIL_ATTACHMENT_NAME,
   IS_LOADING_TRUE,
+  SELECT_ONE_CONTRACT_MAIL,
 } from './SendMailActionTypes';
 // axios
 import axios from 'axios';
 
 // request
-export const requesstSendMail = () => {
+export const requesstSendMail = (e) => {
   return (dispatch, getState) => {
     let {
       emailBody,
@@ -85,6 +86,16 @@ export const toggleLoaderTrue = () => {
     dispatch({
       type: IS_LOADING_TRUE,
       payload: true,
+    });
+  };
+};
+
+// select
+export const selectContractMail = (contract) => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: SELECT_ONE_CONTRACT_MAIL,
+      payload: contract,
     });
   };
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -23,6 +23,8 @@ import {
   InputLabel,
   FormGroup,
   CircularProgress,
+  Select,
+  MenuItem,
 } from '@material-ui/core';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 
@@ -34,10 +36,15 @@ const SendMail = () => {
     sendMailError,
     emailAttachment,
     isLoading,
-  } = useSelector((state) => state.SendMailReducer);
+    selectedContractMail,
+  } = useSelector((state) => ({
+    ...state.SendMailReducer,
+  }));
   const dispatch = useDispatch();
   const classes = Style();
   const history = useHistory();
+
+  const [clicked, setClicked] = useState(false);
 
   const handleEmailBody = (e) => {
     dispatch(emailBodyInput(e.target.value));
@@ -48,6 +55,7 @@ const SendMail = () => {
   };
 
   const handleEmailRecipient = (e) => {
+    setClicked(true);
     dispatch(emailRecipentInput(e.target.value));
   };
 
@@ -85,23 +93,48 @@ const SendMail = () => {
         </Typography>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>RECIPIENT</InputLabel>
-          <InputBase
+          {/* <InputBase
             id="recipient"
             type="email"
-            value={emailRecipient}
+            value={
+              !clicked
+                ? selectedContractMail.employees[0].emailAddress
+                : emailRecipient
+            }
             onChange={handleEmailRecipient}
             placeholder="example@example.com"
-          />
+          /> */}
+          <Select
+            id="recipient"
+            value={emailRecipient}
+            onChange={handleEmailRecipient}
+          >
+            <MenuItem value={selectedContractMail.employees[0].emailAddress}>
+              {selectedContractMail.employees[0].emailAddress}
+            </MenuItem>
+          </Select>
         </FormGroup>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>SUBJECT</InputLabel>
-          <InputBase
+          {/* <InputBase
             id="subject"
             type="text"
-            value={emailSubject}
+            // value={emailSubject}
+            value="Contract Extension"
+            // defaultValue={'Contract Extention #'}
             onChange={handleEmailSubject}
             placeholder="subject of email..."
-          />
+          /> */}
+          <Select
+            id="subject"
+            value={emailSubject}
+            onChange={handleEmailSubject}
+          >
+            <MenuItem value="Contract Extention">Contract Extention</MenuItem>
+            <MenuItem value="Contract Termination">
+              Contract Termination
+            </MenuItem>
+          </Select>
         </FormGroup>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>MESSAGE</InputLabel>

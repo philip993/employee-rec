@@ -7,6 +7,7 @@ import {
   CHANGE_ERROR_STATUS,
   EMAIL_ATTACHMENT_NAME,
   IS_LOADING_TRUE,
+  SELECT_ONE_CONTRACT_MAIL,
 } from './SendMailActionTypes';
 
 const initalState = {
@@ -17,6 +18,7 @@ const initalState = {
   emailRecipient: '',
   emailAttachment: '',
   isLoading: null,
+  selectedContractMail: [],
 };
 
 export const SendMailReducer = (state = initalState, action) => {
@@ -70,6 +72,11 @@ export const SendMailReducer = (state = initalState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case SELECT_ONE_CONTRACT_MAIL:
+      return {
+        ...state,
+        selectedContractMail: action.payload,
       };
     default:
       return state;

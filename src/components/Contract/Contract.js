@@ -7,6 +7,11 @@ import Style from '../Style/Style';
 import { useHistory } from 'react-router-dom';
 // Redux Actions
 import { requestGetContracts } from './ContractActions';
+import {
+  selectContract,
+  requestEndContract,
+} from '../UpdateContract/UpdateContractActions';
+import { selectContractMail } from '../SendMail/SendMailActions';
 // Material Ui
 import {
   Typography,
@@ -18,10 +23,7 @@ import {
   TableBody,
 } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
-import {
-  selectContract,
-  requestEndContract,
-} from '../UpdateContract/UpdateContractActions';
+import EmailIcon from '@material-ui/icons/Email';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -47,6 +49,12 @@ const Contract = () => {
     dispatch(requestEndContract());
   };
 
+  const handleMailSend = (e) => {
+    console.log(e);
+    dispatch(selectContractMail(e));
+    history.push('/sendmail');
+  };
+
   return (
     <div>
       <Typography variant="h4">Contract</Typography>
@@ -61,6 +69,7 @@ const Contract = () => {
             <TableCell>STATUS</TableCell>
             <TableCell>Options</TableCell>
             <TableCell>TERMINATE</TableCell>
+            <TableCell>MAIL</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -111,6 +120,11 @@ const Contract = () => {
                     <HighlightOffIcon />
                   </Button>
                 </TableCell>
+                <TableCell>
+                  <Button onClick={handleMailSend.bind(this, contract)}>
+                    <EmailIcon />
+                  </Button>
+                </TableCell>
               </TableRow>
             ) : (
               <TableRow>
@@ -131,6 +145,11 @@ const Contract = () => {
                 <TableCell className={classes.contractCell}>FIRED</TableCell>
                 <TableCell className={classes.contractCellTwo}>/</TableCell>
                 <TableCell className={classes.contractCellTwo}>/</TableCell>
+                <TableCell>
+                  <Button onClick={handleMailSend.bind(this, contract)}>
+                    <EmailIcon />
+                  </Button>
+                </TableCell>
               </TableRow>
             )
           )}
