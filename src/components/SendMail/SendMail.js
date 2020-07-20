@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
@@ -11,7 +11,6 @@ import {
   requesstSendMail,
   emailBodyInput,
   emailSubjectInput,
-  emailRecipentInput,
   emailAttachmentName,
   toggleLoaderTrue,
 } from './SendMailActions';
@@ -34,7 +33,6 @@ const SendMail = () => {
     emailSubject,
     emailRecipient,
     sendMailError,
-    emailAttachment,
     isLoading,
     selectedContractMail,
   } = useSelector((state) => ({
@@ -44,19 +42,15 @@ const SendMail = () => {
   const classes = Style();
   const history = useHistory();
 
-  const [clicked, setClicked] = useState(false);
+  const [hide, setHidden] = useState(null);
 
   const handleEmailBody = (e) => {
+    setHidden(true);
     dispatch(emailBodyInput(e.target.value));
   };
 
   const handleEmailSubject = (e) => {
     dispatch(emailSubjectInput(e.target.value));
-  };
-
-  const handleEmailRecipient = (e) => {
-    setClicked(true);
-    dispatch(emailRecipentInput(e.target.value));
   };
 
   const handleEmailAttachment = (e) => {
@@ -70,6 +64,30 @@ const SendMail = () => {
     dispatch(toggleLoaderTrue());
     dispatch(requesstSendMail());
   };
+
+  let expiredContract = `
+   Dear  ${selectedContractMail.employees[0].firstName},
+
+   Your contract with ID ${selectedContractMail.id} is expired. It will be 
+   automatically extended from ${selectedContractMail.contractStart} 
+   for 90 days.
+   In attachment is a copy for the Contract.
+   Please contact HR if you have any 
+   questions related to this matter.
+
+   Kind regards
+  `;
+
+  let terminatedContract = `
+  Dear ${selectedContractMail.employees[0].firstName},
+
+  We are sincearly sorry to inform you that 
+  your contract with ID ${selectedContractMail.id} will be terminated.
+  We will no longer require your services at 
+  our company.
+
+  Kind regards
+  `;
 
   return (
     <div>
@@ -93,38 +111,15 @@ const SendMail = () => {
         </Typography>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>RECIPIENT</InputLabel>
-          {/* <InputBase
+          <InputBase
             id="recipient"
             type="email"
-            value={
-              !clicked
-                ? selectedContractMail.employees[0].emailAddress
-                : emailRecipient
-            }
-            onChange={handleEmailRecipient}
-            placeholder="example@example.com"
-          /> */}
-          <Select
-            id="recipient"
             value={emailRecipient}
-            onChange={handleEmailRecipient}
-          >
-            <MenuItem value={selectedContractMail.employees[0].emailAddress}>
-              {selectedContractMail.employees[0].emailAddress}
-            </MenuItem>
-          </Select>
+            placeholder="example@example.com"
+          />
         </FormGroup>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>SUBJECT</InputLabel>
-          {/* <InputBase
-            id="subject"
-            type="text"
-            // value={emailSubject}
-            value="Contract Extension"
-            // defaultValue={'Contract Extention #'}
-            onChange={handleEmailSubject}
-            placeholder="subject of email..."
-          /> */}
           <Select
             id="subject"
             value={emailSubject}
@@ -138,13 +133,21 @@ const SendMail = () => {
         </FormGroup>
         <FormGroup className={classes.mailFormGroup}>
           <InputLabel className={classes.mailLabel}>MESSAGE</InputLabel>
+          <Select id="msgOption" onChange={handleEmailBody} disabled={hide}>
+            <MenuItem value={expiredContract}>
+              Default Extension Message
+            </MenuItem>
+            <MenuItem value={terminatedContract}>
+              Default Termination Message
+            </MenuItem>
+          </Select>
           <InputBase
             id="message"
             type="text"
             multiline="true"
             rows="8"
             value={emailBody}
-            placeholder="Enter message..."
+            placeholder="Preview.."
             onChange={handleEmailBody}
           />
         </FormGroup>
