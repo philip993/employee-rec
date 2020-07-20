@@ -31,6 +31,7 @@ export const SendMailReducer = (state = initalState, action) => {
         emailBody: '',
         emailSubject: '',
         emailRecipient: '',
+        emailAttachment: '',
         isLoading: false,
       };
     case SEND_MAIL_FAILURE:
@@ -41,6 +42,7 @@ export const SendMailReducer = (state = initalState, action) => {
         emailBody: '',
         emailSubject: '',
         emailRecipient: '',
+        emailAttachment: '',
         isLoading: false,
       };
     case EMAIL_BODY_INPUT:
