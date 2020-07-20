@@ -11,6 +11,7 @@ import { ContractReducer } from '../components/Contract/ContractReducer';
 import { AddContractReducer } from '../components/AddContract/AddContractReducer';
 import { UpdateContractReducer } from '../components/UpdateContract/UpdateContractReducer';
 import { SendMailReducer } from '../components/SendMail/SendMailReducer';
+import { ContractPageReducer } from '../components/ContractPage/ContractPageReducer';
 
 const rootReducer = combineReducers({
   EmployeeReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   AddContractReducer,
   UpdateContractReducer,
   SendMailReducer,
+  ContractPageReducer,
 });
 
 export default rootReducer;

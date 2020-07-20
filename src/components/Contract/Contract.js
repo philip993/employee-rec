@@ -28,6 +28,8 @@ import {
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EmailIcon from '@material-ui/icons/Email';
 import DescriptionIcon from '@material-ui/icons/Description';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import { requestContractPage } from '../ContractPage/ContractPageActions';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -60,6 +62,12 @@ const Contract = () => {
     dispatch(emailRecipentInput(e.employees[0].emailAddress));
   };
 
+  const handleContractPage = (e) => {
+    console.log(e);
+    dispatch(requestContractPage(e.contractId));
+    history.push('/contractpage');
+  };
+
   return (
     <div>
       <Typography variant="h4">Contract</Typography>
@@ -75,6 +83,7 @@ const Contract = () => {
             <TableCell>UPDATE</TableCell>
             <TableCell>TERMINATE</TableCell>
             <TableCell>MAIL</TableCell>
+            <TableCell>LAYOUT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -130,6 +139,11 @@ const Contract = () => {
                     <EmailIcon />
                   </Button>
                 </TableCell>
+                <TableCell>
+                  <Button onClick={handleContractPage.bind(this, contract)}>
+                    <FileCopyIcon />
+                  </Button>
+                </TableCell>
               </TableRow>
             ) : (
               <TableRow>
@@ -153,6 +167,11 @@ const Contract = () => {
                 <TableCell className={classes.contractCellTwo}>
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
+                  </Button>
+                </TableCell>
+                <TableCell>
+                  <Button onClick={handleContractPage.bind(this, contract)}>
+                    <FileCopyIcon />
                   </Button>
                 </TableCell>
               </TableRow>

@@ -29,6 +29,7 @@ import AddContractError from '../AddContract/AddContractError';
 import SendMail from '../SendMail/SendMail';
 import SendMailSuccess from '../SendMail/SendMailSuccess';
 import SendMailError from '../SendMail/SendMailError';
+import ContractPage from '../ContractPage/ContractPage';
 
 const App = () => {
   const classes = Styles();
@@ -66,6 +67,7 @@ const App = () => {
         <Route path="/sendmail" exact component={SendMail} />
         <Route path="/mailsuccess" exact component={SendMailSuccess} />
         <Route path="/mailfail" exact component={SendMailError} />
+        <Route path="/contractpage" exact component={ContractPage} />
       </Switch>
     </div>
   );
