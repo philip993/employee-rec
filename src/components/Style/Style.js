@@ -405,6 +405,52 @@ const Styles = makeStyles((theme) => ({
     margin: '-50px 0px 0px -50px',
     marginTop: '20%',
   },
+  // Contract Page
+  contractPage: {
+    width: '70%',
+    margin: 'auto',
+    marginTop: '50px',
+    marginBotto: '25px',
+    height: '80vh',
+    border: 'solid 1px #BEBEBE',
+  },
+  contractCompany: {
+    textAlign: 'center',
+    backgroundColor: '#F5F5F5',
+    paddingBottom: '100px',
+    paddingTop: '50px',
+    width: '100%',
+  },
+  contractPersonal: {
+    textAlign: 'center',
+    backgroundColor: '#F5F5F5',
+  },
+  contractInfoLeft: {
+    float: 'left',
+    paddingTop: '100px',
+    margin: 'auto',
+  },
+  contractInfoRight: {
+    paddingTop: '100px',
+    float: 'right',
+    margin: 'auto',
+  },
+  contractSignLeft: {
+    float: 'left',
+    paddingTop: '50px',
+  },
+  contractSignRight: {
+    float: 'right',
+    paddingTop: '30px',
+  },
+  contractSub: {
+    width: '100%',
+    color: '#fff',
+    backgroundColor: '#4682b4',
+  },
+  contractAvatar: {
+    margin: 'auto',
+  },
 }));
 
 export default Styles;
