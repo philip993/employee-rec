@@ -407,11 +407,11 @@ const Styles = makeStyles((theme) => ({
   },
   // Contract Page
   contractPage: {
-    width: '70%',
+    width: '80%',
     margin: 'auto',
     marginTop: '50px',
     marginBotto: '25px',
-    height: '80vh',
+    height: '100vh',
     border: 'solid 1px #BEBEBE',
   },
   contractCompany: {
@@ -427,21 +427,34 @@ const Styles = makeStyles((theme) => ({
   },
   contractInfoLeft: {
     float: 'left',
-    paddingTop: '100px',
+    paddingTop: '60px',
+    paddingBottom: '40px',
     margin: 'auto',
+    width: '50%',
   },
   contractInfoRight: {
-    paddingTop: '100px',
+    paddingTop: '60px',
+    paddingBottom: '40px',
     float: 'right',
     margin: 'auto',
+    width: '50%',
   },
   contractSignLeft: {
     float: 'left',
-    paddingTop: '50px',
+    paddingTop: '130px',
+    paddingBottom: '100px',
+    width: '50%',
+  },
+  contractDetails: {
+    width: '100%',
+    paddinTop: '60px',
+    paddingBottom: '40px',
   },
   contractSignRight: {
     float: 'right',
-    paddingTop: '30px',
+    paddingTop: '130px',
+    paddingBottom: '100px',
+    width: '50%',
   },
   contractSub: {
     width: '100%',
