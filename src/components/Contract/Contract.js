@@ -27,6 +27,7 @@ import {
 } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EmailIcon from '@material-ui/icons/Email';
+import DescriptionIcon from '@material-ui/icons/Description';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -71,7 +72,7 @@ const Contract = () => {
             <TableCell>END</TableCell>
             <TableCell>DAYS</TableCell>
             <TableCell>STATUS</TableCell>
-            <TableCell>Options</TableCell>
+            <TableCell>UPDATE</TableCell>
             <TableCell>TERMINATE</TableCell>
             <TableCell>MAIL</TableCell>
           </TableRow>
@@ -113,7 +114,7 @@ const Contract = () => {
                 )}
                 <TableCell className={classes.contractCellTwo}>
                   <Button onClick={handleUpdateContract.bind(this, contract)}>
-                    Update
+                    <DescriptionIcon />
                   </Button>
                 </TableCell>
                 <TableCell className={classes.contractCellTwo}>
@@ -124,7 +125,7 @@ const Contract = () => {
                     <HighlightOffIcon />
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell className={classes.contractCellTwo}>
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
@@ -149,7 +150,7 @@ const Contract = () => {
                 <TableCell className={classes.contractCell}>FIRED</TableCell>
                 <TableCell className={classes.contractCellTwo}>/</TableCell>
                 <TableCell className={classes.contractCellTwo}>/</TableCell>
-                <TableCell>
+                <TableCell className={classes.contractCellTwo}>
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
