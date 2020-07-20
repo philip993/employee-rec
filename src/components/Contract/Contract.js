@@ -11,7 +11,10 @@ import {
   selectContract,
   requestEndContract,
 } from '../UpdateContract/UpdateContractActions';
-import { selectContractMail } from '../SendMail/SendMailActions';
+import {
+  selectContractMail,
+  emailRecipentInput,
+} from '../SendMail/SendMailActions';
 // Material Ui
 import {
   Typography,
@@ -53,6 +56,7 @@ const Contract = () => {
     console.log(e);
     dispatch(selectContractMail(e));
     history.push('/sendmail');
+    dispatch(emailRecipentInput(e.employees[0].emailAddress));
   };
 
   return (
