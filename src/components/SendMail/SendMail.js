@@ -125,7 +125,7 @@ const SendMail = () => {
             value={emailSubject}
             onChange={handleEmailSubject}
           >
-            <MenuItem value="Contract Extention">Contract Extention</MenuItem>
+            <MenuItem value="Contract Extension">Contract Extention</MenuItem>
             <MenuItem value="Contract Termination">
               Contract Termination
             </MenuItem>
