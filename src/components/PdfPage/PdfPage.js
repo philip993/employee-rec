@@ -35,8 +35,8 @@ const PdfPage = () => {
     html2canvas(document.getElementById('pdf-table')).then(function (canvas) {
       var img = canvas.toDataURL('image/png');
       var doc = new jsPDF('p', 'mm', 'a4');
-      doc.addImage(img, 'JPEG', 0, 0);
-      doc.save('test.pdf');
+      doc.addImage(img, 'JPEG', 0, 1, 208, 300);
+      doc.save(`contract-${date}.pdf`);
     });
   };
   const classes = Styles();

@@ -414,6 +414,15 @@ const Styles = makeStyles((theme) => ({
     height: '820px',
     border: 'solid 1px #BEBEBE',
   },
+  contractCard: {
+    width: '740px',
+    margin: 'auto',
+    marginTop: '10px',
+    marginBotto: '10px',
+    height: '820px',
+    border: 'solid 1px #BEBEBE',
+    backgroundColor: '#F5F5F5',
+  },
   contractCompany: {
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
@@ -431,6 +440,7 @@ const Styles = makeStyles((theme) => ({
     paddingBottom: '50px',
     margin: 'auto',
     width: '50%',
+    backgroundColor: '#F5F5F5',
   },
   contractInfoRight: {
     paddingTop: '30px',
@@ -438,23 +448,27 @@ const Styles = makeStyles((theme) => ({
     float: 'right',
     margin: 'auto',
     width: '50%',
-  },
-  contractSignLeft: {
-    float: 'left',
-    paddingTop: '60px',
-    paddingBottom: '20px',
-    width: '50%',
+    backgroundColor: '#F5F5F5',
   },
   contractDetails: {
     width: '100%',
     paddinTop: '60px',
     paddingBottom: '20px',
+    backgroundColor: '#F5F5F5',
   },
   contractSignRight: {
     float: 'right',
-    paddingTop: '50px',
-    paddingBottom: '20px',
-    width: '50%',
+    paddingTop: '120px',
+    marginBottom: '40px',
+    width: '49%',
+    backgroundColor: '#F5F5F5',
+  },
+  contractSignLeft: {
+    float: 'left',
+    paddingTop: '120px',
+    marginBottom: '40px',
+    width: '51%',
+    backgroundColor: '#F5F5F5',
   },
   contractSub: {
     width: '100%',
@@ -463,6 +477,13 @@ const Styles = makeStyles((theme) => ({
   },
   contractAvatar: {
     margin: 'auto',
+  },
+  contractDate: {
+    width: '100%',
+    backgroundColor: '#F5F5F5',
+    textAlign: 'center',
+    paddingTop: '35px',
+    paddingBottom: '35px',
   },
 }));
 
