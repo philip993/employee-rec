@@ -97,7 +97,8 @@ const ContractPageView = ({
             {employees[0].firstName} {employees[0].secondName} has been
             terminated. Employeer will pay severance package to the employee.
             The employee can accept or forfeit severance package, which
-            acknoledges the termination of their contract.{' '}
+            acknoledges the termination of their contract. Both parties are in
+            agreement and signed at the bottom of this page.
           </Typography>
           <div className={classes.contractSignLeft}>
             <Typography variant="h6">COMPANY SIGNATURE</Typography>
