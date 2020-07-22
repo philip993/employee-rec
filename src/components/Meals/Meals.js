@@ -15,6 +15,7 @@ import {
   TableBody,
   TableFooter,
 } from '@material-ui/core';
+import Pdf from '../Pdf/Pdf';
 
 const Meals = () => {
   const { shiftSchedule } = useSelector((state) => state.ShiftReducer);
@@ -28,7 +29,7 @@ const Meals = () => {
   return (
     <div>
       <Typography variant="h4">Meals Schedule</Typography>
-      <Table className={classes.mealTable}>
+      <Table className={classes.mealTable} id="pdf-table">
         <TableHead>
           <TableRow className={classes.mealSub}>
             <TableCell className={classes.mealCellTwo}>SHIFT</TableCell>
@@ -75,6 +76,7 @@ const Meals = () => {
           </TableRow>
         </TableFooter>
       </Table>
+      <Pdf />
     </div>
   );
 };
