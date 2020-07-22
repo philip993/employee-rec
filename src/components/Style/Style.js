@@ -485,6 +485,27 @@ const Styles = makeStyles((theme) => ({
     paddingTop: '35px',
     paddingBottom: '35px',
   },
+  // homepage
+  homeIcons: {
+    width: '100px',
+    height: '100px',
+    margin: 'auto',
+    paddingTop: '5px',
+    paddingBottom: '9px',
+    paddingLeft: '25px',
+  },
+  homeCardContent: {
+    margin: 'auto',
+  },
+  homeCardSub: {
+    width: '100%',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    backgroundColor: '#F5F5F5',
+    height: '30px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+  },
 }));
 
 export default Styles;
