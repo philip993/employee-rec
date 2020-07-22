@@ -7,6 +7,11 @@ import { AddEmployeeReducer } from '../components/AddEmployee/AddEmployeeReducer
 import { ShiftReducer } from '../components/Shift/ShiftReducer';
 import { UpdateShiftReducer } from '../components/UpdateShift/UpdateShiftReducer';
 import { SearchReducer } from '../components/Search/SearchReducer';
+import { ContractReducer } from '../components/Contract/ContractReducer';
+import { AddContractReducer } from '../components/AddContract/AddContractReducer';
+import { UpdateContractReducer } from '../components/UpdateContract/UpdateContractReducer';
+import { SendMailReducer } from '../components/SendMail/SendMailReducer';
+import { ContractPageReducer } from '../components/ContractPage/ContractPageReducer';
 
 const rootReducer = combineReducers({
   EmployeeReducer,
@@ -15,6 +20,11 @@ const rootReducer = combineReducers({
   ShiftReducer,
   UpdateShiftReducer,
   SearchReducer,
+  ContractReducer,
+  AddContractReducer,
+  UpdateContractReducer,
+  SendMailReducer,
+  ContractPageReducer,
 });
 
 export default rootReducer;

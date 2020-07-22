@@ -6,6 +6,8 @@ const app = express();
 // Routes
 const employees = require('./src/backend/Employee/EmployeeRoute');
 const shifts = require('./src/backend/Shift/ShiftRoute');
+const contracts = require('./src/backend/Contract/ContractRoute');
+const mail = require('./src/backend/Mail/MailRoute');
 // Body-parser setup
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,6 +31,8 @@ app.use((req, res, next) => {
 // Use routes
 app.use('/employees', employees);
 app.use('/shifts', shifts);
+app.use('/contracts', contracts);
+app.use('/mail', mail);
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => `Listening on port ${port}`);

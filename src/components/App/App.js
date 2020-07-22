@@ -19,6 +19,17 @@ import UpdateShift from '../UpdateShift/UpdateShift';
 import UpdateShiftSuccess from '../UpdateShift/UpdateShiftSuccess';
 import UpdateShiftError from '../UpdateShift/UpdateShiftError';
 import Meals from '../Meals/Meals';
+import Contract from '../Contract/Contract';
+import AddContract from '../AddContract/AddContract';
+import UpdateContract from '../UpdateContract/UpdateContract';
+import UpdateContractSuccess from '../UpdateContract/UpdateContractSuccess';
+import UpdateContractError from '../UpdateContract/UpdateContractError';
+import AddContractSuccess from '../AddContract/AddContractSuccess';
+import AddContractError from '../AddContract/AddContractError';
+import SendMail from '../SendMail/SendMail';
+import SendMailSuccess from '../SendMail/SendMailSuccess';
+import SendMailError from '../SendMail/SendMailError';
+import ContractPage from '../ContractPage/ContractPage';
 
 const App = () => {
   const classes = Styles();
@@ -38,6 +49,25 @@ const App = () => {
         <Route path="/updatesuccess" exact component={UpdateShiftSuccess} />
         <Route path="/updatefail" exact component={UpdateShiftError} />
         <Route path="/meals" exact component={Meals} />
+        <Route path="/contracts" exact component={Contract} />
+        <Route path="/addcontract" exact component={AddContract} />
+        <Route
+          path="/addcontractsuccess"
+          exact
+          component={AddContractSuccess}
+        />
+        <Route path="/addcontractfail" exact component={AddContractError} />
+        <Route path="/updatecontract" exact component={UpdateContract} />
+        <Route
+          path="/updcontractsuccess"
+          exact
+          component={UpdateContractSuccess}
+        />
+        <Route path="/updcontractfail" exact component={UpdateContractError} />
+        <Route path="/sendmail" exact component={SendMail} />
+        <Route path="/mailsuccess" exact component={SendMailSuccess} />
+        <Route path="/mailfail" exact component={SendMailError} />
+        <Route path="/contractpage" exact component={ContractPage} />
       </Switch>
     </div>
   );

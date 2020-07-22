@@ -35,6 +35,12 @@ const Navbar = () => {
       <Button>
         <Link to="/meals">Meals Schedule</Link>
       </Button>
+      <Button>
+        <Link to="/contracts">Contracts</Link>
+      </Button>
+      <Button>
+        <Link to="/addcontract">Add Contract</Link>
+      </Button>
     </div>
   );
 };
