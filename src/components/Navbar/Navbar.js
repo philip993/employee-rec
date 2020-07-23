@@ -1,46 +1,67 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
 // React Router Dom
 import { Link } from 'react-router-dom';
 // Mateterial Ui
-import { Button } from '@material-ui/core';
+import { Button, AppBar, Toolbar, Grid } from '@material-ui/core';
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const classes = Styles();
 
   return (
-    <div className={classes.header}>
-      <Button>
-        <Link to="/">Home</Link>
-      </Button>
-      <Button>
-        <Link to="/employees">Employee List</Link>
-      </Button>
-      <Button>
-        <Link to="/add">Add Employee</Link>
-      </Button>
-      <Button>
-        <Link to="/contact">Contact</Link>
-      </Button>
-      <Button>
-        <Link to="/shifts">Shifts</Link>
-      </Button>
-      <Button>
-        <Link to="/updateshift">Update Shift</Link>
-      </Button>
-      <Button>
-        <Link to="/meals">Meals Schedule</Link>
-      </Button>
-      <Button>
-        <Link to="/contracts">Contracts</Link>
-      </Button>
-      <Button>
-        <Link to="/addcontract">Add Contract</Link>
-      </Button>
+    <div>
+      <AppBar className={classes.appBar}>
+        <Toolbar className={classes.toolbar}>
+          <Grid contrainer>
+            <Grid item className={classes.headerGridCenter}>
+              <Button className={classes.headerButtons}>
+                <Link to="/" className={classes.headerLinks}>
+                  HOME
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/employees" className={classes.headerLinks}>
+                  EMPLOYEES
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/add" className={classes.headerLinks}>
+                  ADD
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/contracts" className={classes.headerLinks}>
+                  Contracts
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/addcontract" className={classes.headerLinks}>
+                  Add Contract
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/shifts" className={classes.headerLinks}>
+                  Shifts
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/updateshift" className={classes.headerLinks}>
+                  Update Shift
+                </Link>
+              </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/meals" className={classes.headerLinks}>
+                  Meals
+                </Link>
+              </Button>
+            </Grid>
+          </Grid>
+        </Toolbar>
+      </AppBar>
     </div>
   );
 };

@@ -53,7 +53,7 @@ const AddressInfo = () => {
   };
 
   return (
-    <div className={classes.addForm}>
+    <div className={classes.addForm} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Address Information
       </Typography>

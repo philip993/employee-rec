@@ -6,3 +6,11 @@
 #shift {
   font-weight: bold;
 }
+
+
+@media only screen and (max-width: 650px) {
+  #table {
+    width: 450px;
+    margin: auto;
+  }
+}

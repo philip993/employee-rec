@@ -48,7 +48,7 @@ const IdentityInfo = () => {
   };
 
   return (
-    <div className={classes.addForm}>
+    <div className={classes.addForm} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Identity Info
       </Typography>

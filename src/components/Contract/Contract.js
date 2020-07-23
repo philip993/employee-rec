@@ -69,8 +69,10 @@ const Contract = () => {
   };
 
   return (
-    <div>
-      <Typography variant="h4">Contract</Typography>
+    <div className={classes.pageContainer}>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Contracts
+      </Typography>
       <Table className={classes.contractTable}>
         <TableHead>
           <TableRow className={classes.contractHeader}>

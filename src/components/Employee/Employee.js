@@ -53,7 +53,9 @@ const Employee = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4">List of Employees</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Employees
+      </Typography>
       <Table className={classes.tableLayout}>
         <TableHead>
           <TableRow className={classes.listSub}>
@@ -83,6 +85,7 @@ const Employee = () => {
         </TableBody>
       </Table>
       <TablePagination
+        className={classes.tablePagination}
         rowsPerPageOptions={[2, 25, 50]}
         component="div"
         count={employees.length}

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+import './Meals.scss';
 // Redux Actions
 import { requestGetShifts } from '../Shift/ShiftActions';
 // Material Ui
@@ -28,7 +29,9 @@ const Meals = () => {
 
   return (
     <div>
-      <Typography variant="h4">Meals Schedule</Typography>
+      <Typography variant="h4" id="mealSub" className={classes.pageSubheader}>
+        Meals Schedule
+      </Typography>
       <Table className={classes.mealTable} id="pdf-table">
         <TableHead>
           <TableRow className={classes.mealSub}>

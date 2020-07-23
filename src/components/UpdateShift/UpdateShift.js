@@ -83,13 +83,15 @@ const UpdateShift = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4">Update Shift Schedule</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Update Shift Schedule
+      </Typography>
       {errorsShift === null
         ? ''
         : errorsShift === false
         ? history.push('/updatesuccess')
         : history.push('/updatefail')}
-      <form onSubmit={handleSubmit} className={classes.updateForm}>
+      <form onSubmit={handleSubmit} className={classes.updateForm} id="addForm">
         <Typography variant="h6" className={classes.updateSub}>
           Update Shift
         </Typography>

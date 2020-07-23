@@ -17,3 +17,26 @@
   width: 100%;
   padding-left: 43px;
 }
+
+
+@media only screen and (max-width: 600px) {
+  #addForm {
+    width: 450px;
+
+    margin: 'auto';
+    text-align: center;
+    padding-top: 10px;
+  }
+
+
+}
+
+@media only screen and (max-width: 476px) {
+  #addForm {
+    width: 400;
+
+    margin: 'auto';
+    text-align: center;
+    padding-top: 10px;
+  }
+}

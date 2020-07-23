@@ -52,7 +52,7 @@ const ContactInfo = () => {
       <Typography variant="h6" className={classes.formTitle}>
         Contact Info
       </Typography>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.addFormGroup} id="addForm">
         <InputLabel className={classes.formLabel}>Telephone Number</InputLabel>
         <InputBase
           id="telephoneNumber"

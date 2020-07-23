@@ -71,7 +71,7 @@ const Shift = () => {
   }, []);
 
   return (
-    <div>
+    <div className={classes.pageContainer}>
       <div hidden disabled>
         <Table id="pdf-table">
           <TableHead>
@@ -121,7 +121,9 @@ const Shift = () => {
           </TableBody>
         </Table>
       </div>
-      <Typography variant="h4">Shift Schedule</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Shift Schedule
+      </Typography>
       <div className={classes.searchDiv}>
         <Search />
         {!searchQuery ? (
@@ -132,7 +134,7 @@ const Shift = () => {
           ))
         )}
       </div>
-      <Table id="table">
+      <Table id="table" className={classes.shiftsTables}>
         <TableHead>
           <TableRow className={classes.tableHeader}>
             <TableCell id="id">EMPLOYEE ID</TableCell>
@@ -187,6 +189,7 @@ const Shift = () => {
         </TableBody>
       </Table>
       <TablePagination
+        className={classes.tablePagination}
         rowsPerPageOptions={[10, 25, 50]}
         component="div"
         count={shiftSchedule.length}

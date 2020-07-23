@@ -32,9 +32,13 @@ const Search = () => {
 
   return (
     <div className={classes.searchBar}>
-      <Typography variant="h6">SEARCH</Typography>
+      <Typography variant="h6" id="searchIdSub">
+        SEARCH
+      </Typography>
       <form onSubmit={handleSubmit}>
-        <InputLabel className={classes.searchLabel}>By ID</InputLabel>
+        <InputLabel className={classes.searchLabel} id="searchId">
+          By ID
+        </InputLabel>
         <InputBase
           id="searchBar"
           value={searchVal}

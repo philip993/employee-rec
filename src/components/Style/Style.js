@@ -2,17 +2,85 @@ import { makeStyles } from '@material-ui/core';
 
 const Styles = makeStyles((theme) => ({
   root: {
-    width: '70%',
+    width: '100%',
     height: '100%',
     margin: 'auto',
   },
   pageContainer: {
     minHeight: '100%',
   },
+  pageSub: {
+    backgroundColor: '#4682b4',
+    color: '#fff',
+    minHeight: '80px',
+    paddingTop: '30px',
+    paddingLeft: '30px',
+  },
+  pageSubheader: {
+    backgroundColor: '#4682b4',
+    color: '#fff',
+    minHeight: '80px',
+    paddingTop: '30px',
+    paddingLeft: '30px',
+  },
   // Header
   header: {
     width: '100%',
-    height: '50px',
+    height: '60px',
+    margin: 'auto',
+  },
+  headerLinks: {
+    textDecoration: 'none',
+    color: '#fff',
+    fontWeight: 'bold',
+    wordWrap: 'normal',
+  },
+  headerButtons: {
+    width: '140px',
+    height: '40px',
+    marginBottom: '10px',
+    marginLeft: '5px',
+    marginRight: '5px',
+  },
+  headerHomeButton: {
+    width: '40px',
+    height: '40px',
+    border: '1px solid #000',
+    marginBottom: '10px',
+    float: 'left',
+    marginLeft: '5px',
+    marginRight: '10px',
+  },
+  headerIconHome: {
+    color: '#fff',
+    marginLeft: '0px',
+    width: '40px',
+    height: '40px',
+  },
+  headerMenu: {
+    backgroundColor: '#F5F5F5',
+  },
+
+  // new header
+  appBar: {
+    position: 'relative',
+    backgroundColor: '#ED7117',
+  },
+  toolbar: {
+    minHeight: '75px',
+  },
+  headerGridCenter: {
+    float: 'right',
+    marginRight: '0%',
+    margin: 'auto',
+  },
+  iconButton: {
+    background: 'none',
+    borderSizing: 'border-box',
+
+    '&:hover': {
+      border: '1px solid white',
+    },
   },
   // ADD FORM
   addForm: {
@@ -104,6 +172,10 @@ const Styles = makeStyles((theme) => ({
     marginTop: '25px',
     marginBottom: '25px',
   },
+  addPageStepper: {
+    width: '70%',
+    margin: 'auto',
+  },
   // Pdf Download
   downloadBtn: {
     border: 'solid 1px #007fff',
@@ -151,6 +223,12 @@ const Styles = makeStyles((theme) => ({
     },
   },
   // Table
+  shiftsTables: {
+    margin: 'auto',
+    marginTop: '50px',
+    marginBottom: '50px',
+    width: '80%',
+  },
   shiftRow: {
     border: 'solid 1px #BEBEBE',
   },
@@ -161,6 +239,13 @@ const Styles = makeStyles((theme) => ({
   tableLayout: {
     border: 'solid 1px #4682b4',
     marginTop: '50px',
+    width: '80%',
+    margin: 'auto',
+  },
+  tablePagination: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '20px',
   },
   // Search
   searchOutput: {
@@ -171,6 +256,10 @@ const Styles = makeStyles((theme) => ({
     border: 'solid 1px #4682b4',
     marginBottom: '20px',
     paddingLeft: '10px',
+  },
+  searchOutputSpan: {
+    margin: 'auto',
+    float: 'left',
   },
   searchBar: {
     float: 'left',
@@ -184,6 +273,9 @@ const Styles = makeStyles((theme) => ({
   searchDiv: {
     margin: 'auto',
     padding: '10px',
+    marginTop: '50px',
+    marginBottom: '50px',
+    width: '80%',
   },
   searchLabel: {
     fontSize: '1.1rem',
@@ -304,6 +396,7 @@ const Styles = makeStyles((theme) => ({
     margin: 'auto',
     marginTop: '50px',
     marginBottom: '50px',
+    width: '80%',
   },
   contractHeader: {
     backgroundColor: '#4682b4',
@@ -493,6 +586,7 @@ const Styles = makeStyles((theme) => ({
     paddingTop: '5px',
     paddingBottom: '9px',
     paddingLeft: '25px',
+    color: '#4682b4',
   },
   homeCardContent: {
     margin: 'auto',
@@ -501,10 +595,25 @@ const Styles = makeStyles((theme) => ({
     width: '100%',
     fontWeight: 'bold',
     textAlign: 'center',
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#4682b4',
+    color: '#fff',
     height: '30px',
+    margin: 'auto',
     paddingTop: '10px',
     paddingBottom: '10px',
+  },
+  homeContainer: {
+    margin: 'auto',
+    alignItems: 'center',
+    // textAlign: 'center',
+  },
+  homeContentContainer: {
+    margin: 'auto',
+    width: '450px',
+    paddingLeft: '10px',
+    paddingRight: '10px',
+    paddingTop: '50px',
+    paddingBottom: '30px',
   },
 }));
 

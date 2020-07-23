@@ -19,7 +19,7 @@ const Finish = () => {
   };
 
   return (
-    <div className={classes.addForm}>
+    <div className={classes.addForm} id="addForm">
       <Typography variant="h4" className={classes.formTitle}>
         Complete Request
       </Typography>
