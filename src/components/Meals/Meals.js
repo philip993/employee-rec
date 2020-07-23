@@ -79,7 +79,9 @@ const Meals = () => {
           </TableRow>
         </TableFooter>
       </Table>
-      <Pdf />
+      <div className={classes.mealsBtnSpan}>
+        <Pdf />
+      </div>
     </div>
   );
 };

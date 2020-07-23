@@ -14,7 +14,9 @@ const Details = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4">Details</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Details
+      </Typography>
 
       {emp.details.map(({ ...otherProps }, index) => (
         <DetailsView {...otherProps} />

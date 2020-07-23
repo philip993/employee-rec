@@ -198,13 +198,15 @@ const Shift = () => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
-      <Pdf />
-      <Button
-        onClick={handleSwitchShiftSchedule}
-        className={classes.switchScheduleBtn}
-      >
-        New Schedule <AutorenewIcon />
-      </Button>
+      <div className={classes.shiftBtnSpan}>
+        <Pdf />
+        <Button
+          onClick={handleSwitchShiftSchedule}
+          className={classes.switchScheduleBtn}
+        >
+          New Schedule <AutorenewIcon />
+        </Button>
+      </div>
     </div>
   );
 };

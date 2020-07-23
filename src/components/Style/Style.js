@@ -247,6 +247,10 @@ const Styles = makeStyles((theme) => ({
     margin: 'auto',
     marginTop: '20px',
   },
+  shiftBtnSpan: {
+    width: '80%',
+    margin: 'auto',
+  },
   // Search
   searchOutput: {
     float: 'right',
@@ -390,6 +394,10 @@ const Styles = makeStyles((theme) => ({
     border: 'solid 1px #BEBEBE',
     fontWeight: 'bold',
     fontSize: '1rem',
+  },
+  mealsBtnSpan: {
+    width: '50%',
+    margin: 'auto',
   },
   // Contracts
   contractTable: {
