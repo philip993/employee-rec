@@ -11,6 +11,11 @@ import {
   sortShiftAcc,
   sortShiftDec,
 } from './ShiftActions';
+import {
+  selectShift,
+  requestStatusActive,
+  requestStatusInactive,
+} from '../UpdateShift/UpdateShiftActions';
 // React Components
 import Pdf from '../Pdf/Pdf';
 import Search from '../Search/Search';
@@ -66,6 +71,18 @@ const Shift = () => {
     setToggle(true);
   };
 
+  const handleStatusActive = (e) => {
+    dispatch(selectShift(e));
+    dispatch(requestStatusActive());
+    window.location.reload();
+  };
+
+  const handleStatusInactive = (e) => {
+    dispatch(selectShift(e));
+    dispatch(requestStatusInactive());
+    window.location.reload();
+  };
+
   useEffect(() => {
     dispatch(requestGetShifts());
   }, []);
@@ -80,44 +97,53 @@ const Shift = () => {
               <TableCell id="fname">FIRST NAME</TableCell>
               <TableCell id="lname">LAST NAME</TableCell>
               <TableCell id="department">DEPARTMENT</TableCell>
+              <TableCell id="status">STATUS</TableCell>
               <TableCell id="sdate">START DATE</TableCell>
               <TableCell id="edate">END DATE</TableCell>
               <TableCell id="shift">SHIFT</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {shiftSchedule.map(
-              ({
-                id,
-                employeeId,
-                shiftCode,
-                startDate,
-                endDate,
-                employees,
-              }) => (
-                <TableRow key={id} className={classes.shiftRow}>
-                  <TableCell className={classes.shiftRow}>
-                    {employeeId}
-                  </TableCell>
-                  <TableCell className={classes.shiftRow}>
-                    {employees[0].firstName}
-                  </TableCell>
-                  <TableCell className={classes.shiftRow}>
-                    {employees[0].secondName}
-                  </TableCell>
-                  <TableCell className={classes.shiftRow}>
-                    {employees[0].workDepartment}
-                  </TableCell>
-                  <TableCell className={classes.shiftRow}>
-                    {startDate}
-                  </TableCell>
-                  <TableCell className={classes.shiftRow}>{endDate}</TableCell>
-                  <TableCell className={classes.shiftRow}>
-                    {shiftCode}
-                  </TableCell>
-                </TableRow>
-              )
-            )}
+            {shiftSchedule
+              .filter((empl) => empl.employeeStatus === 'active')
+              .map(
+                ({
+                  id,
+                  employeeId,
+                  shiftCode,
+                  startDate,
+                  employeeStatus,
+                  endDate,
+                  employees,
+                }) => (
+                  <TableRow key={id} className={classes.shiftRow}>
+                    <TableCell className={classes.shiftRow}>
+                      {employeeId}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {employees[0].firstName}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {employees[0].secondName}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {employees[0].workDepartment}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {employeeStatus}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {startDate}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {endDate}
+                    </TableCell>
+                    <TableCell className={classes.shiftRow}>
+                      {shiftCode}
+                    </TableCell>
+                  </TableRow>
+                )
+              )}
           </TableBody>
         </Table>
       </div>
@@ -141,6 +167,7 @@ const Shift = () => {
             <TableCell id="fname">FIRST NAME</TableCell>
             <TableCell id="lname">LAST NAME</TableCell>
             <TableCell id="department">DEPARTMENT</TableCell>
+            <TableCell id="status">STATUS</TableCell>
             <TableCell id="sdate">START DATE</TableCell>
             <TableCell id="edate">END DATE</TableCell>
             <TableCell id="shift">
@@ -149,6 +176,7 @@ const Shift = () => {
                 <SwapVertIcon />
               </Button>
             </TableCell>
+            <TableCell>X</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -159,6 +187,7 @@ const Shift = () => {
                 id,
                 employeeId,
                 shiftCode,
+                employeeStatus,
                 startDate,
                 endDate,
                 employees,
@@ -177,11 +206,25 @@ const Shift = () => {
                     {employees[0].workDepartment}
                   </TableCell>
                   <TableCell className={classes.shiftRow}>
+                    {employeeStatus}
+                  </TableCell>
+                  <TableCell className={classes.shiftRow}>
                     {startDate}
                   </TableCell>
                   <TableCell className={classes.shiftRow}>{endDate}</TableCell>
                   <TableCell className={classes.shiftRow}>
                     {shiftCode}
+                  </TableCell>
+                  <TableCell>
+                    <Button
+                      onClick={
+                        employeeStatus === 'active'
+                          ? handleStatusInactive.bind(this, id)
+                          : handleStatusActive.bind(this, id)
+                      }
+                    >
+                      <AutorenewIcon />
+                    </Button>
                   </TableCell>
                 </TableRow>
               )

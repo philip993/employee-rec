@@ -16,6 +16,7 @@ import {
   inputStartDate,
   inputEndDate,
   addMealCount,
+  inputEmployeeStatus,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
 import { requestGetContracts } from '../Contract/ContractActions';
@@ -36,6 +37,7 @@ const UpdateShift = () => {
   const {
     employeeId,
     shiftCode,
+    employeeStatus,
     startDate,
     endDate,
     contractList,
@@ -74,6 +76,10 @@ const UpdateShift = () => {
 
   const handleShiftCode = (e) => {
     dispatch(inputShiftCode(e.target.value));
+  };
+
+  const handleEmployeeStatus = (e) => {
+    dispatch(inputEmployeeStatus(e.target.value));
   };
 
   const handleStartDate = (e) => {
@@ -129,6 +135,26 @@ const UpdateShift = () => {
           </Select>
           <FormHelperText className={classes.updateHelperText}>
             {validator.current.message('shift code', shiftCode, 'required')}
+          </FormHelperText>
+        </FormGroup>
+        <FormGroup className={classes.addFormGroup}>
+          <InputLabel className={classes.formLabel}>ACTIVE STATUS</InputLabel>
+          <Select
+            id="employeeStatus"
+            value={employeeStatus}
+            onChange={handleEmployeeStatus}
+            onBlur={validator.current.showMessageFor('employee status')}
+          >
+            <MenuItem>Choose Shift Code</MenuItem>
+            <MenuItem value="active">ACTIVE</MenuItem>
+            <MenuItem value="inactive">ON LEAVE</MenuItem>
+          </Select>
+          <FormHelperText className={classes.updateHelperText}>
+            {validator.current.message(
+              'employeeStatus',
+              employeeStatus,
+              'required'
+            )}
           </FormHelperText>
         </FormGroup>
         <FormGroup className={classes.addFormGroup}>
