@@ -26,10 +26,20 @@ const UpdateShiftSuccess = () => {
   };
   return (
     <div>
-      <Typography variant="h4">SUCCESS</Typography>
-      <Alert severity="success">Employee is Added to Shift Schedule!</Alert>
-      <Button onClick={handleRedirect}>SHIFT SCHEDULE</Button>
-      <Button onClick={handleRedirectTwo}>ADD MORE</Button>
+      <Typography variant="h3" className={classes.pageSubheader}>
+        SUCCESS
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="success" className={classes.divMessage}>
+          Employee is Added to Shift Schedule!
+        </Alert>
+        <Button onClick={handleRedirect} className={classes.divButtons}>
+          SHIFT SCHEDULE
+        </Button>
+        <Button onClick={handleRedirectTwo} className={classes.divButtons}>
+          ADD MORE
+        </Button>
+      </div>
     </div>
   );
 };

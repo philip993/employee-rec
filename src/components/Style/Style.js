@@ -627,6 +627,32 @@ const Styles = makeStyles((theme) => ({
     paddingTop: '50px',
     paddingBottom: '30px',
   },
+  // error & success
+  divContainer: {
+    width: '80%',
+    margin: 'auto',
+  },
+  divMessage: {
+    minHeight: '60px',
+  },
+  divButtons: {
+    border: 'solid 1px #007fff',
+    background: '#fff',
+    color: '#007fff',
+    fontWeight: 'bold',
+    width: '150px',
+    margin: '25px',
+    float: 'left',
+
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#007fff',
+      color: '#fff',
+      width: '150px',
+      margin: '25px',
+      float: 'left',
+    },
+  },
 }));
 
 export default Styles;

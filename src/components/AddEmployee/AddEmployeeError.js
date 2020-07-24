@@ -13,6 +13,7 @@ import { changeErrorsStatus } from './AddEmployeeActions';
 const AddEmployeeError = () => {
   const { errors } = useSelector((state) => state.AddEmployeeReducer);
   const dispatch = useDispatch();
+  const classes = Styles();
   const history = useHistory();
 
   const handleRedirectAgain = () => {
@@ -26,12 +27,20 @@ const AddEmployeeError = () => {
   };
   return (
     <div>
-      <Typography variant="h3">ERROR</Typography>
-      <Alert severity="error">Request Add Employee Failed</Alert>
-      <Button onClick={handleRedirectAgain}>TRY AGAIN</Button>
-      <Button>
-        <Link to="/">HOMEPAGE</Link>
-      </Button>
+      <Typography variant="h3" className={classes.pageSubheader}>
+        ERROR
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="error" className={classes.divMessage}>
+          Request Add Employee Failed
+        </Alert>
+        <Button onClick={handleRedirectAgain} className={classes.divButtons}>
+          TRY AGAIN
+        </Button>
+        <Button onClick={handleRedirectHome} className={classes.divButtons}>
+          HOMEPAGE
+        </Button>
+      </div>
     </div>
   );
 };

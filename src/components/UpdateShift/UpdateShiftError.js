@@ -21,9 +21,17 @@ const UpdateShiftError = () => {
   };
   return (
     <div>
-      <Typography variant="h4">ERROR</Typography>
-      <Alert severity="error">Cannot Add Employee to Shift Schedule!</Alert>
-      <Button onClick={handleRedirect}>TRY AGAIN</Button>
+      <Typography variant="h3" className={classes.pageSubheader}>
+        ERROR
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="error" className={classes.divMessage}>
+          Cannot Add Employee to Shift Schedule!
+        </Alert>
+        <Button onClick={handleRedirect} className={classes.divButtons}>
+          TRY AGAIN
+        </Button>
+      </div>
     </div>
   );
 };

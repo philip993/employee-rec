@@ -22,9 +22,17 @@ const UpdateContractSuccess = () => {
 
   return (
     <div>
-      <Typography variant="h4">SUCCESS</Typography>
-      <Alert severity="success">Contract is updated!</Alert>
-      <Button onClick={handleRedirect}>CONTRACTS</Button>
+      <Typography variant="h3" className={classes.pageSubheader}>
+        SUCCESS
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="success" className={classes.divMessage}>
+          Contract is updated!
+        </Alert>
+        <Button onClick={handleRedirect} className={classes.divButtons}>
+          CONTRACTS
+        </Button>
+      </div>
     </div>
   );
 };
