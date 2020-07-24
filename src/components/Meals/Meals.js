@@ -44,7 +44,10 @@ const Meals = () => {
             <TableCell className={classes.mealCellTwo}>FIRST</TableCell>
             <TableCell className={classes.mealCell}>
               {shiftSchedule
-                .filter((s) => s.shiftCode === 'first')
+                .filter(
+                  (s) =>
+                    s.shiftCode === 'first' && s.employeeStatus === 'active'
+                )
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -53,7 +56,10 @@ const Meals = () => {
             <TableCell className={classes.mealCellTwo}>SECOND</TableCell>
             <TableCell className={classes.mealCell}>
               {shiftSchedule
-                .filter((s) => s.shiftCode === 'second')
+                .filter(
+                  (s) =>
+                    s.shiftCode === 'second' && s.employeeStatus === 'active'
+                )
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -62,7 +68,10 @@ const Meals = () => {
             <TableCell className={classes.mealCellTwo}>THIRD</TableCell>
             <TableCell className={classes.mealCell}>
               {shiftSchedule
-                .filter((s) => s.shiftCode === 'third')
+                .filter(
+                  (s) =>
+                    s.shiftCode === 'third' && s.employeeStatus === 'active'
+                )
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
@@ -73,6 +82,7 @@ const Meals = () => {
             <TableCell className={classes.mealCellFooter}>TOTAL</TableCell>
             <TableCell className={classes.mealCellFooter}>
               {shiftSchedule
+                .filter((empl) => empl.employeeStatus === 'active')
                 .map((arr) => arr.mealCount)
                 .reduce((a, b) => a + b, 0)}
             </TableCell>
