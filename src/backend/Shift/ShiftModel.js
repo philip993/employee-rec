@@ -22,6 +22,13 @@ const Shift = db.define(
       allowNull: false,
       field: 'shift_code',
     },
+    employeeStatus: {
+      type: Sequelize.ENUM({
+        values: ['active', 'inactive'],
+      }),
+      allowNull: false,
+      field: 'employee_status',
+    },
     startDate: {
       type: Sequelize.DATEONLY,
       allowNull: false,
