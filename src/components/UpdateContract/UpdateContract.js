@@ -60,7 +60,9 @@ const UpdateContract = () => {
 
   return (
     <div>
-      <Typography variant="h4">Update Contract</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Update Contract
+      </Typography>
       {updateContractErrors === null
         ? ''
         : updateContractErrors === false

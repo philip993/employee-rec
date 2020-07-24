@@ -91,7 +91,9 @@ const SendMail = () => {
 
   return (
     <div>
-      <Typography variant="h4">Mail</Typography>
+      <Typography variant="h4" className={classes.pageSubheader}>
+        Mail
+      </Typography>
       {sendMailError === null
         ? ''
         : sendMailError === false

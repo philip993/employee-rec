@@ -251,6 +251,10 @@ const Styles = makeStyles((theme) => ({
     width: '80%',
     margin: 'auto',
   },
+  contractBtnSpan: {
+    width: '50%',
+    margin: 'auto',
+  },
   // Search
   searchOutput: {
     float: 'right',
