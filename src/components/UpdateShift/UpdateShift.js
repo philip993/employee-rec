@@ -17,6 +17,7 @@ import {
   inputEndDate,
   addMealCount,
   inputEmployeeStatus,
+  isSwitchStatus,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
 import { requestGetContracts } from '../Contract/ContractActions';
@@ -42,6 +43,8 @@ const UpdateShift = () => {
     endDate,
     contractList,
     errorsShift,
+    isShiftSwitch,
+    selectedShift,
   } = useSelector((state) => ({
     ...state.UpdateShiftReducer,
     ...state.EmployeeReducer,

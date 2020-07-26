@@ -11,6 +11,9 @@ import {
   UPDATE_STATUS_SUCCESS,
   UPDATE_STATUS_FAILURE,
   SELECT_ONE_SHIFT,
+  SWITCH_SHIFT_SUCCESS,
+  SWITCH_SHIFT_FAILURE,
+  CHECK_UPDATE_TYPE,
 } from './UpdateShiftActionTypes';
 // axios
 import axios from 'axios';
@@ -105,6 +108,29 @@ export const requestStatusInactive = () => {
   };
 };
 
+// request swtich shift
+export const requestSwtichShift = () => {
+  return (dispatch, getState) => {
+    let currentShift = getState().UpdateShiftReducer;
+    console.log(currentShift);
+    return axios
+      .put(`http://localhost:4000/shifts/update`, {})
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: SWITCH_SHIFT_SUCCESS,
+          payload: response.data.updatedShift,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: SWITCH_SHIFT_FAILURE,
+        });
+      });
+  };
+};
+
 // input
 export const inputEmployeeId = (e) => {
   return {
@@ -163,5 +189,13 @@ export const addMealCount = () => {
 export const changeErrorsStatus = () => {
   return {
     type: CHANGE_ERROR_STATUS,
+  };
+};
+
+// check
+export const isSwitchStatus = (e) => {
+  return {
+    type: CHECK_UPDATE_TYPE,
+    payload: true,
   };
 };

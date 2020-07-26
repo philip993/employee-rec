@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 // Styles
 import Styles from '../Style/Style';
 import './ShiftStyles.scss';
+// React Route Dom
+import { useHistory } from 'react-router-dom';
 // Redux Actions
 import {
   requestGetShifts,
@@ -15,6 +17,7 @@ import {
   selectShift,
   requestStatusActive,
   requestStatusInactive,
+  isSwitchStatus,
 } from '../UpdateShift/UpdateShiftActions';
 // React Components
 import Pdf from '../Pdf/Pdf';
@@ -34,6 +37,7 @@ import {
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
+import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 
 const Shift = () => {
   const { shiftSchedule, searchQuery } = useSelector((state) => ({
@@ -42,6 +46,7 @@ const Shift = () => {
   }));
   const dispatch = useDispatch();
   const classes = Styles();
+  const history = useHistory();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -81,6 +86,12 @@ const Shift = () => {
     dispatch(selectShift(e));
     dispatch(requestStatusInactive());
     window.location.reload();
+  };
+
+  const handleShiftSwitch = (e) => {
+    dispatch(selectShift(e));
+    dispatch(isSwitchStatus());
+    history.push('/updateshift');
   };
 
   useEffect(() => {
@@ -176,22 +187,25 @@ const Shift = () => {
                 <SwapVertIcon />
               </Button>
             </TableCell>
-            <TableCell>X</TableCell>
+            <TableCell>STATUS</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {shiftSchedule
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map(
-              ({
-                id,
-                employeeId,
-                shiftCode,
-                employeeStatus,
-                startDate,
-                endDate,
-                employees,
-              }) => (
+              (
+                {
+                  id,
+                  employeeId,
+                  shiftCode,
+                  employeeStatus,
+                  startDate,
+                  endDate,
+                  employees,
+                },
+                index
+              ) => (
                 <TableRow key={id} className={classes.shiftRow}>
                   <TableCell className={classes.shiftRow}>
                     {employeeId}
@@ -212,10 +226,13 @@ const Shift = () => {
                     {startDate}
                   </TableCell>
                   <TableCell className={classes.shiftRow}>{endDate}</TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell
+                    className={classes.shiftRow}
+                    onClick={handleShiftSwitch.bind(this, shiftSchedule[index])}
+                  >
                     {shiftCode}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className={classes.shiftRow}>
                     <Button
                       onClick={
                         employeeStatus === 'active'
@@ -223,7 +240,11 @@ const Shift = () => {
                           : handleStatusActive.bind(this, id)
                       }
                     >
-                      <AutorenewIcon />
+                      {employeeStatus === 'active' ? (
+                        <PauseCircleOutlineIcon />
+                      ) : (
+                        <AutorenewIcon />
+                      )}
                     </Button>
                   </TableCell>
                 </TableRow>
