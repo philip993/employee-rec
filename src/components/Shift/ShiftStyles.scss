@@ -10,13 +10,13 @@
 
 #modalForm {
   width: 400px;
-  height: 400px;
+  height: 260px;
   margin: auto;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   margin-top: 10%;
 
   .modalTitle {
-    background-color: #B9BBB6;
+    background-color: #b9bbb6;
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
@@ -27,10 +27,16 @@
   .shiftCode {
     width: 100%;
     margin: auto;
-
   }
 }
 
+.popup {
+  width: 300px;
+  margin: auto;
+  background-color: #fff;
+  border: solid 1px #007fff;
+  text-align: center;
+}
 
 @media only screen and (max-width: 650px) {
   #table {
