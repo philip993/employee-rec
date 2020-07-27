@@ -46,6 +46,7 @@ import {
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import { Alert } from '@material-ui/lab';
 
 const Shift = () => {
   const { shiftSchedule, searchQuery, shiftCode } = useSelector((state) => ({
@@ -62,6 +63,7 @@ const Shift = () => {
   const [toggle, setToggle] = useState(null);
   const [open, setOpen] = useState(null);
   const [preview, setPreview] = useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -115,6 +117,15 @@ const Shift = () => {
   const handleSwitchUpdate = () => {
     dispatch(requestChangeShift());
     setOpen(false);
+  };
+
+  const handlePreview = (e) => {
+    setPreview(true);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClosePreview = () => {
+    setPreview(false);
   };
 
   useEffect(() => {
@@ -252,12 +263,16 @@ const Shift = () => {
                   <TableCell
                     className={classes.shiftRow}
                     onClick={handleShiftSwitch.bind(this, shiftSchedule[index])}
-                    onMouseOut={() => setPreview(false)}
-                    onMouseOver={() => setPreview(true)}
+                    onMouseOut={handleClosePreview}
+                    onMouseOver={handlePreview}
                   >
                     <Button>{shiftCode}</Button>
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell
+                    className={classes.shiftRow}
+                    onMouseOut={handleClosePreview}
+                    onMouseOver={handlePreview}
+                  >
                     <Button
                       onClick={
                         employeeStatus === 'active'
@@ -331,7 +346,9 @@ const Shift = () => {
           </FormGroup>
         </form>
       </Modal>
-      <Popper open={preview}>Click to change Employee's Shift</Popper>
+      <Popper className="popup" open={preview} anchorEl={anchorEl}>
+        <Alert severity="info">Click to Update Employee's settings</Alert>
+      </Popper>
     </div>
   );
 };
