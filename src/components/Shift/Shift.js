@@ -17,7 +17,8 @@ import {
   selectShift,
   requestStatusActive,
   requestStatusInactive,
-  isSwitchStatus,
+  requestChangeShift,
+  inputShiftCode,
 } from '../UpdateShift/UpdateShiftActions';
 // React Components
 import Pdf from '../Pdf/Pdf';
@@ -34,15 +35,23 @@ import {
   TableBody,
   Button,
   TablePagination,
+  Modal,
+  InputBase,
+  InputLabel,
+  Select,
+  MenuItem,
+  Popper,
+  FormGroup,
 } from '@material-ui/core';
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
 
 const Shift = () => {
-  const { shiftSchedule, searchQuery } = useSelector((state) => ({
+  const { shiftSchedule, searchQuery, shiftCode } = useSelector((state) => ({
     ...state.ShiftReducer,
     ...state.SearchReducer,
+    ...state.UpdateShiftReducer,
   }));
   const dispatch = useDispatch();
   const classes = Styles();
@@ -51,6 +60,8 @@ const Shift = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
   const [toggle, setToggle] = useState(null);
+  const [open, setOpen] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -59,6 +70,10 @@ const Shift = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handleCloseModal = () => {
+    setOpen(false);
   };
 
   const handleSwitchShiftSchedule = () => {
@@ -90,8 +105,16 @@ const Shift = () => {
 
   const handleShiftSwitch = (e) => {
     dispatch(selectShift(e));
-    dispatch(isSwitchStatus());
-    history.push('/updateshift');
+    setOpen(true);
+  };
+
+  const handleShiftInput = (e) => {
+    dispatch(inputShiftCode(e.target.value));
+  };
+
+  const handleSwitchUpdate = () => {
+    dispatch(requestChangeShift());
+    setOpen(false);
   };
 
   useEffect(() => {
@@ -229,8 +252,10 @@ const Shift = () => {
                   <TableCell
                     className={classes.shiftRow}
                     onClick={handleShiftSwitch.bind(this, shiftSchedule[index])}
+                    onMouseOut={() => setPreview(false)}
+                    onMouseOver={() => setPreview(true)}
                   >
-                    {shiftCode}
+                    <Button>{shiftCode}</Button>
                   </TableCell>
                   <TableCell className={classes.shiftRow}>
                     <Button
@@ -271,6 +296,42 @@ const Shift = () => {
           New Schedule <AutorenewIcon />
         </Button>
       </div>
+      <Modal
+        open={open}
+        onClose={handleCloseModal}
+        aria-labelledby="title"
+        aria-describedby="description"
+      >
+        <form id="modalForm">
+          <Typography className={classes.updateSub} variant="h6">
+            CHANGE SHIFT
+          </Typography>
+          <FormGroup className={classes.addFormGroup}>
+            <InputLabel className="modalTitle">SHIFT</InputLabel>
+            <Select
+              className="shiftCode"
+              value={shiftCode}
+              onChange={handleShiftInput}
+            >
+              <MenuItem className={classes.menuItem} value="first">
+                FIRST
+              </MenuItem>
+              <MenuItem className={classes.menuItem} value="second">
+                SECOND
+              </MenuItem>
+              <MenuItem className={classes.menuItem} value="third">
+                THIRD
+              </MenuItem>
+            </Select>
+          </FormGroup>
+          <FormGroup className={classes.updateBtnGroup}>
+            <Button className={classes.formButton} onClick={handleSwitchUpdate}>
+              Update
+            </Button>
+          </FormGroup>
+        </form>
+      </Modal>
+      <Popper open={preview}>Click to change Employee's Shift</Popper>
     </div>
   );
 };

@@ -19,5 +19,3 @@ export const SELECT_ONE_SHIFT = 'SELECT_ONE_SHIFT';
 export const ADD_MEAL_COUNT = 'ADD_MEAL_COUNT';
 // errors
 export const CHANGE_ERROR_STATUS = 'CHANGE_ERROR_STATUS';
-// check
-export const CHECK_UPDATE_TYPE = 'CHECK_UPDATE_TYPE';

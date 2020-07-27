@@ -117,3 +117,29 @@ exports.updateOneShift = (req, res) => {
       });
     });
 };
+
+exports.updateChangeShift = (req, res) => {
+  let { id, shiftCode } = req.body;
+  Shift.update(
+    {
+      id,
+      shiftCode,
+    },
+    {
+      where: {
+        id: req.body.id,
+      },
+    }
+  )
+    .then((updatedShift) => {
+      res.status(201).json({
+        updatedShift,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'System Error. Cannot update shift right now!',
+      });
+    });
+};

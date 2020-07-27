@@ -8,6 +8,29 @@
   font-weight: bold;
 }
 
+#modalForm {
+  width: 400px;
+  height: 400px;
+  margin: auto;
+  background-color: #F5F5F5;
+  margin-top: 10%;
+
+  .modalTitle {
+    background-color: #B9BBB6;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .shiftCode {
+    width: 100%;
+    margin: auto;
+
+  }
+}
+
 
 @media only screen and (max-width: 650px) {
   #table {

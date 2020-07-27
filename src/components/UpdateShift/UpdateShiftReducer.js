@@ -9,7 +9,6 @@ import {
   ADD_MEAL_COUNT,
   INPUT_EMPLOYEE_STATUS,
   SELECT_ONE_SHIFT,
-  CHECK_UPDATE_TYPE,
 } from './UpdateShiftActionTypes';
 
 const initalState = {
@@ -20,7 +19,6 @@ const initalState = {
   endDate: null,
   errorsShift: null,
   mealCount: '',
-  isShiftSwitch: false,
 };
 
 export const UpdateShiftReducer = (state = initalState, action) => {
@@ -85,11 +83,6 @@ export const UpdateShiftReducer = (state = initalState, action) => {
       return {
         ...state,
         selectedShift: action.payload,
-      };
-    case CHECK_UPDATE_TYPE:
-      return {
-        ...state,
-        isShiftSwitch: action.payload,
       };
     default:
       return state;
