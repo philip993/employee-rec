@@ -316,7 +316,7 @@ const Styles = makeStyles((theme) => ({
   // Update Shift
   updateForm: {
     width: '540px',
-    height: '620px',
+    height: '720px',
     margin: 'auto',
     border: 'solid 1px #4682b4',
     backgroundColor: '#F5F5F5',
@@ -341,6 +341,10 @@ const Styles = makeStyles((theme) => ({
     marginTop: '25px',
     marginBottom: '25px',
     backgroundColor: '#F5F5F5',
+  },
+  menuItem: {
+    textAlign: 'center',
+    border: '1px solid #F5F5F5',
   },
   // List
   listSub: {
