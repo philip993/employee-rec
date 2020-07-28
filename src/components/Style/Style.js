@@ -148,10 +148,18 @@ const Styles = makeStyles((theme) => ({
     border: 'solid 1px #0E4D92',
     color: '#fff',
   },
+  tableHeaderCell: {
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: '1.2rem',
+  },
   tablePagination: {
     width: '80%',
     margin: 'auto',
     marginTop: '20px',
+  },
+  tableIcon: {
+    color: '#fff',
   },
   // Buttons
   buttonLeft: {
@@ -333,7 +341,7 @@ const Styles = makeStyles((theme) => ({
     width: '60%',
     margin: 'auto',
     marginTop: '50px',
-    marginBotto: '25px',
+    marginBottom: '50px',
     border: 'solid 1px #BEBEBE',
   },
   cardPersonal: {

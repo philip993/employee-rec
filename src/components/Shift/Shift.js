@@ -208,20 +208,28 @@ const Shift = () => {
       <Table id="table" className={classes.tableLayout}>
         <TableHead>
           <TableRow className={classes.tableHeader}>
-            <TableCell id="id">EMPLOYEE ID</TableCell>
-            <TableCell id="fname">FIRST NAME</TableCell>
-            <TableCell id="lname">LAST NAME</TableCell>
-            <TableCell id="department">DEPARTMENT</TableCell>
-            <TableCell id="status">STATUS</TableCell>
-            <TableCell id="sdate">START DATE</TableCell>
-            <TableCell id="edate">END DATE</TableCell>
-            <TableCell id="shift">
+            <TableCell className={classes.tableHeaderCell}>
+              EMPLOYEE ID
+            </TableCell>
+            <TableCell className={classes.tableHeaderCell}>
+              FIRST NAME
+            </TableCell>
+            <TableCell className={classes.tableHeaderCell}>LAST NAME</TableCell>
+            <TableCell className={classes.tableHeaderCell}>
+              DEPARTMENT
+            </TableCell>
+            <TableCell className={classes.tableHeaderCell}>STATUS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>
+              START DATE
+            </TableCell>
+            <TableCell className={classes.tableHeaderCell}>END DATE</TableCell>
+            <TableCell className={classes.tableHeaderCell}>
               SHIFT
               <Button onClick={toggle === true ? handleSort : handleSortDec}>
-                <SwapVertIcon />
+                <SwapVertIcon className={classes.tableIcon} />
               </Button>
             </TableCell>
-            <TableCell>STATUS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>STATUS</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

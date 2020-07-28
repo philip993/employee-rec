@@ -76,16 +76,16 @@ const Contract = () => {
       <Table className={classes.tableLayout}>
         <TableHead>
           <TableRow className={classes.tableHeader}>
-            <TableCell>ID</TableCell>
-            <TableCell>FULL NAME</TableCell>
-            <TableCell>START</TableCell>
-            <TableCell>END</TableCell>
-            <TableCell>DAYS</TableCell>
-            <TableCell>STATUS</TableCell>
-            <TableCell>UPDATE</TableCell>
-            <TableCell>TERMINATE</TableCell>
-            <TableCell>MAIL</TableCell>
-            <TableCell>LAYOUT</TableCell>
+            <TableCell className={classes.tableHeaderCell}>ID</TableCell>
+            <TableCell className={classes.tableHeaderCell}>FULL NAME</TableCell>
+            <TableCell className={classes.tableHeaderCell}>START</TableCell>
+            <TableCell className={classes.tableHeaderCell}>END</TableCell>
+            <TableCell className={classes.tableHeaderCell}>DAYS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>STATUS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>UPDATE</TableCell>
+            <TableCell className={classes.tableHeaderCell}>TERMINATE</TableCell>
+            <TableCell className={classes.tableHeaderCell}>MAIL</TableCell>
+            <TableCell className={classes.tableHeaderCell}>LAYOUT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

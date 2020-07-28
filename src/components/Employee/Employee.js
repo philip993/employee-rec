@@ -59,11 +59,11 @@ const Employee = () => {
       <Table className={classes.tableLayout}>
         <TableHead>
           <TableRow className={classes.tableHeader}>
-            <TableCell>No.</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Surname</TableCell>
-            <TableCell>Position</TableCell>
-            <TableCell>Details</TableCell>
+            <TableCell className={classes.tableHeaderCell}>No.</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Name</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Surname</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Position</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Details</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
