@@ -53,12 +53,12 @@ const Employee = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Employees
       </Typography>
       <Table className={classes.tableLayout}>
         <TableHead>
-          <TableRow className={classes.listSub}>
+          <TableRow className={classes.tableHeader}>
             <TableCell>No.</TableCell>
             <TableCell>Name</TableCell>
             <TableCell>Surname</TableCell>

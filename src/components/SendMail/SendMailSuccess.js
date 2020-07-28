@@ -23,9 +23,17 @@ const SendMailSuccess = () => {
 
   return (
     <div>
-      <Typography variant="h4">SUCCESS</Typography>
-      <Alert severity="success">Mail Sent</Alert>
-      <Button onClick={handleRedirect}>NEW MAIL</Button>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        SUCCESS
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="success" className={classes.divMessage}>
+          Mail Sent
+        </Alert>
+        <Button onClick={handleRedirect} className={classes.buttonLeft}>
+          NEW MAIL
+        </Button>
+      </div>
     </div>
   );
 };

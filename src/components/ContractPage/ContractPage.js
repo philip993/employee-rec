@@ -18,13 +18,13 @@ const ContractPage = () => {
 
   return (
     <div>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Contract Page
       </Typography>
       {contractDetails.map(({ id, ...otherProps }, index) => (
         <ContractPageView key={id} {...otherProps} />
       ))}
-      <div className={classes.contractBtnSpan}>
+      <div className={classes.buttonSmallSpan}>
         <PdfPage />
       </div>
     </div>

@@ -36,7 +36,7 @@ const DetailsView = ({
 
   return (
     <div>
-      <Card className={classes.cardDetails}>
+      <Card className={classes.cardLayout}>
         <CardContent className={classes.cardPersonal}>
           <Avatar className={classes.avatar}>
             {firstName.charAt(0)}
@@ -51,7 +51,7 @@ const DetailsView = ({
         <CardContent>
           <Table>
             <TableHead>
-              <Typography variant="h6" className={classes.cardSub}>
+              <Typography variant="h6" className={classes.cardTitle}>
                 Employment Information
               </Typography>
             </TableHead>
@@ -68,7 +68,7 @@ const DetailsView = ({
               <TableCell>{employmentDate}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardSub}>
+              <Typography variant="h6" className={classes.cardTitle}>
                 Address Information
               </Typography>
             </TableHead>
@@ -83,7 +83,7 @@ const DetailsView = ({
               <TableCell>{state}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardSub}>
+              <Typography variant="h6" className={classes.cardTitle}>
                 Identity Information
               </Typography>
             </TableHead>
@@ -96,7 +96,7 @@ const DetailsView = ({
               <TableCell>{socialNumber}</TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardSub}>
+              <Typography variant="h6" className={classes.cardTitle}>
                 Contact Information
               </Typography>
             </TableHead>

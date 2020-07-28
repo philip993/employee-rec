@@ -28,10 +28,10 @@ const Homepage = () => {
   return (
     <div className={classes.pageContainer}>
       <span>
-        <Typography variant="h2" className={classes.pageSub}>
+        <Typography variant="h2" className={classes.pageTitle}>
           VIRTUAL COMPANY
         </Typography>
-        <Typography variant="h6" className={classes.pageSub}>
+        <Typography variant="h6" className={classes.pageSubtitle}>
           All information about employees.
         </Typography>
       </span>
@@ -41,7 +41,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="employees">
               <CardActionArea onClick={() => history.push('/employees')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   EMPLOYEES
                 </Typography>
                 <CardContent>
@@ -53,7 +53,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="add">
               <CardActionArea onClick={() => history.push('/add')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   NEW EMPLOYEE
                 </Typography>
                 <CardContent>
@@ -67,7 +67,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="contracts">
               <CardActionArea onClick={() => history.push('/contracts')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   CONTRACT LIST
                 </Typography>
                 <CardContent>
@@ -79,7 +79,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="addcontract">
               <CardActionArea onClick={() => history.push('/addcontract')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   NEW CONTRACT
                 </Typography>
                 <CardContent>
@@ -93,7 +93,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="shifts">
               <CardActionArea onClick={() => history.push('/shifts')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   SHIFT SCHEDULE
                 </Typography>
                 <CardContent>
@@ -105,7 +105,7 @@ const Homepage = () => {
           <Grid item>
             <Card id="updateshift">
               <CardActionArea onClick={() => history.push('/updateshift')}>
-                <Typography className={classes.homeCardSub}>
+                <Typography className={classes.homeCardTitle}>
                   UPDATE SHIFT
                 </Typography>
                 <CardContent>

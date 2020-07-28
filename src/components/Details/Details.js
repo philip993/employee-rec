@@ -14,7 +14,7 @@ const Details = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Details
       </Typography>
 

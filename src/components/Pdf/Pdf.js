@@ -26,7 +26,7 @@ const Pdf = () => {
   const classes = Styles();
 
   return (
-    <Button onClick={savePDF} className={classes.downloadBtn}>
+    <Button onClick={savePDF} className={classes.buttonRight}>
       Download <GetAppIcon />
     </Button>
   );

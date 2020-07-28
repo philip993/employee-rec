@@ -91,7 +91,7 @@ const UpdateShift = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Update Shift Schedule
       </Typography>
       {errorsShift === null
@@ -140,7 +140,7 @@ const UpdateShift = () => {
           </FormHelperText>
         </FormGroup>
         <FormGroup className={classes.formGroup}>
-          <InputLabel className={classes.formLabel}>ACTIVE STATUS</InputLabel>
+          <InputLabel className={classes.formLabel}>Active Status</InputLabel>
           <Select
             id="employeeStatus"
             value={employeeStatus}

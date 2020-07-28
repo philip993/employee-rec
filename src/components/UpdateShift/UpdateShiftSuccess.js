@@ -26,17 +26,17 @@ const UpdateShiftSuccess = () => {
   };
   return (
     <div>
-      <Typography variant="h3" className={classes.pageSubheader}>
+      <Typography variant="h3" className={classes.pageSubtitle}>
         SUCCESS
       </Typography>
       <div className={classes.divContainer}>
         <Alert severity="success" className={classes.divMessage}>
           Employee is Added to Shift Schedule!
         </Alert>
-        <Button onClick={handleRedirect} className={classes.divButtons}>
+        <Button onClick={handleRedirect} className={classes.buttonLeft}>
           SHIFT SCHEDULE
         </Button>
-        <Button onClick={handleRedirectTwo} className={classes.divButtons}>
+        <Button onClick={handleRedirectTwo} className={classes.buttonRight}>
           ADD MORE
         </Button>
       </div>

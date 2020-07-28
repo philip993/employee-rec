@@ -23,7 +23,7 @@ const AddContractError = () => {
 
   return (
     <div>
-      <Typography variant="h3" className={classes.pageSubheader}>
+      <Typography variant="h3" className={classes.pageSubtitle}>
         ERROR
       </Typography>
       <div className={classes.divContainer}>

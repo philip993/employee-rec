@@ -33,7 +33,7 @@ const AddEmployee = () => {
         : errors === false
         ? history.push('/addsuccess')
         : history.push('/addfail')}
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Add New Employee
       </Typography>
       <Stepper

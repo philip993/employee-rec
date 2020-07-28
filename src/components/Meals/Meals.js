@@ -29,20 +29,20 @@ const Meals = () => {
 
   return (
     <div>
-      <Typography variant="h4" id="mealSub" className={classes.pageSubheader}>
+      <Typography variant="h4" id="mealSub" className={classes.pageSubtitle}>
         Meals Schedule
       </Typography>
-      <Table className={classes.mealTable} id="pdf-table">
+      <Table className={classes.tableLayoutSmall} id="pdf-table">
         <TableHead>
-          <TableRow className={classes.mealSub}>
-            <TableCell className={classes.mealCellTwo}>SHIFT</TableCell>
-            <TableCell className={classes.mealCell}>COUNT</TableCell>
+          <TableRow className={classes.tableHeader}>
+            <TableCell className={classes.tableCellMiddle}>SHIFT</TableCell>
+            <TableCell className={classes.tableCellBold}>COUNT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell className={classes.mealCellTwo}>FIRST</TableCell>
-            <TableCell className={classes.mealCell}>
+            <TableCell className={classes.tableCellMiddle}>FIRST</TableCell>
+            <TableCell className={classes.tableCellBold}>
               {shiftSchedule
                 .filter(
                   (s) =>
@@ -53,8 +53,8 @@ const Meals = () => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className={classes.mealCellTwo}>SECOND</TableCell>
-            <TableCell className={classes.mealCell}>
+            <TableCell className={classes.tableCellMiddle}>SECOND</TableCell>
+            <TableCell className={classes.tableCellBold}>
               {shiftSchedule
                 .filter(
                   (s) =>
@@ -65,8 +65,8 @@ const Meals = () => {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className={classes.mealCellTwo}>THIRD</TableCell>
-            <TableCell className={classes.mealCell}>
+            <TableCell className={classes.tableCellMiddle}>THIRD</TableCell>
+            <TableCell className={classes.tableCellBold}>
               {shiftSchedule
                 .filter(
                   (s) =>
@@ -79,8 +79,8 @@ const Meals = () => {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell className={classes.mealCellFooter}>TOTAL</TableCell>
-            <TableCell className={classes.mealCellFooter}>
+            <TableCell className={classes.tableCellBold}>TOTAL</TableCell>
+            <TableCell className={classes.tableCellBold}>
               {shiftSchedule
                 .filter((empl) => empl.employeeStatus === 'active')
                 .map((arr) => arr.mealCount)
@@ -89,7 +89,7 @@ const Meals = () => {
           </TableRow>
         </TableFooter>
       </Table>
-      <div className={classes.mealsBtnSpan}>
+      <div className={classes.buttonSmallSpan}>
         <Pdf />
       </div>
     </div>

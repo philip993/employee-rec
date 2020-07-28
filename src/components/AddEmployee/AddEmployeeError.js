@@ -27,17 +27,17 @@ const AddEmployeeError = () => {
   };
   return (
     <div>
-      <Typography variant="h3" className={classes.pageSubheader}>
+      <Typography variant="h3" className={classes.pageTitle}>
         ERROR
       </Typography>
       <div className={classes.divContainer}>
         <Alert severity="error" className={classes.divMessage}>
           Request Add Employee Failed
         </Alert>
-        <Button onClick={handleRedirectAgain} className={classes.divButtons}>
+        <Button onClick={handleRedirectAgain} className={classes.buttonLeft}>
           TRY AGAIN
         </Button>
-        <Button onClick={handleRedirectHome} className={classes.divButtons}>
+        <Button onClick={handleRedirectHome} className={classes.buttonRight}>
           HOMEPAGE
         </Button>
       </div>

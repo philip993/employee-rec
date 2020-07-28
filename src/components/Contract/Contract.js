@@ -70,12 +70,12 @@ const Contract = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Contracts
       </Typography>
-      <Table className={classes.contractTable}>
+      <Table className={classes.tableLayout}>
         <TableHead>
-          <TableRow className={classes.contractHeader}>
+          <TableRow className={classes.tableHeader}>
             <TableCell>ID</TableCell>
             <TableCell>FULL NAME</TableCell>
             <TableCell>START</TableCell>
@@ -128,7 +128,7 @@ const Contract = () => {
                 </TableCell>
                 <TableCell className={classes.tableCellMiddle}>
                   <Button
-                    className={classes.contractTerminateBtn}
+                    className={classes.terminateButton}
                     onClick={handleTerminateContract.bind(this, contract)}
                   >
                     <HighlightOffIcon />

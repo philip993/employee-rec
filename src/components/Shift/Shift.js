@@ -192,7 +192,7 @@ const Shift = () => {
           </TableBody>
         </Table>
       </div>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Shift Schedule
       </Typography>
       <div className={classes.searchDiv}>
@@ -205,7 +205,7 @@ const Shift = () => {
           ))
         )}
       </div>
-      <Table id="table" className={classes.shiftsTables}>
+      <Table id="table" className={classes.tableLayout}>
         <TableHead>
           <TableRow className={classes.tableHeader}>
             <TableCell id="id">EMPLOYEE ID</TableCell>
@@ -302,11 +302,11 @@ const Shift = () => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
-      <div className={classes.shiftBtnSpan}>
+      <div className={classes.buttonNormalSpan}>
         <Pdf />
         <Button
           onClick={handleSwitchShiftSchedule}
-          className={classes.switchScheduleBtn}
+          className={classes.buttonLeft}
         >
           New Schedule <AutorenewIcon />
         </Button>
@@ -318,10 +318,10 @@ const Shift = () => {
         aria-describedby="description"
       >
         <form id="modalForm">
-          <Typography className={classes.updateSub} variant="h6">
+          <Typography className={classes.formTitle} variant="h6">
             CHANGE SHIFT
           </Typography>
-          <FormGroup className={classes.addFormGroup}>
+          <FormGroup className={classes.formGroup}>
             <InputLabel className="modalTitle">SHIFT</InputLabel>
             <Select
               className="shiftCode"
@@ -339,7 +339,7 @@ const Shift = () => {
               </MenuItem>
             </Select>
           </FormGroup>
-          <FormGroup className={classes.updateBtnGroup}>
+          <FormGroup className={classes.formGroup}>
             <Button className={classes.formButton} onClick={handleSwitchUpdate}>
               Update
             </Button>

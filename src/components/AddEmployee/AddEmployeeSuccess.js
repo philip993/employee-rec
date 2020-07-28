@@ -28,17 +28,17 @@ const AddEmployeeSuccess = () => {
   };
   return (
     <div>
-      <Typography variant="h3" className={classes.pageSubheader}>
+      <Typography variant="h3" className={classes.pageTitle}>
         SUCCESS
       </Typography>
       <div className={classes.divContainer}>
         <Alert severity="success" className={classes.divMessage}>
           Request Add Employee Success
         </Alert>
-        <Button onClick={handleRedirectHome} className={classes.divButtons}>
+        <Button onClick={handleRedirectHome} className={classes.buttonLeft}>
           HOME
         </Button>
-        <Button onClick={handleRedirectList} className={classes.divButtons}>
+        <Button onClick={handleRedirectList} className={classes.buttonRight}>
           EMPLOYEES LIST
         </Button>
       </div>

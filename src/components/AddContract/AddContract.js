@@ -68,7 +68,7 @@ const AddContract = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4" className={classes.pageSubheader}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
         Add Contract
       </Typography>
       {addContractErrors === null
@@ -76,7 +76,7 @@ const AddContract = () => {
         : addContractErrors === false
         ? history.push('/addcontractsuccess')
         : history.push('/addcontractfail')}
-      <form className={classes.formLayout} id="addForm">
+      <form className={classes.partFormLayout} id="addForm">
         <Typography variant="h6" className={classes.formTitle}>
           ADD CONTRACT
         </Typography>

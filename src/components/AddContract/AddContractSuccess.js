@@ -23,7 +23,7 @@ const AddContractSuccess = () => {
 
   return (
     <div>
-      <Typography variant="h3" className={classes.pageSubheader}>
+      <Typography variant="h3" className={classes.pageSubtitle}>
         SUCCESS
       </Typography>
       <div className={classes.divContainer}>
