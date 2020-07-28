@@ -48,11 +48,11 @@ const ContactInfo = () => {
   };
 
   return (
-    <div className={classes.addForm}>
+    <div className={classes.partFormLayout}>
       <Typography variant="h6" className={classes.formTitle}>
         Contact Info
       </Typography>
-      <FormGroup className={classes.addFormGroup} id="addForm">
+      <FormGroup className={classes.formGroup} id="addForm">
         <InputLabel className={classes.formLabel}>Telephone Number</InputLabel>
         <InputBase
           id="telephoneNumber"
@@ -70,7 +70,7 @@ const ContactInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Email Address</InputLabel>
         <InputBase
           id="emailAddress"

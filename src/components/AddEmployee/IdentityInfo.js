@@ -48,11 +48,11 @@ const IdentityInfo = () => {
   };
 
   return (
-    <div className={classes.addForm} id="addForm">
+    <div className={classes.partFormLayout} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Identity Info
       </Typography>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Identity Card</InputLabel>
         <InputBase
           id="identityCard"
@@ -70,7 +70,7 @@ const IdentityInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>
           Social Security Number
         </InputLabel>

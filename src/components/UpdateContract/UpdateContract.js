@@ -68,15 +68,15 @@ const UpdateContract = () => {
         : updateContractErrors === false
         ? history.push('/updcontractsuccess')
         : history.push('/updcontractfail')}
-      <form className={classes.updateForm}>
-        <Typography variant="h6" className={classes.updateSub}>
+      <form className={classes.formLayout}>
+        <Typography variant="h6" className={classes.formTitle}>
           UPDATE CONTRACT
         </Typography>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Contract ID</InputLabel>
           <InputBase id="contractId" value={selectedContract.id} />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract Start Date
           </InputLabel>
@@ -93,7 +93,7 @@ const UpdateContract = () => {
             }}
           />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract End Date
           </InputLabel>
@@ -108,13 +108,13 @@ const UpdateContract = () => {
             }}
           />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Active Contract</InputLabel>
           <RadioGroup>
             <FormControlLabel defaultChecked control={<Radio />} label="YES" />
           </RadioGroup>
         </FormGroup>
-        <FormGroup className={classes.updateBtnGroup}>
+        <FormGroup className={classes.formBtnGroup}>
           <Button onClick={handleSubmit} className={classes.formButton}>
             Update
           </Button>

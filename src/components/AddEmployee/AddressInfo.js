@@ -53,11 +53,11 @@ const AddressInfo = () => {
   };
 
   return (
-    <div className={classes.addForm} id="addForm">
+    <div className={classes.partFormLayout} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Address Information
       </Typography>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Address</InputLabel>
         <InputBase
           id="address"
@@ -75,7 +75,7 @@ const AddressInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>City</InputLabel>
         <InputBase
           id="city"
@@ -89,7 +89,7 @@ const AddressInfo = () => {
           {validator.current.message('city', city, 'required|alpha_space')}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>State</InputLabel>
         <InputBase
           id="state"

@@ -19,15 +19,15 @@ const Finish = () => {
   };
 
   return (
-    <div className={classes.addForm} id="addForm">
+    <div className={classes.partFormLayout} id="addForm">
       <Typography variant="h4" className={classes.formTitle}>
         Complete Request
       </Typography>
-      <Typography variant="h6" className={classes.formFinishSub}>
+      <Typography variant="h6" className={classes.finishTitle}>
         Click on the button bellow to complete the request of adding new
         employee to Database.
       </Typography>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formBtnGroup}>
         <Button
           onClick={handleCompleteForm}
           className={classes.formFinshButton}

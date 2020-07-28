@@ -57,11 +57,11 @@ const EmploymentInfo = () => {
   };
 
   return (
-    <div className={classes.addForm} id="addForm">
+    <div className={classes.partFormLayout} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Personal Information
       </Typography>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Position</InputLabel>
         <Select
           value={position}
@@ -82,7 +82,7 @@ const EmploymentInfo = () => {
           {validator.current.message('position', position, 'required')}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Employment Date</InputLabel>
         <KeyboardDatePicker
           id="employmentDate"
@@ -103,7 +103,7 @@ const EmploymentInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Work Department</InputLabel>
         <Select
           value={workDepartment}

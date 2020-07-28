@@ -39,7 +39,7 @@ const AddEmployee = () => {
       <Stepper
         activeStep={activeStep}
         alternativeLabel
-        className={classes.addPageStepper}
+        className={classes.formStepper}
       >
         <Step activeStep={activeStep === 0}>
           <StepLabel>Personal Information</StepLabel>

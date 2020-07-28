@@ -9,6 +9,7 @@ const Styles = makeStyles((theme) => ({
   pageContainer: {
     minHeight: '100%',
   },
+  // Page
   pageSub: {
     backgroundColor: '#4682b4',
     color: '#fff',
@@ -22,6 +23,94 @@ const Styles = makeStyles((theme) => ({
     minHeight: '80px',
     paddingTop: '30px',
     paddingLeft: '30px',
+  },
+
+  // Form Elements
+  formLayout: {
+    width: '540px',
+    height: '720px',
+    margin: 'auto',
+    border: 'solid 1px #4682b4',
+    backgroundColor: '#F5F5F5',
+    marginTop: '50px',
+  },
+  partFormLayout: {
+    width: '540px',
+    height: '600px',
+    margin: 'auto',
+    border: 'solid 1px #4682b4',
+    backgroundColor: '#F5F5F5',
+  },
+  formGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+    backgroundColor: '#fff',
+    border: 'solid 1px #E9EBEE',
+  },
+  formLabel: {
+    margin: 'auto',
+    fontSize: '1.1rem',
+    fontWeight: 'bold',
+    backgroundColor: '#B9BBB6',
+    width: '100%',
+    paddingBottom: '5px',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  formTitle: {
+    backgroundColor: '#4682b4',
+    width: '100%',
+    margin: 'auto',
+    textAlign: 'center',
+    color: '#fff',
+  },
+  formHelperText: {
+    background: '#F5F5F5',
+    zIndex: '1',
+    color: 'red',
+    paddingLeft: '10px',
+  },
+  formBtnGroup: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+    backgroundColor: '#F5F5F5',
+  },
+  formButton: {
+    border: 'solid 1px #007fff',
+    background: '#fff',
+    color: '#007fff',
+    fontWeight: 'bold',
+    width: '50%',
+    margin: 'auto',
+    marginTop: '25px',
+    marginBottom: '25px',
+
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#007fff',
+      color: '#fff',
+      width: '50%',
+      margin: 'auto',
+      marginTop: '25px',
+    },
+
+    '&:active': {
+      boxShadow: '0 0 5px #007fff',
+    },
+  },
+  formFinshButton: {
+    color: '#fff',
+    border: 'solid 1px #fff',
+    background: '#66bb6a',
+    '&:hover': {
+      border: 'solid 1px #fff',
+      background: '#66bb6a',
+      boxShadow: '0 0 10px #66bb6a',
+    },
   },
   // Header
   header: {
@@ -82,97 +171,15 @@ const Styles = makeStyles((theme) => ({
       border: '1px solid white',
     },
   },
-  // ADD FORM
-  addForm: {
-    width: '540px',
-    height: '600px',
-    margin: 'auto',
-    border: 'solid 1px #4682b4',
-  },
-  addFormGroup: {
-    width: '80%',
-    margin: 'auto',
-    marginTop: '25px',
-    marginBottom: '25px',
-    backgroundColor: '#fff',
-    border: 'solid 1px #E9EBEE',
-  },
-  formLabel: {
-    margin: 'auto',
-    fontSize: '1.1rem',
-    fontWeight: 'bold',
-    backgroundColor: '#B9BBB6',
-    width: '100%',
-    paddingBottom: '5px',
-    textAlign: 'center',
-    color: '#fff',
-  },
-  formInput: {},
-  formButton: {
-    border: 'solid 1px #007fff',
-    background: '#fff',
-    color: '#007fff',
-    fontWeight: 'bold',
-    width: '50%',
-    margin: 'auto',
-    marginTop: '25px',
-    marginBottom: '25px',
-
-    '&:hover': {
-      border: 'solid 1px #fff',
-      background: '#007fff',
-      color: '#fff',
-      width: '50%',
-      margin: 'auto',
-      marginTop: '25px',
-    },
-
-    '&:active': {
-      boxShadow: '0 0 5px #007fff',
-    },
-  },
-  formTitle: {
-    textAlign: 'center',
-    backgroundColor: '#4682b4',
-    width: '100%',
-    margin: 'auto',
-    color: '#fff',
-  },
-  formFinishSub: {
+  // FINISH
+  finishTitle: {
     textAlign: 'center',
     marginTop: '30px',
     marginBottom: '120px',
     fontWeight: 'normal',
   },
-  formFinshButton: {
-    color: '#fff',
-    border: 'solid 1px #fff',
-    background: '#66bb6a',
-    '&:hover': {
-      border: 'solid 1px #fff',
-      background: '#66bb6a',
-      boxShadow: '0 0 10px #66bb6a',
-    },
-  },
-  formHelperText: {
-    zIndex: '1',
-    color: 'red',
-    paddingLeft: '10px',
-  },
-  formSub: {
-    backgroundColor: '#4682b4',
-    width: '100%',
-    margin: 'auto',
-    textAlign: 'center',
-    color: '#fff',
-  },
-  formBtnGroup: {
-    width: '80%',
-    margin: 'auto',
-    marginTop: '25px',
-    marginBottom: '25px',
-  },
-  addPageStepper: {
+  // Stepper
+  formStepper: {
     width: '70%',
     margin: 'auto',
   },
@@ -314,34 +321,7 @@ const Styles = makeStyles((theme) => ({
     height: '90px',
   },
   // Update Shift
-  updateForm: {
-    width: '540px',
-    height: '720px',
-    margin: 'auto',
-    border: 'solid 1px #4682b4',
-    backgroundColor: '#F5F5F5',
-    marginTop: '50px',
-  },
-  updateHelperText: {
-    background: '#F5F5F5',
-    zIndex: '1',
-    color: 'red',
-    paddingLeft: '10px',
-  },
-  updateSub: {
-    backgroundColor: '#4682b4',
-    width: '100%',
-    margin: 'auto',
-    textAlign: 'center',
-    color: '#fff',
-  },
-  updateBtnGroup: {
-    width: '80%',
-    margin: 'auto',
-    marginTop: '25px',
-    marginBottom: '25px',
-    backgroundColor: '#F5F5F5',
-  },
+
   menuItem: {
     textAlign: 'center',
     border: '1px solid #F5F5F5',

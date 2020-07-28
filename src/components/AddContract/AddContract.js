@@ -76,11 +76,11 @@ const AddContract = () => {
         : addContractErrors === false
         ? history.push('/addcontractsuccess')
         : history.push('/addcontractfail')}
-      <form className={classes.updateForm} id="addForm">
-        <Typography variant="h6" className={classes.updateSub}>
+      <form className={classes.formLayout} id="addForm">
+        <Typography variant="h6" className={classes.formTitle}>
           ADD CONTRACT
         </Typography>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Contract ID</InputLabel>
           <Select
             id="contractId"
@@ -94,11 +94,11 @@ const AddContract = () => {
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText className={classes.updateHelperText}>
+          <FormHelperText className={classes.formHelperText}>
             {validator.current.message('contract id', contractId, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract Start Date
           </InputLabel>
@@ -122,7 +122,7 @@ const AddContract = () => {
             )}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract End Date
           </InputLabel>
@@ -143,7 +143,7 @@ const AddContract = () => {
             {validator.current.message('contract end', contractEnd, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.updateBtnGroup}>
+        <FormGroup className={classes.formBtnGroup}>
           <Button
             onClick={handleSubmit}
             disabled={!validator.current.allValid()}
