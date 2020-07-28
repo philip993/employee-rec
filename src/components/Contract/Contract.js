@@ -92,20 +92,20 @@ const Contract = () => {
           {contractList.map((contract) =>
             contract.activeContract === true ? (
               <TableRow key={contract.id}>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractId}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractStart}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractEnd}
                 </TableCell>
-                <TableCell className={classes.contractCell} hidden disabled>
+                <TableCell className={classes.tableCell} hidden disabled>
                   {
                     (contract.daysLeft = Math.floor(
                       Math.ceil(
@@ -117,18 +117,16 @@ const Contract = () => {
                 </TableCell>
 
                 {contract.daysLeft < 0 ? (
-                  <TableCell className={classes.contractCell}>
-                    EXPIRED
-                  </TableCell>
+                  <TableCell className={classes.tableCell}>EXPIRED</TableCell>
                 ) : (
-                  <TableCell className={classes.contractCell}>VALID</TableCell>
+                  <TableCell className={classes.tableCell}>VALID</TableCell>
                 )}
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell className={classes.tableCellMiddle}>
                   <Button onClick={handleUpdateContract.bind(this, contract)}>
                     <DescriptionIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell className={classes.tableCellMiddle}>
                   <Button
                     className={classes.contractTerminateBtn}
                     onClick={handleTerminateContract.bind(this, contract)}
@@ -136,12 +134,12 @@ const Contract = () => {
                     <HighlightOffIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell className={classes.tableCellMiddle}>
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell className={classes.tableCell}>
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>
@@ -149,29 +147,29 @@ const Contract = () => {
               </TableRow>
             ) : (
               <TableRow>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractId}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractStart}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractEnd}
                 </TableCell>
-                <TableCell className={classes.contractCell}>/</TableCell>
-                <TableCell className={classes.contractCell}>FIRED</TableCell>
-                <TableCell className={classes.contractCellTwo}>/</TableCell>
-                <TableCell className={classes.contractCellTwo}>/</TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell className={classes.tableCell}>/</TableCell>
+                <TableCell className={classes.tableCell}>FIRED</TableCell>
+                <TableCell className={classes.tableCellMiddle}>/</TableCell>
+                <TableCell className={classes.tableCellMiddle}>/</TableCell>
+                <TableCell className={classes.tableCellMiddle}>
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell className={classes.tableCell}>
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>

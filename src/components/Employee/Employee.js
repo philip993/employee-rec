@@ -71,11 +71,13 @@ const Employee = () => {
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map(({ id, firstName, secondName, position }, index) => (
               <TableRow key={id}>
-                <TableCell className={classes.shiftRow}>{id}</TableCell>
-                <TableCell className={classes.shiftRow}>{firstName}</TableCell>
-                <TableCell className={classes.shiftRow}>{secondName}</TableCell>
-                <TableCell className={classes.shiftRow}>{position}</TableCell>
-                <TableCell className={classes.shiftRow}>
+                <TableCell className={classes.tableCell}>{id}</TableCell>
+                <TableCell className={classes.tableCell}>{firstName}</TableCell>
+                <TableCell className={classes.tableCell}>
+                  {secondName}
+                </TableCell>
+                <TableCell className={classes.tableCell}>{position}</TableCell>
+                <TableCell className={classes.tableCell}>
                   <Button onClick={handleEmployeeDetails.bind(this, id)}>
                     Show <ExpandMoreIcon />
                   </Button>

@@ -236,8 +236,13 @@ const Styles = makeStyles((theme) => ({
     marginBottom: '50px',
     width: '80%',
   },
-  shiftRow: {
+  tableCell: {
     border: 'solid 1px #BEBEBE',
+  },
+  tableCellMiddle: {
+    textAlign: 'center',
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
   },
   tableHeader: {
     backgroundColor: '#4682b4',
@@ -401,16 +406,7 @@ const Styles = makeStyles((theme) => ({
     textAlign: 'center',
     color: '#fff',
   },
-  contractCell: {
-    height: '25px',
-    border: 'solid 1px #BEBEBE',
-    fontWeight: 'bold',
-  },
-  contractCellTwo: {
-    textAlign: 'center',
-    border: 'solid 1px #BEBEBE',
-    fontWeight: 'bold',
-  },
+
   contractTerminateBtn: {
     color: '#D30000',
   },

@@ -161,29 +161,29 @@ const Shift = () => {
                   endDate,
                   employees,
                 }) => (
-                  <TableRow key={id} className={classes.shiftRow}>
-                    <TableCell className={classes.shiftRow}>
+                  <TableRow key={id} className={classes.tableCell}>
+                    <TableCell className={classes.tableCell}>
                       {employeeId}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {employees[0].firstName}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {employees[0].secondName}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {employees[0].workDepartment}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {employeeStatus}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {startDate}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {endDate}
                     </TableCell>
-                    <TableCell className={classes.shiftRow}>
+                    <TableCell className={classes.tableCell}>
                       {shiftCode}
                     </TableCell>
                   </TableRow>
@@ -240,28 +240,28 @@ const Shift = () => {
                 },
                 index
               ) => (
-                <TableRow key={id} className={classes.shiftRow}>
-                  <TableCell className={classes.shiftRow}>
+                <TableRow key={id} className={classes.tableCell}>
+                  <TableCell className={classes.tableCell}>
                     {employeeId}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell className={classes.tableCell}>
                     {employees[0].firstName}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell className={classes.tableCell}>
                     {employees[0].secondName}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell className={classes.tableCell}>
                     {employees[0].workDepartment}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell className={classes.tableCell}>
                     {employeeStatus}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>
+                  <TableCell className={classes.tableCell}>
                     {startDate}
                   </TableCell>
-                  <TableCell className={classes.shiftRow}>{endDate}</TableCell>
+                  <TableCell className={classes.tableCell}>{endDate}</TableCell>
                   <TableCell
-                    className={classes.shiftRow}
+                    className={classes.tableCell}
                     onClick={handleShiftSwitch.bind(this, shiftSchedule[index])}
                     onMouseOut={handleClosePreview}
                     onMouseOver={handlePreview}
@@ -269,7 +269,7 @@ const Shift = () => {
                     <Button>{shiftCode}</Button>
                   </TableCell>
                   <TableCell
-                    className={classes.shiftRow}
+                    className={classes.tableCell}
                     onMouseOut={handleClosePreview}
                     onMouseOver={handlePreview}
                   >
