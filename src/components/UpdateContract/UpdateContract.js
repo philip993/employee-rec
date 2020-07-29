@@ -11,6 +11,7 @@ import {
   updateContractStart,
   updateContractEnd,
   selectContract,
+  updateSalary,
 } from './UpdateContractActions';
 // Material Ui
 import {
@@ -33,6 +34,7 @@ const UpdateContract = () => {
     updatedContractStart,
     updatedContractEnd,
     updateContractErrors,
+    updatedSalary,
   } = useSelector((state) => ({
     ...state.UpdateContractReducer,
     ...state.ContractReducer,
@@ -47,6 +49,8 @@ const UpdateContract = () => {
     dispatch(requestGetContracts());
   }, []);
 
+  useEffect(() => {});
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestUpdateContract());
@@ -56,6 +60,10 @@ const UpdateContract = () => {
     setClicked(true);
     dispatch(updateContractStart(e));
     dispatch(updateContractEnd(e));
+  };
+
+  const handleUpdateSalary = (e) => {
+    dispatch(updateSalary(e.target.value));
   };
 
   return (
@@ -106,6 +114,14 @@ const UpdateContract = () => {
             KeyboardButtonProps={{
               'aria-label': 'change date',
             }}
+          />
+        </FormGroup>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>Salary</InputLabel>
+          <InputBase
+            id="salary"
+            value={updatedSalary}
+            onChange={handleUpdateSalary}
           />
         </FormGroup>
         <FormGroup className={classes.formGroup}>

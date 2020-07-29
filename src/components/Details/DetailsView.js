@@ -31,6 +31,7 @@ const DetailsView = ({
   identityCard,
   telephoneNumber,
   emailAddress,
+  contract,
 }) => {
   const classes = Styles();
 
@@ -107,6 +108,21 @@ const DetailsView = ({
             <TableRow>
               <TableCell>E-mail Address</TableCell>
               <TableCell>{emailAddress}</TableCell>
+            </TableRow>
+            <TableHead>
+              <Typography variant="h6" className={classes.cardTitle}>
+                Contract
+              </Typography>
+            </TableHead>
+            <TableRow>
+              <TableCell>Start/End:</TableCell>
+              <TableCell>
+                {contract.contractStart} / {contract.contractEnd}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Salary</TableCell>
+              <TableCell>{Math.round(contract.salary).toFixed(2)} $</TableCell>
             </TableRow>
           </Table>
         </CardContent>
