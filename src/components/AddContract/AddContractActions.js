@@ -5,6 +5,7 @@ import {
   INPUT_CONTRACT_START,
   CONTRACT_90_DAYS,
   CHANGE_ERROR_STATUS,
+  INPUT_SALARY,
 } from './AddContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -16,12 +17,14 @@ export const requestAddContract = () => {
       contractId,
       contractStart,
       contractEnd,
+      salary,
     } = getState().AddContractReducer;
     return axios
       .post(`http://localhost:4000/contracts/add`, {
         contractId,
         contractStart,
         contractEnd,
+        salary,
       })
       .then((response) => {
         console.log(response);
@@ -58,6 +61,13 @@ export const contract90days = (e) => {
   return {
     type: CONTRACT_90_DAYS,
     payload: e.setDate(e.getDate() + 90),
+  };
+};
+
+export const inputSalary = (e) => {
+  return {
+    type: INPUT_SALARY,
+    payload: e,
   };
 };
 

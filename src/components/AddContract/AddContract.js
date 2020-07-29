@@ -14,6 +14,7 @@ import {
   inputContractId,
   inputContractStart,
   contract90days,
+  inputSalary,
 } from './AddContractActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
 // Material Ui
@@ -25,6 +26,8 @@ import {
   Button,
   Select,
   MenuItem,
+  FormLabel,
+  InputBase,
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
 
@@ -33,6 +36,7 @@ const AddContract = () => {
     contractId,
     contractStart,
     contractEnd,
+    salary,
     employees,
     addContractErrors,
   } = useSelector((state) => ({
@@ -66,6 +70,10 @@ const AddContract = () => {
     dispatch(contract90days(e));
   };
 
+  const handleSalary = (e) => {
+    dispatch(inputSalary(e.target.value));
+  };
+
   return (
     <div className={classes.pageContainer}>
       <Typography variant="h4" className={classes.pageSubtitle}>
@@ -76,7 +84,7 @@ const AddContract = () => {
         : addContractErrors === false
         ? history.push('/addcontractsuccess')
         : history.push('/addcontractfail')}
-      <form className={classes.partFormLayout} id="addForm">
+      <form className={classes.formLayout} id="addForm">
         <Typography variant="h6" className={classes.formTitle}>
           ADD CONTRACT
         </Typography>
@@ -141,6 +149,22 @@ const AddContract = () => {
           <FormHelperText className={classes.formHelperText}>
             {' '}
             {validator.current.message('contract end', contractEnd, 'required')}
+          </FormHelperText>
+        </FormGroup>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>Salary</InputLabel>
+          <InputBase
+            id="salary"
+            value={salary}
+            onChange={handleSalary}
+            onBlur={validator.current.showMessageFor('salary')}
+          />
+          <FormHelperText className={classes.formHelperText}>
+            {validator.current.message(
+              'salary',
+              salary,
+              'numeric|min:0,num|required'
+            )}
           </FormHelperText>
         </FormGroup>
         <FormGroup className={classes.formBtnGroup}>

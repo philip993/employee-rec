@@ -4,6 +4,7 @@ export const FAILURE_ADD_CONTRACT = 'FAILURE_ADD_CONTRACT';
 // input
 export const INPUT_CONTRACT_ID = 'INPUT_CONTRACT_ID';
 export const INPUT_CONTRACT_START = 'INPUT_CONTRACT_START';
+export const INPUT_SALARY = 'INPUT_SALARY';
 // contract length
 export const CONTRACT_90_DAYS = 'CONTRACT_90_DAYS';
 // errors

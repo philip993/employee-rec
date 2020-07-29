@@ -30,7 +30,7 @@ const AddContractError = () => {
         <Alert severity="error" className={classes.divMessage}>
           Cannot Add Contract!
         </Alert>
-        <Button onClick={handleRedirect} className={classes.divButtons}>
+        <Button onClick={handleRedirect} className={classes.buttonLeft}>
           TRY AGAIN
         </Button>
       </div>
