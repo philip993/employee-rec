@@ -355,7 +355,7 @@ const Shift = () => {
         </form>
       </Modal>
       <Popper className="popup" open={preview} anchorEl={anchorEl}>
-        <Alert severity="info">Click to Update Employee's settings</Alert>
+        <Alert severity="info">Action</Alert>
       </Popper>
     </div>
   );

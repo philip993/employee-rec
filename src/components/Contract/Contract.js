@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+import './Contract.scss';
 // React Router Dom
 import { useHistory } from 'react-router-dom';
 // Redux Actions
@@ -24,12 +25,14 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Popper,
 } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EmailIcon from '@material-ui/icons/Email';
 import DescriptionIcon from '@material-ui/icons/Description';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import { requestContractPage } from '../ContractPage/ContractPageActions';
+import { Alert } from '@material-ui/lab';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -38,6 +41,9 @@ const Contract = () => {
   const dispatch = useDispatch();
   const classes = Style();
   const history = useHistory();
+
+  const [preview, setPreview] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     dispatch(requestGetContracts());
@@ -66,6 +72,15 @@ const Contract = () => {
     console.log(e);
     dispatch(requestContractPage(e.contractId));
     history.push('/contractpage');
+  };
+
+  const handlePreview = (e) => {
+    setPreview(true);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClosePreview = () => {
+    setPreview(false);
   };
 
   return (
@@ -121,12 +136,20 @@ const Contract = () => {
                 ) : (
                   <TableCell className={classes.tableCell}>VALID</TableCell>
                 )}
-                <TableCell className={classes.tableCellMiddle}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleUpdateContract.bind(this, contract)}>
                     <DescriptionIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.tableCellMiddle}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button
                     className={classes.terminateButton}
                     onClick={handleTerminateContract.bind(this, contract)}
@@ -134,12 +157,20 @@ const Contract = () => {
                     <HighlightOffIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.tableCellMiddle}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.tableCell}>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>
@@ -164,12 +195,20 @@ const Contract = () => {
                 <TableCell className={classes.tableCell}>FIRED</TableCell>
                 <TableCell className={classes.tableCellMiddle}>/</TableCell>
                 <TableCell className={classes.tableCellMiddle}>/</TableCell>
-                <TableCell className={classes.tableCellMiddle}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.tableCell}>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>
@@ -179,6 +218,9 @@ const Contract = () => {
           )}
         </TableBody>
       </Table>
+      <Popper className="popup" open={preview} anchorEl={anchorEl}>
+        <Alert severity="info">Action</Alert>
+      </Popper>
     </div>
   );
 };

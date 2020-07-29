@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './Employee.scss';
 // Redux Actions
 import { requestEmployees } from './EmployeeActions';
 import { requestDetails } from '../Details/DetailsActions';
@@ -18,8 +19,10 @@ import {
   Typography,
   Button,
   TablePagination,
+  Popper,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Alert } from '@material-ui/lab';
 
 const Employee = () => {
   const { employees } = useSelector((state) => state.EmployeeReducer);
@@ -29,6 +32,8 @@ const Employee = () => {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [preview, setPreview] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     dispatch(requestEmployees());
@@ -49,6 +54,15 @@ const Employee = () => {
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
+  };
+
+  const handlePreview = (e) => {
+    setPreview(true);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClosePreview = () => {
+    setPreview(false);
   };
 
   return (
@@ -77,7 +91,11 @@ const Employee = () => {
                   {secondName}
                 </TableCell>
                 <TableCell className={classes.tableCell}>{position}</TableCell>
-                <TableCell className={classes.tableCell}>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleEmployeeDetails.bind(this, id)}>
                     Show <ExpandMoreIcon />
                   </Button>
@@ -96,6 +114,9 @@ const Employee = () => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
+      <Popper className="popup" open={preview} anchorEl={anchorEl}>
+        <Alert severity="info">Employee's Profile</Alert>
+      </Popper>
     </div>
   );
 };
