@@ -369,7 +369,7 @@ const Styles = makeStyles((theme) => ({
     width: '740px',
     margin: 'auto',
     marginTop: '10px',
-    marginBotto: '10px',
+    marginBottom: '10px',
     height: '820px',
     border: 'solid 1px #BEBEBE',
     backgroundColor: '#F5F5F5',
