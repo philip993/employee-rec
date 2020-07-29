@@ -1,5 +1,6 @@
 const Employee = require('./EmployeeModel');
 const Contract = require('../Contract/ContractModel');
+const Shift = require('../Shift/ShiftModel');
 
 // Get All Employees
 exports.getEmployees = (req, res) => {
@@ -8,6 +9,10 @@ exports.getEmployees = (req, res) => {
       {
         model: Contract,
         as: 'contract',
+      },
+      {
+        model: Shift,
+        as: 'shift',
       },
     ],
   })
@@ -79,6 +84,10 @@ exports.getOneEmployee = (req, res) => {
       {
         model: Contract,
         as: 'contract',
+      },
+      {
+        model: Shift,
+        as: 'shift',
       },
     ],
   })
