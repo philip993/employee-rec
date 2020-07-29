@@ -58,6 +58,11 @@ const Navbar = () => {
                   Meals
                 </Link>
               </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/inactive" className={classes.headerLinks}>
+                  Inactive
+                </Link>
+              </Button>
             </Grid>
           </Grid>
         </Toolbar>
