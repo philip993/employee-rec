@@ -12,7 +12,6 @@ import {
   TableHead,
   TableRow,
   TableCell,
-  TableBody,
 } from '@material-ui/core';
 
 const DetailsView = ({
@@ -32,6 +31,7 @@ const DetailsView = ({
   telephoneNumber,
   emailAddress,
   contract,
+  shift,
 }) => {
   const classes = Styles();
 
@@ -109,21 +109,60 @@ const DetailsView = ({
               <TableCell>E-mail Address</TableCell>
               <TableCell>{emailAddress}</TableCell>
             </TableRow>
-            <TableHead>
-              <Typography variant="h6" className={classes.cardTitle}>
-                Contract
-              </Typography>
-            </TableHead>
-            <TableRow>
-              <TableCell>Start/End:</TableCell>
-              <TableCell>
-                {contract.contractStart} / {contract.contractEnd}
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell>Salary</TableCell>
-              <TableCell>{Math.round(contract.salary).toFixed(2)} $</TableCell>
-            </TableRow>
+            {!contract ? (
+              <React.Fragment>
+                <Typography variant="h6" className={classes.cardTitle}>
+                  Contract
+                </Typography>
+                <Typography variant="p">No Contract </Typography>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <TableHead>
+                  <Typography variant="h6" className={classes.cardTitle}>
+                    Contract
+                  </Typography>
+                </TableHead>
+
+                <TableRow>
+                  <TableCell>Start/End:</TableCell>
+                  <TableCell>
+                    {contract.contractStart} / {contract.contractEnd}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Salary</TableCell>
+                  <TableCell>{contract.salary} $</TableCell>
+                </TableRow>
+              </React.Fragment>
+            )}
+            {!shift ? (
+              <React.Fragment>
+                <Typography variant="h6" className={classes.cardTitle}>
+                  Shift
+                </Typography>
+                <Typography variant="p">No Shift Info</Typography>
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <TableHead>
+                  <Typography variant="h6" className={classes.cardTitle}>
+                    Shift
+                  </Typography>
+                </TableHead>
+
+                <TableRow>
+                  <TableCell>Start/End:</TableCell>
+                  <TableCell>
+                    {shift.startDate} / {shift.endDate}
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>Shift</TableCell>
+                  <TableCell>{shift.shiftCode}</TableCell>
+                </TableRow>
+              </React.Fragment>
+            )}
           </Table>
         </CardContent>
       </Card>
