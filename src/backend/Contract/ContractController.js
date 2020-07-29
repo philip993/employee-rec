@@ -56,6 +56,7 @@ exports.addContract = (req, res) => {
     contractId,
     contractStart,
     contractEnd,
+    salary,
     activeContract,
     daysLeft,
   } = req.body;
@@ -63,6 +64,7 @@ exports.addContract = (req, res) => {
     contractId,
     contractStart,
     contractEnd,
+    salary,
     activeContract,
     daysLeft,
   })
@@ -80,13 +82,14 @@ exports.addContract = (req, res) => {
 };
 
 exports.updateContract = (req, res) => {
-  let { id, contractId, contractStart, contractEnd, activeContract } = req.body;
+  let { id, contractStart, contractEnd, salary, activeContract } = req.body;
 
   Contract.update(
     {
       id,
       contractStart,
       contractEnd,
+      salary,
       activeContract,
     },
     {
