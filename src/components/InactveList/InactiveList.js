@@ -36,7 +36,6 @@ const InactiveList = () => {
           <TableRow className={classes.tableHeader}>
             <TableCell className={classes.tableHeaderCell}>ID</TableCell>
             <TableCell className={classes.tableHeaderCell}>Name</TableCell>
-            <TableCell className={classes.tableHeaderCell}>IDK</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -50,7 +49,6 @@ const InactiveList = () => {
                 <TableCell className={classes.tableCell}>
                   {empl.employees[0].firstName} {empl.employees[0].secondName}
                 </TableCell>
-                <TableCell></TableCell>
               </TableRow>
             ))}
         </TableBody>

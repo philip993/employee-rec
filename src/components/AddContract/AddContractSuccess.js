@@ -30,7 +30,7 @@ const AddContractSuccess = () => {
         <Alert severity="success" className={classes.divMessage}>
           Contract is added!
         </Alert>
-        <Button onClick={handleRedirect} className={classes.divButtons}>
+        <Button onClick={handleRedirect} className={classes.buttonLeft}>
           CONTRACTS
         </Button>
       </div>
