@@ -46,6 +46,7 @@ import {
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import { Alert } from '@material-ui/lab';
 
 const Shift = () => {
@@ -291,7 +292,7 @@ const Shift = () => {
                       {employeeStatus === 'active' ? (
                         <PauseCircleOutlineIcon />
                       ) : (
-                        <AutorenewIcon />
+                        <LibraryAddIcon />
                       )}
                     </Button>
                   </TableCell>
