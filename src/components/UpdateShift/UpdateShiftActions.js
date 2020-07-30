@@ -13,6 +13,8 @@ import {
   SELECT_ONE_SHIFT,
   SWITCH_SHIFT_SUCCESS,
   SWITCH_SHIFT_FAILURE,
+  SHIFT_DUPLICATE_TRUE,
+  SHIFT_DUPLICATE_FALSE,
 } from './UpdateShiftActionTypes';
 // axios
 import axios from 'axios';
@@ -32,28 +34,37 @@ export const requestUpdateShift = () => {
     let emplArr = getState().EmployeeReducer.employees;
     let test = emplArr.find(({ id }) => id === employeeId);
 
-    return axios
-      .post(`http://localhost:4000/shifts/add`, {
-        employeeId: test.id,
-        shiftCode,
-        employeeStatus,
-        startDate,
-        endDate,
-        mealCount,
-      })
-      .then((response) => {
-        console.log(response);
-        dispatch({
-          type: UPDATE_SHIFT_SUCCESS,
-          payload: response.data.shift,
+    let shifts = getState().ShiftReducer.shiftSchedule;
+    let index = shifts.findIndex((sft, index) => sft.employeeId === employeeId);
+    console.log(index);
+    if (index === -1) {
+      return axios
+        .post(`http://localhost:4000/shifts/add`, {
+          employeeId: test.id,
+          shiftCode,
+          employeeStatus,
+          startDate,
+          endDate,
+          mealCount,
+        })
+        .then((response) => {
+          console.log(response);
+          dispatch({
+            type: UPDATE_SHIFT_SUCCESS,
+            payload: response.data.shift,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch({
+            type: UPDATE_SHIFT_FAILURE,
+          });
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch({
-          type: UPDATE_SHIFT_FAILURE,
-        });
+    } else {
+      dispatch({
+        type: SHIFT_DUPLICATE_TRUE,
       });
+    }
   };
 };
 
@@ -192,5 +203,18 @@ export const addMealCount = () => {
 export const changeErrorsStatus = () => {
   return {
     type: CHANGE_ERROR_STATUS,
+  };
+};
+
+// check duplicate
+export const shiftDuplicateTrue = () => {
+  return {
+    type: SHIFT_DUPLICATE_TRUE,
+  };
+};
+
+export const shiftDuplicateFalse = () => {
+  return {
+    type: SHIFT_DUPLICATE_FALSE,
   };
 };

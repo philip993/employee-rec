@@ -19,3 +19,6 @@ export const SELECT_ONE_SHIFT = 'SELECT_ONE_SHIFT';
 export const ADD_MEAL_COUNT = 'ADD_MEAL_COUNT';
 // errors
 export const CHANGE_ERROR_STATUS = 'CHANGE_ERROR_STATUS';
+// check duplicate
+export const SHIFT_DUPLICATE_TRUE = 'SHIFT_DUPLICATE_TRUE';
+export const SHIFT_DUPLICATE_FALSE = 'SHIFT_DUPLICATE_FALSE';

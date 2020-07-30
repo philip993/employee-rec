@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 // Material Ui
 import { Button, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { changeErrorsStatus } from './UpdateShiftActions';
+import { changeErrorsStatus, shiftDuplicateFalse } from './UpdateShiftActions';
 
 const UpdateShiftSuccess = () => {
   const dispatch = useDispatch();
@@ -17,11 +17,13 @@ const UpdateShiftSuccess = () => {
 
   const handleRedirect = () => {
     history.push('/shifts');
+    dispatch(shiftDuplicateFalse());
     dispatch(changeErrorsStatus());
   };
 
   const handleRedirectTwo = () => {
     history.push('/updateshift');
+    dispatch(shiftDuplicateFalse());
     dispatch(changeErrorsStatus());
   };
   return (

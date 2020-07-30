@@ -42,7 +42,7 @@ const UpdateShift = () => {
     endDate,
     contractList,
     errorsShift,
-    isShiftSwitch,
+    shiftStatus,
     selectedShift,
   } = useSelector((state) => ({
     ...state.UpdateShiftReducer,
@@ -94,9 +94,9 @@ const UpdateShift = () => {
       <Typography variant="h4" className={classes.pageSubtitle}>
         Update Shift Schedule
       </Typography>
-      {errorsShift === null
+      {errorsShift === null && shiftStatus === null
         ? ''
-        : errorsShift === false
+        : errorsShift === false && shiftStatus === false
         ? history.push('/updatesuccess')
         : history.push('/updatefail')}
       <form onSubmit={handleSubmit} className={classes.formLayout} id="addForm">
