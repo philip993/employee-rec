@@ -30,6 +30,7 @@ import {
   InputBase,
 } from '@material-ui/core';
 import { KeyboardDatePicker } from '@material-ui/pickers';
+import { requestGetContracts } from '../Contract/ContractActions';
 
 const AddContract = () => {
   const {
@@ -39,6 +40,7 @@ const AddContract = () => {
     salary,
     employees,
     addContractErrors,
+    contractStatus,
   } = useSelector((state) => ({
     ...state.AddContractReducer,
     ...state.EmployeeReducer,
@@ -54,6 +56,7 @@ const AddContract = () => {
 
   useEffect(() => {
     dispatch(requestEmployees());
+    dispatch(requestGetContracts());
   }, []);
 
   const handleSubmit = (e) => {
@@ -79,9 +82,9 @@ const AddContract = () => {
       <Typography variant="h4" className={classes.pageSubtitle}>
         Add Contract
       </Typography>
-      {addContractErrors === null
+      {addContractErrors === null && contractStatus === null
         ? ''
-        : addContractErrors === false
+        : addContractErrors === false && contractStatus === false
         ? history.push('/addcontractsuccess')
         : history.push('/addcontractfail')}
       <form className={classes.formLayout} id="addForm">

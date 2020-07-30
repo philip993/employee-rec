@@ -6,7 +6,10 @@ import Style from '../Style/Style';
 // React Router Dom
 import { useHistory } from 'react-router-dom';
 // Redux Actions
-import { changeErrorsStatus } from './AddContractActions';
+import {
+  changeErrorsStatus,
+  contractDuplicateFalse,
+} from './AddContractActions';
 // Material Ui
 import { Button, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
@@ -18,6 +21,7 @@ const AddContractSuccess = () => {
 
   const handleRedirect = () => {
     history.push('/contracts');
+    dispatch(contractDuplicateFalse());
     dispatch(changeErrorsStatus());
   };
 
