@@ -4,8 +4,6 @@ import { useSelector, useDispatch } from 'react-redux';
 // Styles
 import Styles from '../Style/Style';
 import './ShiftStyles.scss';
-// React Route Dom
-import { useHistory } from 'react-router-dom';
 // Redux Actions
 import {
   requestGetShifts,
@@ -36,7 +34,6 @@ import {
   Button,
   TablePagination,
   Modal,
-  InputBase,
   InputLabel,
   Select,
   MenuItem,
@@ -46,6 +43,7 @@ import {
 import AutorenewIcon from '@material-ui/icons/Autorenew';
 import SwapVertIcon from '@material-ui/icons/SwapVert';
 import PauseCircleOutlineIcon from '@material-ui/icons/PauseCircleOutline';
+import LibraryAddIcon from '@material-ui/icons/LibraryAdd';
 import { Alert } from '@material-ui/lab';
 
 const Shift = () => {
@@ -56,7 +54,6 @@ const Shift = () => {
   }));
   const dispatch = useDispatch();
   const classes = Styles();
-  const history = useHistory();
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
@@ -117,6 +114,7 @@ const Shift = () => {
   const handleSwitchUpdate = () => {
     dispatch(requestChangeShift());
     setOpen(false);
+    window.location.reload();
   };
 
   const handlePreview = (e) => {
@@ -291,7 +289,7 @@ const Shift = () => {
                       {employeeStatus === 'active' ? (
                         <PauseCircleOutlineIcon />
                       ) : (
-                        <AutorenewIcon />
+                        <LibraryAddIcon />
                       )}
                     </Button>
                   </TableCell>
