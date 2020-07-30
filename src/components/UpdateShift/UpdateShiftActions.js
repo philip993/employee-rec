@@ -30,17 +30,13 @@ export const requestUpdateShift = () => {
       endDate,
       mealCount,
     } = getState().UpdateShiftReducer;
-
-    let emplArr = getState().EmployeeReducer.employees;
-    let test = emplArr.find(({ id }) => id === employeeId);
-
     let shifts = getState().ShiftReducer.shiftSchedule;
     let index = shifts.findIndex((sft, index) => sft.employeeId === employeeId);
     console.log(index);
     if (index === -1) {
       return axios
         .post(`http://localhost:4000/shifts/add`, {
-          employeeId: test.id,
+          employeeId,
           shiftCode,
           employeeStatus,
           startDate,
