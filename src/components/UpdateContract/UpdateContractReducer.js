@@ -25,6 +25,7 @@ export const UpdateContractReducer = (state = initialState, action) => {
         updatedContractStart: '',
         updatedContractEnd: '',
         updatedActiveContract: '',
+        updatedSalary: '',
         updateContractErrors: false,
       };
     case FAILURE_UPDATE_CONTRACT:
@@ -33,6 +34,7 @@ export const UpdateContractReducer = (state = initialState, action) => {
         updatedContractStart: '',
         updatedContractEnd: '',
         updatedActiveContract: '',
+        updatedSalary: '',
         updateContractErrors: true,
       };
     case SELECT_ONE_CONTRACT:
