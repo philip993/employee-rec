@@ -143,3 +143,20 @@ exports.updateChangeShift = (req, res) => {
       });
     });
 };
+
+exports.deleteOne = (req, res) => {
+  Shift.destroy({
+    where: { employeeId: req.params.id },
+  })
+    .then((deletedShift) => {
+      res.status(200).json({
+        deletedShift,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'DELETE FAILED',
+      });
+    });
+};
