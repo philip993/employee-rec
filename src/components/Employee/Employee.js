@@ -83,8 +83,9 @@ const Employee = () => {
         <TableBody>
           {employees
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .sort((empA, empB) => empA.id - empB.id)
             .map(({ id, firstName, secondName, position }, index) => (
-              <TableRow key={id}>
+              <TableRow>
                 <TableCell className={classes.tableCell}>{id}</TableCell>
                 <TableCell className={classes.tableCell}>{firstName}</TableCell>
                 <TableCell className={classes.tableCell}>
