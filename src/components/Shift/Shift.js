@@ -260,7 +260,7 @@ const Shift = () => {
                     {employees[0].workDepartment}
                   </TableCell>
                   <TableCell className={classes.tableCell}>
-                    {employeeStatus}
+                    {employeeStatus === 'active' ? 'ACTIVE' : 'ON LEAVE'}
                   </TableCell>
                   <TableCell className={classes.tableCell}>
                     {startDate}
