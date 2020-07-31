@@ -3,11 +3,19 @@ const db = require('../database/db');
 const Employee = require('../Employee/EmployeeModel');
 
 exports.createShift = (req, res) => {
-  let { employeeId, shiftCode, startDate, endDate, mealCount } = req.body;
+  let {
+    employeeId,
+    shiftCode,
+    employeeStatus,
+    startDate,
+    endDate,
+    mealCount,
+  } = req.body;
 
   Shift.create({
     employeeId,
     shiftCode,
+    employeeStatus,
     startDate,
     endDate,
     mealCount,
@@ -82,4 +90,73 @@ exports.changeShifts = (req, res) => {
     ),
     db.query('UPDATE shifts SET end_date=DATE_ADD(end_date, INTERVAL 7 DAY)')
   );
+};
+
+exports.updateOneShift = (req, res) => {
+  let { id, employeeStatus } = req.body;
+  Shift.update(
+    {
+      id,
+      employeeStatus,
+    },
+    {
+      where: {
+        id: req.body.id,
+      },
+    }
+  )
+    .then((updatedShift) => {
+      res.status(201).json({
+        updatedShift,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'System Error. Cannot update shift right now!',
+      });
+    });
+};
+
+exports.updateChangeShift = (req, res) => {
+  let { id, shiftCode } = req.body;
+  Shift.update(
+    {
+      id,
+      shiftCode,
+    },
+    {
+      where: {
+        id: req.body.id,
+      },
+    }
+  )
+    .then((updatedShift) => {
+      res.status(201).json({
+        updatedShift,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'System Error. Cannot update shift right now!',
+      });
+    });
+};
+
+exports.deleteOne = (req, res) => {
+  Shift.destroy({
+    where: { employeeId: req.params.id },
+  })
+    .then((deletedShift) => {
+      res.status(200).json({
+        deletedShift,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        msg: 'DELETE FAILED',
+      });
+    });
 };

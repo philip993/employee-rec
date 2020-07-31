@@ -23,9 +23,13 @@ const SendMailError = () => {
 
   return (
     <div>
-      <Typography variant="h4">ERROR</Typography>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        ERROR
+      </Typography>
       <Alert severity="error">Cannot Send Mail!</Alert>
-      <Button onClick={handleRedirect}>TRY AGAIN</Button>
+      <Button onClick={handleRedirect} className={classes.buttonLeft}>
+        TRY AGAIN
+      </Button>
     </div>
   );
 };

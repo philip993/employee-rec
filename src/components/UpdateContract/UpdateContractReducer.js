@@ -4,12 +4,14 @@ import {
   SELECT_ONE_CONTRACT,
   UPDATE_CONTRACT_START,
   UPDATE_CONTRACT_END,
+  UPDATE_SALARY,
 } from './UpdateContractActionTypes';
 import { CHANGE_ERROR_STATUS } from '../UpdateShift/UpdateShiftActionTypes';
 
 const initialState = {
   updatedContractStart: null,
   updatedContractEnd: null,
+  updatedSalary: 0,
   updatedActiveContract: null,
   updateContractErrors: null,
   selectedContract: [],
@@ -23,6 +25,7 @@ export const UpdateContractReducer = (state = initialState, action) => {
         updatedContractStart: '',
         updatedContractEnd: '',
         updatedActiveContract: '',
+        updatedSalary: '',
         updateContractErrors: false,
       };
     case FAILURE_UPDATE_CONTRACT:
@@ -31,6 +34,7 @@ export const UpdateContractReducer = (state = initialState, action) => {
         updatedContractStart: '',
         updatedContractEnd: '',
         updatedActiveContract: '',
+        updatedSalary: '',
         updateContractErrors: true,
       };
     case SELECT_ONE_CONTRACT:
@@ -47,6 +51,11 @@ export const UpdateContractReducer = (state = initialState, action) => {
       return {
         ...state,
         updatedContractEnd: action.payload,
+      };
+    case UPDATE_SALARY:
+      return {
+        ...state,
+        updatedSalary: action.payload,
       };
     case CHANGE_ERROR_STATUS:
       return {

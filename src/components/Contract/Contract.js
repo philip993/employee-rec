@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 // Style
 import Style from '../Style/Style';
+import './Contract.scss';
 // React Router Dom
 import { useHistory } from 'react-router-dom';
 // Redux Actions
@@ -15,6 +16,8 @@ import {
   selectContractMail,
   emailRecipentInput,
 } from '../SendMail/SendMailActions';
+import { requestContractPage } from '../ContractPage/ContractPageActions';
+import { requestDeleteShift } from '../UpdateShift/UpdateShiftActions';
 // Material Ui
 import {
   Typography,
@@ -24,12 +27,13 @@ import {
   TableRow,
   TableCell,
   TableBody,
+  Popper,
 } from '@material-ui/core';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EmailIcon from '@material-ui/icons/Email';
 import DescriptionIcon from '@material-ui/icons/Description';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import { requestContractPage } from '../ContractPage/ContractPageActions';
+import { Alert } from '@material-ui/lab';
 
 const Contract = () => {
   const { contractList, currentDate } = useSelector((state) => ({
@@ -39,12 +43,14 @@ const Contract = () => {
   const classes = Style();
   const history = useHistory();
 
+  const [preview, setPreview] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+
   useEffect(() => {
     dispatch(requestGetContracts());
   }, []);
 
   const handleUpdateContract = (e) => {
-    console.log(e);
     dispatch(selectContract(e));
     history.push('/updatecontract');
   };
@@ -53,57 +59,68 @@ const Contract = () => {
     console.log(e);
     dispatch(selectContract(e));
     dispatch(requestEndContract());
+    dispatch(requestDeleteShift(e.id));
+    window.location.reload();
   };
 
   const handleMailSend = (e) => {
-    console.log(e);
     dispatch(selectContractMail(e));
     history.push('/sendmail');
     dispatch(emailRecipentInput(e.employees[0].emailAddress));
   };
 
   const handleContractPage = (e) => {
-    console.log(e);
     dispatch(requestContractPage(e.contractId));
     history.push('/contractpage');
   };
 
+  const handlePreview = (e) => {
+    setPreview(true);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClosePreview = () => {
+    setPreview(false);
+  };
+
   return (
-    <div>
-      <Typography variant="h4">Contract</Typography>
-      <Table className={classes.contractTable}>
+    <div className={classes.pageContainer}>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Contracts
+      </Typography>
+      <Table className={classes.tableLayout}>
         <TableHead>
-          <TableRow className={classes.contractHeader}>
-            <TableCell>ID</TableCell>
-            <TableCell>FULL NAME</TableCell>
-            <TableCell>START</TableCell>
-            <TableCell>END</TableCell>
-            <TableCell>DAYS</TableCell>
-            <TableCell>STATUS</TableCell>
-            <TableCell>UPDATE</TableCell>
-            <TableCell>TERMINATE</TableCell>
-            <TableCell>MAIL</TableCell>
-            <TableCell>LAYOUT</TableCell>
+          <TableRow className={classes.tableHeader}>
+            <TableCell className={classes.tableHeaderCell}>ID</TableCell>
+            <TableCell className={classes.tableHeaderCell}>FULL NAME</TableCell>
+            <TableCell className={classes.tableHeaderCell}>START</TableCell>
+            <TableCell className={classes.tableHeaderCell}>END</TableCell>
+            <TableCell className={classes.tableHeaderCell}>DAYS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>STATUS</TableCell>
+            <TableCell className={classes.tableHeaderCell}>UPDATE</TableCell>
+            <TableCell className={classes.tableHeaderCell}>TERMINATE</TableCell>
+            <TableCell className={classes.tableHeaderCell}>MAIL</TableCell>
+            <TableCell className={classes.tableHeaderCell}>LAYOUT</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {contractList.map((contract) =>
             contract.activeContract === true ? (
               <TableRow key={contract.id}>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractId}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractStart}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractEnd}
                 </TableCell>
-                <TableCell className={classes.contractCell} hidden disabled>
+                <TableCell className={classes.tableCell} hidden disabled>
                   {
                     (contract.daysLeft = Math.floor(
                       Math.ceil(
@@ -115,31 +132,45 @@ const Contract = () => {
                 </TableCell>
 
                 {contract.daysLeft < 0 ? (
-                  <TableCell className={classes.contractCell}>
-                    EXPIRED
-                  </TableCell>
+                  <TableCell className={classes.tableCell}>EXPIRED</TableCell>
                 ) : (
-                  <TableCell className={classes.contractCell}>VALID</TableCell>
+                  <TableCell className={classes.tableCell}>VALID</TableCell>
                 )}
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleUpdateContract.bind(this, contract)}>
                     <DescriptionIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button
-                    className={classes.contractTerminateBtn}
+                    className={classes.terminateButton}
                     onClick={handleTerminateContract.bind(this, contract)}
                   >
                     <HighlightOffIcon />
                   </Button>
                 </TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>
@@ -147,29 +178,37 @@ const Contract = () => {
               </TableRow>
             ) : (
               <TableRow>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractId}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.employees[0].firstName}{' '}
                   {contract.employees[0].secondName}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractStart}
                 </TableCell>
-                <TableCell className={classes.contractCell}>
+                <TableCell className={classes.tableCell}>
                   {contract.contractEnd}
                 </TableCell>
-                <TableCell className={classes.contractCell}>/</TableCell>
-                <TableCell className={classes.contractCell}>FIRED</TableCell>
-                <TableCell className={classes.contractCellTwo}>/</TableCell>
-                <TableCell className={classes.contractCellTwo}>/</TableCell>
-                <TableCell className={classes.contractCellTwo}>
+                <TableCell className={classes.tableCell}>/</TableCell>
+                <TableCell className={classes.tableCell}>FIRED</TableCell>
+                <TableCell className={classes.tableCellMiddle}>/</TableCell>
+                <TableCell className={classes.tableCellMiddle}>/</TableCell>
+                <TableCell
+                  className={classes.tableCellMiddle}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleMailSend.bind(this, contract)}>
                     <EmailIcon />
                   </Button>
                 </TableCell>
-                <TableCell>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleContractPage.bind(this, contract)}>
                     <FileCopyIcon />
                   </Button>
@@ -179,6 +218,9 @@ const Contract = () => {
           )}
         </TableBody>
       </Table>
+      <Popper className="popup" open={preview} anchorEl={anchorEl}>
+        <Alert severity="info">Action</Alert>
+      </Popper>
     </div>
   );
 };

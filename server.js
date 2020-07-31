@@ -20,7 +20,10 @@ db.authenticate()
 
 // CORS policy
 app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT,OPTIONS');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, DELETE, PUT,OPTIONS'
+  );
   res.setHeader(
     'Access-Control-Allow-Headers',
     'X-Request-With, Authorization, Origin, Accept, Content-Type'

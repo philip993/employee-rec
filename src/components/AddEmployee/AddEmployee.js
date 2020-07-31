@@ -33,8 +33,14 @@ const AddEmployee = () => {
         : errors === false
         ? history.push('/addsuccess')
         : history.push('/addfail')}
-      <Typography variant="h4">Add New Employee</Typography>
-      <Stepper activeStep={activeStep} alternativeLabel>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Add New Employee
+      </Typography>
+      <Stepper
+        activeStep={activeStep}
+        alternativeLabel
+        className={classes.formStepper}
+      >
         <Step activeStep={activeStep === 0}>
           <StepLabel>Personal Information</StepLabel>
         </Step>

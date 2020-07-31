@@ -14,6 +14,7 @@ import Alert from '@material-ui/lab/Alert';
 const AddEmployeeSuccess = () => {
   const { errors } = useSelector((state) => state.AddEmployeeReducer);
   const dispatch = useDispatch();
+  const classes = Styles();
   const history = useHistory();
 
   const handleRedirectHome = () => {
@@ -27,10 +28,20 @@ const AddEmployeeSuccess = () => {
   };
   return (
     <div>
-      <Typography variant="h3">SUCCESS</Typography>
-      <Alert severity="success">Request Add Employee Success</Alert>
-      <Button onClick={handleRedirectHome}>HOME</Button>
-      <Button onClick={handleRedirectList}>EMPLOYEES LIST</Button>
+      <Typography variant="h3" className={classes.pageTitle}>
+        SUCCESS
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="success" className={classes.divMessage}>
+          Request Add Employee Success
+        </Alert>
+        <Button onClick={handleRedirectHome} className={classes.buttonLeft}>
+          HOME
+        </Button>
+        <Button onClick={handleRedirectList} className={classes.buttonRight}>
+          EMPLOYEES LIST
+        </Button>
+      </div>
     </div>
   );
 };

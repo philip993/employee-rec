@@ -26,6 +26,11 @@ const Contract = db.define(
       allowNull: false,
       field: 'contract_end',
     },
+    salary: {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      field: 'salary',
+    },
     activeContract: {
       type: Sequelize.BOOLEAN,
       allowNull: false,

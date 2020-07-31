@@ -60,12 +60,12 @@ const PersonalInfo = () => {
   };
 
   return (
-    <div className={classes.addForm}>
+    <div className={classes.partFormLayout} id="addForm">
       <Typography variant="h6" className={classes.formTitle}>
         Personal Information
       </Typography>
       {validator.current.hideMessages()}
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Name</InputLabel>
         <InputBase
           id="firstName"
@@ -84,7 +84,7 @@ const PersonalInfo = () => {
         </FormHelperText>
       </FormGroup>
 
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Surname</InputLabel>
         <InputBase
           id="secondName"
@@ -102,7 +102,7 @@ const PersonalInfo = () => {
           )}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Gender</InputLabel>
         <Select
           value={gender}
@@ -118,7 +118,7 @@ const PersonalInfo = () => {
           {validator.current.message('gender', gender, 'required')}
         </FormHelperText>
       </FormGroup>
-      <FormGroup className={classes.addFormGroup}>
+      <FormGroup className={classes.formGroup}>
         <InputLabel className={classes.formLabel}>Age</InputLabel>
         <InputBase
           id="age"

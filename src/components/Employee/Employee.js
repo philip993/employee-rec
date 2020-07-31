@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // Styles
 import Styles from '../Style/Style';
+import './Employee.scss';
 // Redux Actions
 import { requestEmployees } from './EmployeeActions';
 import { requestDetails } from '../Details/DetailsActions';
@@ -18,8 +19,10 @@ import {
   Typography,
   Button,
   TablePagination,
+  Popper,
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Alert } from '@material-ui/lab';
 
 const Employee = () => {
   const { employees } = useSelector((state) => state.EmployeeReducer);
@@ -29,6 +32,8 @@ const Employee = () => {
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(25);
+  const [preview, setPreview] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   useEffect(() => {
     dispatch(requestEmployees());
@@ -51,29 +56,47 @@ const Employee = () => {
     setPage(0);
   };
 
+  const handlePreview = (e) => {
+    setPreview(true);
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClosePreview = () => {
+    setPreview(false);
+  };
+
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4">List of Employees</Typography>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Employees
+      </Typography>
       <Table className={classes.tableLayout}>
         <TableHead>
-          <TableRow className={classes.listSub}>
-            <TableCell>No.</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Surname</TableCell>
-            <TableCell>Position</TableCell>
-            <TableCell>Details</TableCell>
+          <TableRow className={classes.tableHeader}>
+            <TableCell className={classes.tableHeaderCell}>No.</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Name</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Surname</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Position</TableCell>
+            <TableCell className={classes.tableHeaderCell}>Details</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {employees
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+            .sort((empA, empB) => empA.id - empB.id)
             .map(({ id, firstName, secondName, position }, index) => (
-              <TableRow key={id}>
-                <TableCell className={classes.shiftRow}>{id}</TableCell>
-                <TableCell className={classes.shiftRow}>{firstName}</TableCell>
-                <TableCell className={classes.shiftRow}>{secondName}</TableCell>
-                <TableCell className={classes.shiftRow}>{position}</TableCell>
-                <TableCell className={classes.shiftRow}>
+              <TableRow>
+                <TableCell className={classes.tableCell}>{id}</TableCell>
+                <TableCell className={classes.tableCell}>{firstName}</TableCell>
+                <TableCell className={classes.tableCell}>
+                  {secondName}
+                </TableCell>
+                <TableCell className={classes.tableCell}>{position}</TableCell>
+                <TableCell
+                  className={classes.tableCell}
+                  onMouseOut={handleClosePreview}
+                  onMouseOver={handlePreview}
+                >
                   <Button onClick={handleEmployeeDetails.bind(this, id)}>
                     Show <ExpandMoreIcon />
                   </Button>
@@ -83,6 +106,7 @@ const Employee = () => {
         </TableBody>
       </Table>
       <TablePagination
+        className={classes.tablePagination}
         rowsPerPageOptions={[2, 25, 50]}
         component="div"
         count={employees.length}
@@ -91,6 +115,9 @@ const Employee = () => {
         onChangePage={handleChangePage}
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
+      <Popper className="popup" open={preview} anchorEl={anchorEl}>
+        <Alert severity="info">Employee's Profile</Alert>
+      </Popper>
     </div>
   );
 };

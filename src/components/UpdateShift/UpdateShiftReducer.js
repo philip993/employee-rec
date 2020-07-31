@@ -7,15 +7,21 @@ import {
   INPUT_END_DATE,
   CHANGE_ERROR_STATUS,
   ADD_MEAL_COUNT,
+  INPUT_EMPLOYEE_STATUS,
+  SELECT_ONE_SHIFT,
+  SHIFT_DUPLICATE_TRUE,
+  SHIFT_DUPLICATE_FALSE,
 } from './UpdateShiftActionTypes';
 
 const initalState = {
   employeeid: '',
   shiftCode: '',
+  employeeStatus: '',
   startDate: null,
   endDate: null,
   errorsShift: null,
   mealCount: '',
+  shiftStatus: null,
 };
 
 export const UpdateShiftReducer = (state = initalState, action) => {
@@ -29,6 +35,8 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         endDate: '',
         mealCount: '',
         errorsShift: false,
+        selectedShift: [],
+        shiftStatus: false,
       };
     case UPDATE_SHIFT_FAILURE:
       return {
@@ -39,6 +47,7 @@ export const UpdateShiftReducer = (state = initalState, action) => {
         endDate: '',
         mealCount: '',
         errorsShift: true,
+        shiftStatus: true,
       };
     case INPUT_EMPLOYEE_ID:
       return {
@@ -49,6 +58,11 @@ export const UpdateShiftReducer = (state = initalState, action) => {
       return {
         ...state,
         shiftCode: action.payload,
+      };
+    case INPUT_EMPLOYEE_STATUS:
+      return {
+        ...state,
+        employeeStatus: action.payload,
       };
     case INPUT_START_DATE:
       return {
@@ -69,6 +83,21 @@ export const UpdateShiftReducer = (state = initalState, action) => {
       return {
         ...state,
         errorsShift: null,
+      };
+    case SELECT_ONE_SHIFT:
+      return {
+        ...state,
+        selectedShift: action.payload,
+      };
+    case SHIFT_DUPLICATE_TRUE:
+      return {
+        ...state,
+        shiftStatus: true,
+      };
+    case SHIFT_DUPLICATE_FALSE:
+      return {
+        ...state,
+        shiftStatus: null,
       };
     default:
       return state;

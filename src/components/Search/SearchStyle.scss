@@ -23,3 +23,49 @@
   margin-bottom: 10px;
   float: right;
 }
+
+@media only screen and (max-width: 1200px) {
+  #searchSpan {
+    display: inline-block;
+    margin: auto;
+    text-align: center;
+  }
+
+  #searchText,
+  #searchEmployee,
+  #searchShift,
+  #searchIdSub,
+  #searchId,
+  #searchBar {
+    width: 150px;
+  }
+}
+
+@media only screen and (max-width: 830px) {
+  #searchSpan {
+    display: inline-block;
+    margin: auto;
+  }
+
+  #searchEmployee,
+  #searchId,
+  #searchIdSub,
+  #searchId,
+  #searchBar {
+    width: 100px;
+    margin: 5px
+  }
+
+  ;
+
+  #searchText {
+    width: 120px;
+    height: 60px
+  }
+
+  #searchShift {
+    float: left;
+    width: 80px;
+    height: 60px;
+  }
+}

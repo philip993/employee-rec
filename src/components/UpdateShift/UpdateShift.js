@@ -16,6 +16,7 @@ import {
   inputStartDate,
   inputEndDate,
   addMealCount,
+  inputEmployeeStatus,
 } from './UpdateShiftActions';
 import { requestEmployees } from '../Employee/EmployeeActions';
 import { requestGetContracts } from '../Contract/ContractActions';
@@ -36,10 +37,13 @@ const UpdateShift = () => {
   const {
     employeeId,
     shiftCode,
+    employeeStatus,
     startDate,
     endDate,
     contractList,
     errorsShift,
+    shiftStatus,
+    selectedShift,
   } = useSelector((state) => ({
     ...state.UpdateShiftReducer,
     ...state.EmployeeReducer,
@@ -76,6 +80,10 @@ const UpdateShift = () => {
     dispatch(inputShiftCode(e.target.value));
   };
 
+  const handleEmployeeStatus = (e) => {
+    dispatch(inputEmployeeStatus(e.target.value));
+  };
+
   const handleStartDate = (e) => {
     dispatch(inputStartDate(e));
     dispatch(inputEndDate(e));
@@ -83,17 +91,19 @@ const UpdateShift = () => {
 
   return (
     <div className={classes.pageContainer}>
-      <Typography variant="h4">Update Shift Schedule</Typography>
-      {errorsShift === null
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Update Shift Schedule
+      </Typography>
+      {errorsShift === null && shiftStatus === null
         ? ''
-        : errorsShift === false
+        : errorsShift === false && shiftStatus === false
         ? history.push('/updatesuccess')
         : history.push('/updatefail')}
-      <form onSubmit={handleSubmit} className={classes.updateForm}>
-        <Typography variant="h6" className={classes.updateSub}>
+      <form onSubmit={handleSubmit} className={classes.formLayout} id="addForm">
+        <Typography variant="h6" className={classes.formTitle}>
           Update Shift
         </Typography>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>ID</InputLabel>
           <Select
             value={employeeId}
@@ -101,18 +111,20 @@ const UpdateShift = () => {
             id="employeeId"
             onBlur={validator.current.showMessageFor('employee id')}
           >
-            {contractList.map((el) => (
-              <MenuItem value={el.contractId}>
-                {el.contractId}. {el.employees[0].firstName}{' '}
-                {el.employees[0].secondName}
-              </MenuItem>
-            ))}
+            {contractList
+              .filter((el) => el.activeContract === true)
+              .map((el) => (
+                <MenuItem value={el.contractId}>
+                  {el.contractId}. {el.employees[0].firstName}{' '}
+                  {el.employees[0].secondName}
+                </MenuItem>
+              ))}
           </Select>
-          <FormHelperText className={classes.updateHelperText}>
+          <FormHelperText className={classes.formHelperText}>
             {validator.current.message('employee id', employeeId, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Shift Code</InputLabel>
           <Select
             id="shiftCode"
@@ -125,11 +137,31 @@ const UpdateShift = () => {
             <MenuItem value="second">SECOND</MenuItem>
             <MenuItem value="third">THIRD</MenuItem>
           </Select>
-          <FormHelperText className={classes.updateHelperText}>
+          <FormHelperText className={classes.formHelperText}>
             {validator.current.message('shift code', shiftCode, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>Active Status</InputLabel>
+          <Select
+            id="employeeStatus"
+            value={employeeStatus}
+            onChange={handleEmployeeStatus}
+            onBlur={validator.current.showMessageFor('employee status')}
+          >
+            <MenuItem>Choose Shift Code</MenuItem>
+            <MenuItem value="active">ACTIVE</MenuItem>
+            <MenuItem value="inactive">ON LEAVE</MenuItem>
+          </Select>
+          <FormHelperText className={classes.formHelperText}>
+            {validator.current.message(
+              'employee status',
+              employeeStatus,
+              'required'
+            )}
+          </FormHelperText>
+        </FormGroup>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Start Date</InputLabel>
           <KeyboardDatePicker
             id="startDate"
@@ -142,11 +174,11 @@ const UpdateShift = () => {
             }}
             onBlur={validator.current.showMessageFor('start date')}
           />
-          <FormHelperText className={classes.updateHelperText}>
+          <FormHelperText className={classes.formHelperText}>
             {validator.current.message('start date', startDate, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>End Date</InputLabel>
           <KeyboardDatePicker
             disabled
@@ -159,11 +191,11 @@ const UpdateShift = () => {
             }}
             onBlur={validator.current.showMessageFor('end date')}
           />
-          <FormHelperText className={classes.updateHelperText}>
+          <FormHelperText className={classes.formHelperText}>
             {validator.current.message('end date', endDate, 'required')}
           </FormHelperText>
         </FormGroup>
-        <FormGroup className={classes.updateBtnGroup}>
+        <FormGroup className={classes.formBtnGroup}>
           <Button
             type={'submit'}
             className={classes.formButton}

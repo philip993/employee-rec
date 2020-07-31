@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 // Material Ui
 import { Button, Typography } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
-import { changeErrorsStatus } from './UpdateShiftActions';
+import { changeErrorsStatus, shiftDuplicateFalse } from './UpdateShiftActions';
 
 const UpdateShiftSuccess = () => {
   const dispatch = useDispatch();
@@ -17,19 +17,31 @@ const UpdateShiftSuccess = () => {
 
   const handleRedirect = () => {
     history.push('/shifts');
+    dispatch(shiftDuplicateFalse());
     dispatch(changeErrorsStatus());
   };
 
   const handleRedirectTwo = () => {
     history.push('/updateshift');
+    dispatch(shiftDuplicateFalse());
     dispatch(changeErrorsStatus());
   };
   return (
     <div>
-      <Typography variant="h4">SUCCESS</Typography>
-      <Alert severity="success">Employee is Added to Shift Schedule!</Alert>
-      <Button onClick={handleRedirect}>SHIFT SCHEDULE</Button>
-      <Button onClick={handleRedirectTwo}>ADD MORE</Button>
+      <Typography variant="h3" className={classes.pageSubtitle}>
+        SUCCESS
+      </Typography>
+      <div className={classes.divContainer}>
+        <Alert severity="success" className={classes.divMessage}>
+          Employee is Added to Shift Schedule!
+        </Alert>
+        <Button onClick={handleRedirect} className={classes.buttonLeft}>
+          SHIFT SCHEDULE
+        </Button>
+        <Button onClick={handleRedirectTwo} className={classes.buttonRight}>
+          ADD MORE
+        </Button>
+      </div>
     </div>
   );
 };

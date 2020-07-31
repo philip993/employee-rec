@@ -5,6 +5,9 @@ import {
   INPUT_CONTRACT_START,
   CONTRACT_90_DAYS,
   CHANGE_ERROR_STATUS,
+  INPUT_SALARY,
+  CONTRACT_DUPLICATE_TRUE,
+  CONTRACT_DUPLICATE_FALSE,
 } from './AddContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -16,26 +19,39 @@ export const requestAddContract = () => {
       contractId,
       contractStart,
       contractEnd,
+      salary,
     } = getState().AddContractReducer;
-    return axios
-      .post(`http://localhost:4000/contracts/add`, {
-        contractId,
-        contractStart,
-        contractEnd,
-      })
-      .then((response) => {
-        console.log(response);
-        dispatch({
-          type: SUCCESS_ADD_CONTRACT,
-          payload: response.data.contract,
+    let contracts = getState().ContractReducer.contractList;
+    let index = contracts.findIndex(
+      (ctr, index) => ctr.contractId === contractId
+    );
+    console.log(index);
+    if (index === -1) {
+      return axios
+        .post(`http://localhost:4000/contracts/add`, {
+          contractId,
+          contractStart,
+          contractEnd,
+          salary,
+        })
+        .then((response) => {
+          console.log(response);
+          dispatch({
+            type: SUCCESS_ADD_CONTRACT,
+            payload: response.data.contract,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+          dispatch({
+            type: FAILURE_ADD_CONTRACT,
+          });
         });
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch({
-          type: FAILURE_ADD_CONTRACT,
-        });
+    } else {
+      dispatch({
+        type: CONTRACT_DUPLICATE_TRUE,
       });
+    }
   };
 };
 
@@ -61,9 +77,29 @@ export const contract90days = (e) => {
   };
 };
 
+export const inputSalary = (e) => {
+  return {
+    type: INPUT_SALARY,
+    payload: e,
+  };
+};
+
 // errors
 export const changeErrorsStatus = () => {
   return {
     type: CHANGE_ERROR_STATUS,
+  };
+};
+
+// check duplicate
+export const contractDuplicateTrue = () => {
+  return {
+    type: CONTRACT_DUPLICATE_TRUE,
+  };
+};
+
+export const contractDuplicateFalse = () => {
+  return {
+    type: CONTRACT_DUPLICATE_FALSE,
   };
 };

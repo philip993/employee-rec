@@ -91,7 +91,9 @@ const SendMail = () => {
 
   return (
     <div>
-      <Typography variant="h4">Mail</Typography>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Mail
+      </Typography>
       {sendMailError === null
         ? ''
         : sendMailError === false
@@ -103,14 +105,14 @@ const SendMail = () => {
       ) : isLoading === false ? (
         ''
       ) : (
-        <CircularProgress className={classes.mailProgress} />
+        <CircularProgress className={classes.spinner} />
       )}
-      <form className={classes.mailForm} disabled={isLoading === true}>
-        <Typography variant="h6" className={classes.mailSub}>
+      <form className={classes.formLayout} disabled={isLoading === true}>
+        <Typography variant="h6" className={classes.formTitle}>
           SEND MAIL
         </Typography>
-        <FormGroup className={classes.mailFormGroup}>
-          <InputLabel className={classes.mailLabel}>RECIPIENT</InputLabel>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>RECIPIENT</InputLabel>
           <InputBase
             id="recipient"
             type="email"
@@ -118,8 +120,8 @@ const SendMail = () => {
             placeholder="example@example.com"
           />
         </FormGroup>
-        <FormGroup className={classes.mailFormGroup}>
-          <InputLabel className={classes.mailLabel}>SUBJECT</InputLabel>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>SUBJECT</InputLabel>
           <Select
             id="subject"
             value={emailSubject}
@@ -131,8 +133,8 @@ const SendMail = () => {
             </MenuItem>
           </Select>
         </FormGroup>
-        <FormGroup className={classes.mailFormGroup}>
-          <InputLabel className={classes.mailLabel}>MESSAGE</InputLabel>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>MESSAGE</InputLabel>
           <Select id="msgOption" onChange={handleEmailBody} disabled={hide}>
             <MenuItem value={expiredContract}>
               Default Extension Message
@@ -145,21 +147,21 @@ const SendMail = () => {
             id="message"
             type="text"
             multiline="true"
-            rows="8"
+            rows="10"
             value={emailBody}
             placeholder="Preview.."
             onChange={handleEmailBody}
           />
         </FormGroup>
-        <FormGroup className={classes.mailFormGroup}>
-          <InputLabel className={classes.mailLabel}>Attachment</InputLabel>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>Attachment</InputLabel>
           <InputBase type="file" onChange={handleEmailAttachment} />
         </FormGroup>
-        <FormGroup className={classes.mailBtnGroup}>
+        <FormGroup className={classes.buttonNormalSpan}>
           <Button
             onClick={handleSubmit}
             disabled={isLoading === true}
-            className={classes.mailButton}
+            className={classes.formButton}
           >
             Send <MailOutlineIcon />
           </Button>

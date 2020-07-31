@@ -11,6 +11,7 @@ import {
   updateContractStart,
   updateContractEnd,
   selectContract,
+  updateSalary,
 } from './UpdateContractActions';
 // Material Ui
 import {
@@ -33,6 +34,7 @@ const UpdateContract = () => {
     updatedContractStart,
     updatedContractEnd,
     updateContractErrors,
+    updatedSalary,
   } = useSelector((state) => ({
     ...state.UpdateContractReducer,
     ...state.ContractReducer,
@@ -47,6 +49,8 @@ const UpdateContract = () => {
     dispatch(requestGetContracts());
   }, []);
 
+  useEffect(() => {});
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(requestUpdateContract());
@@ -58,23 +62,29 @@ const UpdateContract = () => {
     dispatch(updateContractEnd(e));
   };
 
+  const handleUpdateSalary = (e) => {
+    dispatch(updateSalary(e.target.value));
+  };
+
   return (
     <div>
-      <Typography variant="h4">Update Contract</Typography>
+      <Typography variant="h4" className={classes.pageSubtitle}>
+        Update Contract
+      </Typography>
       {updateContractErrors === null
         ? ''
         : updateContractErrors === false
         ? history.push('/updcontractsuccess')
         : history.push('/updcontractfail')}
-      <form className={classes.updateForm}>
-        <Typography variant="h6" className={classes.updateSub}>
+      <form className={classes.formLayout}>
+        <Typography variant="h6" className={classes.formTitle}>
           UPDATE CONTRACT
         </Typography>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Contract ID</InputLabel>
           <InputBase id="contractId" value={selectedContract.id} />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract Start Date
           </InputLabel>
@@ -91,7 +101,7 @@ const UpdateContract = () => {
             }}
           />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>
             Contract End Date
           </InputLabel>
@@ -106,13 +116,21 @@ const UpdateContract = () => {
             }}
           />
         </FormGroup>
-        <FormGroup className={classes.addFormGroup}>
+        <FormGroup className={classes.formGroup}>
+          <InputLabel className={classes.formLabel}>Salary</InputLabel>
+          <InputBase
+            id="salary"
+            value={updatedSalary}
+            onChange={handleUpdateSalary}
+          />
+        </FormGroup>
+        <FormGroup className={classes.formGroup}>
           <InputLabel className={classes.formLabel}>Active Contract</InputLabel>
           <RadioGroup>
             <FormControlLabel defaultChecked control={<Radio />} label="YES" />
           </RadioGroup>
         </FormGroup>
-        <FormGroup className={classes.updateBtnGroup}>
+        <FormGroup className={classes.formBtnGroup}>
           <Button onClick={handleSubmit} className={classes.formButton}>
             Update
           </Button>

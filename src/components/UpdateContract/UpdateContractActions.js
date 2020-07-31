@@ -7,6 +7,7 @@ import {
   END_CONTRACT_SUCCESS,
   END_CONTRACT_FAILURE,
   CHANGE_ERROR_STATUS,
+  UPDATE_SALARY,
 } from './UpdateContractActionTypes';
 // Axios
 import axios from 'axios';
@@ -17,6 +18,7 @@ export const requestUpdateContract = () => {
     let {
       updatedContractStart,
       updatedContractEnd,
+      updatedSalary,
     } = getState().UpdateContractReducer;
     let tt = getState().UpdateContractReducer.selectedContract;
     let id = tt.id;
@@ -27,6 +29,7 @@ export const requestUpdateContract = () => {
         id,
         contractStart: updatedContractStart,
         contractEnd: updatedContractEnd,
+        salary: updatedSalary,
         activeContract: true,
       })
       .then((response) => {
@@ -67,6 +70,13 @@ export const updateContractEnd = (e) => {
   return {
     type: UPDATE_CONTRACT_END,
     payload: e.setDate(e.getDate() + 90),
+  };
+};
+
+export const updateSalary = (e) => {
+  return {
+    type: UPDATE_SALARY,
+    payload: e,
   };
 };
 
