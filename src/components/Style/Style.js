@@ -123,6 +123,12 @@ const Styles = makeStyles((theme) => ({
     width: '80%',
     margin: 'auto',
   },
+  tableLayoutMedium: {
+    width: '80%',
+    margin: 'auto',
+    marginTop: '50px',
+    marginBottom: '50px',
+  },
   tableLayoutSmall: {
     width: '540px',
     margin: 'auto',
@@ -143,6 +149,11 @@ const Styles = makeStyles((theme) => ({
     fontWeight: 'bold',
     fontSize: '1rem',
   },
+  tableCellBoldStyle: {
+    border: 'solid 1px #BEBEBE',
+    fontWeight: 'bold',
+    width: '45%',
+  },
   tableHeader: {
     backgroundColor: '#4682b4',
     border: 'solid 1px #0E4D92',
@@ -152,6 +163,17 @@ const Styles = makeStyles((theme) => ({
     fontWeight: 'bold',
     color: '#fff',
     fontSize: '1.2rem',
+  },
+  tableHeadCell: {
+    fontWeight: 'bold',
+    backgroundColor: '#4682b4',
+    color: '#fff',
+    paddingLeft: '15px',
+  },
+  tablePositionCell: {
+    fontWeight: 'bold',
+    border: 'solid 1px #BEBEBE',
+    width: '55%',
   },
   tablePagination: {
     width: '80%',
@@ -347,6 +369,7 @@ const Styles = makeStyles((theme) => ({
   cardPersonal: {
     textAlign: 'center',
     backgroundColor: '#F5F5F5',
+    border: '1px solid #BEBEBE',
   },
   cardTitle: {
     width: '80%',

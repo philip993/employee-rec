@@ -47,119 +47,184 @@ const DetailsView = ({
             {firstName} {secondName}
           </Typography>
           <Typography variant="h6">{age} years</Typography>
-          <Typography variant="p">{gender}</Typography>
+          <Typography variant="h6">{gender === 'male' ? 'M' : 'F'}</Typography>
         </CardContent>
         <CardContent>
-          <Table>
+          <Table className={classes.tableLayoutMedium}>
             <TableHead>
-              <Typography variant="h6" className={classes.cardTitle}>
+              <Typography variant="h6" className={classes.tableHeadCell}>
                 Employment Information
               </Typography>
             </TableHead>
             <TableRow>
-              <TableCell>position</TableCell>
-              <TableCell>{position}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Position
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {position}
+              </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Work Department</TableCell>
-              <TableCell>{workDepartment}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Work Department
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {workDepartment}
+              </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Employment Date</TableCell>
-              <TableCell>{employmentDate}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Employment Date
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {employmentDate}
+              </TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardTitle}>
+              <Typography variant="h6" className={classes.tableHeadCell}>
                 Address Information
               </Typography>
             </TableHead>
             <TableRow>
-              <TableCell>Address</TableCell>
-              <TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Address
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
                 {address}, {city}
               </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>State</TableCell>
-              <TableCell>{state}</TableCell>
+              <TableCell className={classes.tablePositionCell}>State</TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {state}
+              </TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardTitle}>
+              <Typography variant="h6" className={classes.tableHeadCell}>
                 Identity Information
               </Typography>
             </TableHead>
             <TableRow>
-              <TableCell>Identity Card No.</TableCell>
-              <TableCell>{identityCard}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Identity Card No.
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {identityCard}
+              </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>Social Security No.</TableCell>
-              <TableCell>{socialNumber}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Social Security No.
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {socialNumber}
+              </TableCell>
             </TableRow>
             <TableHead>
-              <Typography variant="h6" className={classes.cardTitle}>
+              <Typography variant="h6" className={classes.tableHeadCell}>
                 Contact Information
               </Typography>
             </TableHead>
             <TableRow>
-              <TableCell>Telephone Number</TableCell>
-              <TableCell>{telephoneNumber}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                Telephone Number
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {telephoneNumber}
+              </TableCell>
             </TableRow>
             <TableRow>
-              <TableCell>E-mail Address</TableCell>
-              <TableCell>{emailAddress}</TableCell>
+              <TableCell className={classes.tablePositionCell}>
+                E-mail Address
+              </TableCell>
+              <TableCell className={classes.tableCellBoldStyle}>
+                {emailAddress}
+              </TableCell>
             </TableRow>
             {!contract ? (
               <React.Fragment>
-                <Typography variant="h6" className={classes.cardTitle}>
+                <Typography variant="h6" className={classes.tableHeadCell}>
                   Contract
                 </Typography>
-                <Typography variant="p">No Contract </Typography>
+                <TableRow>
+                  <TableCell colSpan={2} className={classes.tablePositionCell}>
+                    No Contract Info
+                  </TableCell>
+                </TableRow>
               </React.Fragment>
             ) : (
               <React.Fragment>
                 <TableHead>
-                  <Typography variant="h6" className={classes.cardTitle}>
+                  <Typography variant="h6" className={classes.tableHeadCell}>
                     Contract
                   </Typography>
                 </TableHead>
 
-                <TableRow>
-                  <TableCell>Start/End:</TableCell>
-                  <TableCell>
-                    {contract.contractStart} / {contract.contractEnd}
-                  </TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableCell>Salary</TableCell>
-                  <TableCell>{contract.salary} $</TableCell>
-                </TableRow>
+                {contract.activeContract ? (
+                  <React.Fragment>
+                    <TableRow>
+                      <TableCell className={classes.tablePositionCell}>
+                        Start/End:
+                      </TableCell>
+                      <TableCell className={classes.tableCellBoldStyle}>
+                        {contract.contractStart} / {contract.contractEnd}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell className={classes.tablePositionCell}>
+                        Salary
+                      </TableCell>
+                      <TableCell className={classes.tableCellBoldStyle}>
+                        {contract.salary} $
+                      </TableCell>
+                    </TableRow>
+                  </React.Fragment>
+                ) : (
+                  <TableRow>
+                    <TableCell
+                      colSpan={2}
+                      className={classes.tablePositionCell}
+                    >
+                      FIRED
+                    </TableCell>
+                  </TableRow>
+                )}
               </React.Fragment>
             )}
             {!shift ? (
               <React.Fragment>
-                <Typography variant="h6" className={classes.cardTitle}>
+                <Typography variant="h6" className={classes.tableHeadCell}>
                   Shift
                 </Typography>
-                <Typography variant="p">No Shift Info</Typography>
+                <TableRow>
+                  <TableCell colSpan={2} className={classes.tablePositionCell}>
+                    No Shift Info
+                  </TableCell>
+                </TableRow>
               </React.Fragment>
             ) : (
               <React.Fragment>
                 <TableHead>
-                  <Typography variant="h6" className={classes.cardTitle}>
+                  <Typography variant="h6" className={classes.tableHeadCell}>
                     Shift
                   </Typography>
                 </TableHead>
 
                 <TableRow>
-                  <TableCell>Start/End:</TableCell>
-                  <TableCell>
+                  <TableCell className={classes.tablePositionCell}>
+                    Start/End:
+                  </TableCell>
+                  <TableCell className={classes.tableCellBoldStyle}>
                     {shift.startDate} / {shift.endDate}
                   </TableCell>
                 </TableRow>
                 <TableRow>
-                  <TableCell>Shift</TableCell>
-                  <TableCell>{shift.shiftCode}</TableCell>
+                  <TableCell className={classes.tablePositionCell}>
+                    Shift
+                  </TableCell>
+                  <TableCell className={classes.tableCellBoldStyle}>
+                    {shift.shiftCode}
+                  </TableCell>
                 </TableRow>
               </React.Fragment>
             )}
