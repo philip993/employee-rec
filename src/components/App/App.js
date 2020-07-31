@@ -31,6 +31,7 @@ import SendMailSuccess from '../SendMail/SendMailSuccess';
 import SendMailError from '../SendMail/SendMailError';
 import ContractPage from '../ContractPage/ContractPage';
 import InactiveList from '../InactveList/InactiveList';
+import Fired from '../Fired/Fired';
 
 const App = () => {
   const classes = Styles();
@@ -70,6 +71,7 @@ const App = () => {
         <Route path="/mailfail" exact component={SendMailError} />
         <Route path="/contractpage" exact component={ContractPage} />
         <Route path="/inactive" exact component={InactiveList} />
+        <Route path="/fired" exact component={Fired} />
       </Switch>
     </div>
   );
