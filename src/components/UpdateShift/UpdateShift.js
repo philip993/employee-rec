@@ -111,12 +111,14 @@ const UpdateShift = () => {
             id="employeeId"
             onBlur={validator.current.showMessageFor('employee id')}
           >
-            {contractList.map((el) => (
-              <MenuItem value={el.contractId}>
-                {el.contractId}. {el.employees[0].firstName}{' '}
-                {el.employees[0].secondName}
-              </MenuItem>
-            ))}
+            {contractList
+              .filter((el) => el.activeContract === true)
+              .map((el) => (
+                <MenuItem value={el.contractId}>
+                  {el.contractId}. {el.employees[0].firstName}{' '}
+                  {el.employees[0].secondName}
+                </MenuItem>
+              ))}
           </Select>
           <FormHelperText className={classes.formHelperText}>
             {validator.current.message('employee id', employeeId, 'required')}
