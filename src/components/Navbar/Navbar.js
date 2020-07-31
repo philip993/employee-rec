@@ -63,6 +63,11 @@ const Navbar = () => {
                   Inactive
                 </Link>
               </Button>
+              <Button className={classes.headerButtons}>
+                <Link to="/fired" className={classes.headerLinks}>
+                  Fired
+                </Link>
+              </Button>
             </Grid>
           </Grid>
         </Toolbar>
