@@ -16,6 +16,8 @@ import {
   selectContractMail,
   emailRecipentInput,
 } from '../SendMail/SendMailActions';
+import { requestContractPage } from '../ContractPage/ContractPageActions';
+import { requestDeleteShift } from '../UpdateShift/UpdateShiftActions';
 // Material Ui
 import {
   Typography,
@@ -31,7 +33,6 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import EmailIcon from '@material-ui/icons/Email';
 import DescriptionIcon from '@material-ui/icons/Description';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
-import { requestContractPage } from '../ContractPage/ContractPageActions';
 import { Alert } from '@material-ui/lab';
 
 const Contract = () => {
@@ -50,7 +51,6 @@ const Contract = () => {
   }, []);
 
   const handleUpdateContract = (e) => {
-    console.log(e);
     dispatch(selectContract(e));
     history.push('/updatecontract');
   };
@@ -59,17 +59,17 @@ const Contract = () => {
     console.log(e);
     dispatch(selectContract(e));
     dispatch(requestEndContract());
+    dispatch(requestDeleteShift(e.id));
+    window.location.reload();
   };
 
   const handleMailSend = (e) => {
-    console.log(e);
     dispatch(selectContractMail(e));
     history.push('/sendmail');
     dispatch(emailRecipentInput(e.employees[0].emailAddress));
   };
 
   const handleContractPage = (e) => {
-    console.log(e);
     dispatch(requestContractPage(e.contractId));
     history.push('/contractpage');
   };

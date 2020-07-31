@@ -15,6 +15,8 @@ import {
   SWITCH_SHIFT_FAILURE,
   SHIFT_DUPLICATE_TRUE,
   SHIFT_DUPLICATE_FALSE,
+  DELETE_SHIFT_SUCCESS,
+  DELETE_SHIFT_FAILURE,
 } from './UpdateShiftActionTypes';
 // axios
 import axios from 'axios';
@@ -109,6 +111,29 @@ export const requestStatusInactive = () => {
         console.log(err);
         dispatch({
           type: UPDATE_STATUS_FAILURE,
+        });
+      });
+  };
+};
+
+// request delete
+export const requestDeleteShift = () => {
+  return (dispatch, getState) => {
+    let contracts = getState().UpdateContractReducer.selectedContract;
+
+    return axios
+      .delete(`http://localhost:4000/shifts/delete/${contracts.contractId}`)
+      .then((response) => {
+        console.log(response);
+        dispatch({
+          type: DELETE_SHIFT_SUCCESS,
+          payload: response.data.deletedShift,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch({
+          type: DELETE_SHIFT_FAILURE,
         });
       });
   };
